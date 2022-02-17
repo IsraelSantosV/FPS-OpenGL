@@ -7,13 +7,13 @@
 #include <math.h>
 #include "headers/camera.h"
 
-camera::camera(int width, int height) : m_ScreenWidth(width), m_ScreenHeight(height){ }
+camera::camera() { }
 
-void camera::updateMovement(inputManager manager) {
-    inputKey forward = manager.getKey("Vertical", true);
-    inputKey backward = manager.getKey("Vertical", false);
-    inputKey right = manager.getKey("Horizontal", true);
-    inputKey left = manager.getKey("Horizontal", false);
+void camera::updateMovement() {
+    inputKey forward = inputManager.getInstance().getKey("Vertical", true);
+    inputKey backward = inputManager.getInstance().getKey("Vertical", false);
+    inputKey right = inputManager.getInstance().getKey("Horizontal", true);
+    inputKey left = inputManager.getInstance().getKey("Horizontal", false);
 
     float camX = getPosition().X();
     float camZ = getPosition().Z();
@@ -52,6 +52,11 @@ void camera::updateMovement(inputManager manager) {
 
 void camera::setMovement(vector3 position) {
     m_Position.set(position.X(), position.Y(), position.Z());
+}
+
+void camera::setScreenSize(int width, int height){
+    m_ScreenWidth = width;
+    m_ScreenHeight = height;
 }
 
 void camera::setRotation(vector3 rotation) {
