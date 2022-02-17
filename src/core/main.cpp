@@ -6,8 +6,6 @@
 //width and height of the window ( Aspect ratio 16:9 )
 const int width = 16*50;
 const int height = 9*50;
-camera fpsCamera(width, height);
-inputManager myInputManager;
 
 void display();
 void reshape(int w,int h);
@@ -19,14 +17,15 @@ void keyboard_up(unsigned char key,int x,int y);
 void init(){
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-    fpsCamera.setCursorLockState(true);
+    camera.getInstance().setScreenSize(width, height);
+    camera.getInstance().setCursorLockState(true);
 }
 
 void setupInputs(){
-    myInputManager.addKey('w', "Vertical", true);
-    myInputManager.addKey('s', "Vertical", false);
-    myInputManager.addKey('a', "Horizontal", false);
-    myInputManager.addKey('d', "Horizontal", true);
+    inputManager.getInstance().addKey('w', "Vertical", true);
+    inputManager.getInstance().addKey('s', "Vertical", false);
+    inputManager.getInstance().addKey('a', "Horizontal", false);
+    inputManager.getInstance().addKey('d', "Horizontal", true);
 }
 
 void draw(){
@@ -62,7 +61,7 @@ void draw(){
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    fpsCamera.updateMovement(myInputManager);
+    camera.getInstance().updateMovement();
     draw();
     glutSwapBuffers();
 }
@@ -78,7 +77,7 @@ void reshape(int w,int h){
 void timer(int){
     glutPostRedisplay();
 
-    if(fpsCamera.cursorIsLocked()){
+    if(camera.getInstance().cursorIsLocked()){
         glutWarpPointer(width/2,height/2);
     }
 
@@ -91,57 +90,21 @@ void passive_motion(int x,int y){
     dev_x = (width/2)-x;
     dev_y = (height/2)-y;
 
-    vector3 currentRot = fpsCamera.getRotation();
+    vector3 currentRot = camera.getInstance().getRotation();
     float currentYaw = currentRot.X();
     float currentPitch = currentRot.Y();
 
     float targetYaw = currentYaw + (float)dev_x/sensibility;
     float targetPitch = currentPitch + (float)dev_y/sensibility;
-    fpsCamera.setRotation(vector3(targetYaw, targetPitch));
+    camera.getInstance().setRotation(vector3(targetYaw, targetPitch));
 }
 
 void keyboard(unsigned char key,int x,int y){
     myInputManager.updateKeys(key, PRESSED);
-    /*switch(key){
-        case 'W':
-        case 'w':
-            motion.Forward = true;
-            break;
-        case 'A':
-        case 'a':
-            motion.Left = true;
-            break;
-        case 'S':
-        case 's':
-            motion.Backward = true;
-            break;
-        case 'D':
-        case 'd':
-            motion.Right = true;
-            break;
-    }*/
 }
 
 void keyboard_up(unsigned char key,int x,int y){
     myInputManager.updateKeys(key, RELEASED);
-    /*switch(key){
-        case 'W':
-        case 'w':
-            motion.Forward = false;
-            break;
-        case 'A':
-        case 'a':
-            motion.Left = false;
-            break;
-        case 'S':
-        case 's':
-            motion.Backward = false;
-            break;
-        case 'D':
-        case 'd':
-            motion.Right = false;
-            break;
-    }*/
 }
 
 int main(int argc,char**argv){
