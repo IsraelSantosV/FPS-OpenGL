@@ -3,9 +3,9 @@
 //
 
 #define TO_RADIANS 3.14/180.0
-#include "headers/camera.h"
 #include <GL/glut.h>
 #include <math.h>
+#include "headers/camera.h"
 
 camera::camera(int width, int height) : m_ScreenWidth(width), m_ScreenHeight(height){ }
 

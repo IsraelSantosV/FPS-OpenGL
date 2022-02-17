@@ -1,5 +1,5 @@
 #include <GL/glut.h>
-#include "headers/camera.h"
+#include "controllers/headers/camera.h"
 
 #define FPS 60
 
