@@ -12,9 +12,9 @@ using namespace std;
 class inputManager {
 private:
     vector<inputKey>* m_Inputs;
-public:
     inputManager();
-    ~inputManager();
+public:
+    static inputManager& getInstance();
     void addKey(char keyCode, string id, bool positive);
     void updateKeys(char currentKey, inputState targetState);
     bool containsKey(char key);
