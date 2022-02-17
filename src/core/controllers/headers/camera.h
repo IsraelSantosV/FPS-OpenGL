@@ -17,9 +17,11 @@ private:
     vector3 m_ClampedAngle;
     float m_Speed;
     bool m_CursorLocked;
+    camera();
 public:
-    camera(int width, int height);
-    void updateMovement(inputManager manager);
+    static camera& getInstance();
+    void setScreenSize(int width, int height);
+    void updateMovement();
     void setMovement(vector3 position);
     void setRotation(vector3 rotation);
     vector3 getRotation();
