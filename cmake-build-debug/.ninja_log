@@ -1,0 +1,9 @@
+# ninja log v5
+1	359	1645106308317182880	CMakeFiles/OpenGL.dir/src/core/input/inputManager.cpp.o	97c18235d8082d96
+0	271	1645106308229183199	CMakeFiles/OpenGL.dir/src/core/input/inputKey.cpp.o	ee37fa052ef75d5d
+0	20	1645106562096268369	build.ninja	52d19f053ac90f79
+1	28	1645106486716538963	CMakeFiles/OpenGL.dir/src/core/tools/vector3.cpp.o	547236012d54070b
+0	123	1645097650276912251	CMakeFiles/OpenGL.dir/main.cpp.o	9841a2705135b9fa
+0	56	1645106308013183982	CMakeFiles/OpenGL.dir/src/tools/vector3.cpp.o	ac2e57a67766a29
+123	189	1645097650340912002	OpenGL	69c71822c1cecf0b
+0	18	1645106562096268369	build.ninja	52d19f053ac90f79
