@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/zetta/Documentos/Programas/OpenGL/cmake-build-debug/
+cmake_ninja_workdir = /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/zetta/Documentos/Programas/OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/zetta/Documentos/Programas/OpenGL -B/home/zetta/Documentos/Programas/OpenGL/cmake-build-debug
+  COMMAND = cd /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/zetta/Documentos/Programas/FPS-OpenGL -B/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,7 +57,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/zetta/Documentos/Programas/OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -72,35 +72,35 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_OpenGL: phony || CMakeFiles/OpenGL.dir
 
-build CMakeFiles/OpenGL.dir/src/core/main.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/OpenGL/src/core/main.cpp || cmake_object_order_depends_target_OpenGL
+build CMakeFiles/OpenGL.dir/src/core/main.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/main.cpp || cmake_object_order_depends_target_OpenGL
   DEP_FILE = CMakeFiles/OpenGL.dir/src/core/main.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core
 
-build CMakeFiles/OpenGL.dir/src/core/tools/vector3.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/OpenGL/src/core/tools/vector3.cpp || cmake_object_order_depends_target_OpenGL
-  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/tools/vector3.cpp.o.d
+build CMakeFiles/OpenGL.dir/src/core/tools/Vector3.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/tools/Vector3.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/tools/Vector3.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/tools
 
-build CMakeFiles/OpenGL.dir/src/core/input/inputKey.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/OpenGL/src/core/input/inputKey.cpp || cmake_object_order_depends_target_OpenGL
-  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/input/inputKey.cpp.o.d
+build CMakeFiles/OpenGL.dir/src/core/input/InputKey.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/input/InputKey.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/input/InputKey.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/input
 
-build CMakeFiles/OpenGL.dir/src/core/input/inputManager.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/OpenGL/src/core/input/inputManager.cpp || cmake_object_order_depends_target_OpenGL
-  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/input/inputManager.cpp.o.d
+build CMakeFiles/OpenGL.dir/src/core/input/InputManager.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/input/InputManager.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/input/InputManager.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/input
 
-build CMakeFiles/OpenGL.dir/src/core/camera.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/OpenGL/src/core/camera.cpp || cmake_object_order_depends_target_OpenGL
-  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/camera.cpp.o.d
+build CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/controllers/Camera.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core
+  OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/controllers
 
 
 # =============================================================================
@@ -110,7 +110,7 @@ build CMakeFiles/OpenGL.dir/src/core/camera.cpp.o: CXX_COMPILER__OpenGL_Debug /h
 #############################################
 # Link the executable OpenGL
 
-build OpenGL: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/src/core/main.cpp.o CMakeFiles/OpenGL.dir/src/core/tools/vector3.cpp.o CMakeFiles/OpenGL.dir/src/core/input/inputKey.cpp.o CMakeFiles/OpenGL.dir/src/core/input/inputManager.cpp.o CMakeFiles/OpenGL.dir/src/core/camera.cpp.o
+build OpenGL: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/src/core/main.cpp.o CMakeFiles/OpenGL.dir/src/core/tools/Vector3.cpp.o CMakeFiles/OpenGL.dir/src/core/input/InputKey.cpp.o CMakeFiles/OpenGL.dir/src/core/input/InputManager.cpp.o CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lglut  -lGLU  -lGL
   OBJECT_DIR = CMakeFiles/OpenGL.dir
@@ -128,7 +128,7 @@ build OpenGL: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/src/core
 # =============================================================================
 
 #############################################
-# Folder: /home/zetta/Documentos/Programas/OpenGL/cmake-build-debug
+# Folder: /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
 
 build all: phony OpenGL
 

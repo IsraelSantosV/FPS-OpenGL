@@ -1,11 +1,12 @@
 #include <GL/glut.h>
-#include "controllers/headers/camera.h"
+#include "controllers/headers/Camera.h"
 
 #define FPS 60
 
-//width and height of the window ( Aspect ratio 16:9 )
-const int width = 16*50;
-const int height = 9*50;
+//Width and height of the window (Aspect ratio 16:9)
+const int sceneScale = 100;
+const int width = 16*sceneScale;
+const int height = 9*sceneScale;
 
 void display();
 void reshape(int w,int h);
@@ -17,15 +18,18 @@ void keyboard_up(unsigned char key,int x,int y);
 void init(){
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-    camera.getInstance().setScreenSize(width, height);
-    camera.getInstance().setCursorLockState(true);
+    Camera::getInstance()->initialize(5, 10);
+    Camera::getInstance()->setScreenSize(width, height);
+    Camera::getInstance()->setVerticalLimit(Vector3(70, 60, 0));
+    Camera::getInstance()->setCursorLockState(true);
 }
 
 void setupInputs(){
-    inputManager.getInstance().addKey('w', "Vertical", true);
-    inputManager.getInstance().addKey('s', "Vertical", false);
-    inputManager.getInstance().addKey('a', "Horizontal", false);
-    inputManager.getInstance().addKey('d', "Horizontal", true);
+    InputManager::getInstance()->addKey('w', "Vertical", true);
+    InputManager::getInstance()->addKey('s', "Vertical", false);
+    InputManager::getInstance()->addKey('a', "Horizontal", false);
+    InputManager::getInstance()->addKey('d', "Horizontal", true);
+    InputManager::getInstance()->addKey('27', "Escape", true);
 }
 
 void draw(){
@@ -61,7 +65,7 @@ void draw(){
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    camera.getInstance().updateMovement();
+    Camera::getInstance()->updateMovement();
     draw();
     glutSwapBuffers();
 }
@@ -77,7 +81,7 @@ void reshape(int w,int h){
 void timer(int){
     glutPostRedisplay();
 
-    if(camera.getInstance().cursorIsLocked()){
+    if(Camera::getInstance()->cursorIsLocked()){
         glutWarpPointer(width/2,height/2);
     }
 
@@ -86,32 +90,32 @@ void timer(int){
 
 void passive_motion(int x,int y){
     int dev_x,dev_y;
-    const float sensibility = 10;
     dev_x = (width/2)-x;
     dev_y = (height/2)-y;
 
-    vector3 currentRot = camera.getInstance().getRotation();
+    float sensibility = Camera::getInstance()->getSensibility();
+    Vector3 currentRot = Camera::getInstance()->getRotation();
     float currentYaw = currentRot.X();
     float currentPitch = currentRot.Y();
 
     float targetYaw = currentYaw + (float)dev_x/sensibility;
     float targetPitch = currentPitch + (float)dev_y/sensibility;
-    camera.getInstance().setRotation(vector3(targetYaw, targetPitch));
+    Camera::getInstance()->setRotation(Vector3(targetYaw, targetPitch));
 }
 
 void keyboard(unsigned char key,int x,int y){
-    myInputManager.updateKeys(key, PRESSED);
+    InputManager::getInstance()->updateKeys(key, true);
 }
 
 void keyboard_up(unsigned char key,int x,int y){
-    myInputManager.updateKeys(key, RELEASED);
+    InputManager::getInstance()->updateKeys(key, false);
 }
 
 int main(int argc,char**argv){
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(width, height);
-    glutCreateWindow("3D Simulation");
+    glutCreateWindow("FP 3D Simulation");
 
     init();
     setupInputs();

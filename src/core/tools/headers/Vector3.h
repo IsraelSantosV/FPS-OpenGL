@@ -5,16 +5,15 @@
 #ifndef OPENGL_VECTOR3_H
 #define OPENGL_VECTOR3_H
 
-class vector3 {
+class Vector3 {
 private:
-    float* m_X;
-    float* m_Y;
-    float* m_Z;
+    float m_X;
+    float m_Y;
+    float m_Z;
 public:
-    vector3();
-    vector3(float x, float y, float z);
-    vector3(float x, float y);
-    ~vector3();
+    Vector3();
+    Vector3(float x, float y, float z);
+    Vector3(float x, float y);
     void set(float x, float y, float z);
     float X();
     float Y();

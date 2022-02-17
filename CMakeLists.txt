@@ -7,12 +7,12 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(OpenGL
         src/core/main.cpp
-        src/core/tools/vector3.cpp
-        src/core/tools/headers/vector3.h
-        src/core/input/inputKey.cpp
-        src/core/input/headers/inputKey.h
-        src/core/input/inputManager.cpp
-        src/core/input/headers/inputManager.h
-        src/core/camera.cpp
-        src/core/headers/camera.h)
+        src/core/tools/Vector3.cpp
+        src/core/tools/headers/Vector3.h
+        src/core/input/InputKey.cpp
+        src/core/input/headers/InputKey.h
+        src/core/input/InputManager.cpp
+        src/core/input/headers/InputManager.h
+        src/core/controllers/Camera.cpp
+        src/core/controllers/headers/Camera.h)
 target_link_libraries(OpenGL ${OpenGlLinkers})

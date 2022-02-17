@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/zetta/Documentos/Programas/OpenGL/cmake-build-debug"
+			"value" : "/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -579,7 +579,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/zetta/Documentos/Programas/OpenGL"
+			"value" : "/home/zetta/Documentos/Programas/FPS-OpenGL"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1111,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/zetta/Documentos/Programas/OpenGL/cmake-build-debug"
+			"value" : "/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug"
 		},
 		{
 			"name" : "OpenGL_IS_TOP_LEVEL",
@@ -1135,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/zetta/Documentos/Programas/OpenGL"
+			"value" : "/home/zetta/Documentos/Programas/FPS-OpenGL"
 		}
 	],
 	"kind" : "cache",
