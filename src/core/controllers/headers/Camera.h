@@ -1,5 +1,5 @@
 //
-// Created by zetta on 17/02/2022.
+// Created by Israel Santos Vieira on 17/02/2022.
 //
 
 #ifndef OPENGL_CAMERA_H
@@ -24,6 +24,7 @@ public:
     static Camera* getInstance();
     void setScreenSize(int width, int height);
     void initialize(float speed, float sensibility);
+    void receiveMousePosition(int x, int y);
     void updateMovement();
     void setVerticalLimit(Vector3 limit);
     void setMovement(Vector3 position);
@@ -33,7 +34,9 @@ public:
     float getSpeed();
     float getSensibility();
     void setCursorLockState(bool locked);
+    void registerActionTriggers();
     bool cursorIsLocked();
+    bool isFreeze();
 };
 
 

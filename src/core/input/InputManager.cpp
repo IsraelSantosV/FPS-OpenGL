@@ -3,37 +3,46 @@
 //
 
 #include "headers/InputManager.h"
-#define INVALID_KEY '?'
 
 InputManager::InputManager() { }
 
-void InputManager::addKey(char keyCode, string id, bool positive) {
+void InputManager::addKey(unsigned char keyCode, string id, bool positive) {
     if(!containsKey(keyCode)) {
-        m_Inputs.push_back(InputKey(keyCode, id, positive));
+        m_Inputs.push_back(new InputKey(keyCode, id, positive));
     }
 }
 
-void InputManager::updateKeys(char currentKey, bool targetState) {
+void InputManager::updateKeys(unsigned char currentKey, bool targetState) {
     for(auto i = m_Inputs.begin(); i != m_Inputs.end(); ++i){
-        if(i->getCode() == currentKey || i->getCode() == isupper(currentKey)){
-            i->setState(targetState);
+        auto element = *i;
+        if(element->getCode() == currentKey){
+            element->setState(targetState);
+
+            if(targetState){
+                element->triggerActions();
+            }
+            else {
+                element->refreshActions();
+            }
         }
     }
 }
 
-InputKey InputManager::getKey(char keyCode) {
+InputKey* InputManager::getKey(unsigned char keyCode) {
     for(auto i = m_Inputs.begin(); i != m_Inputs.end(); ++i){
-        if(i->getCode() == keyCode || i->getCode() == isupper(keyCode)){
-            return *i;
+        auto element = *i;
+        if(element->getCode() == keyCode){
+            return element;
         }
     }
 
-    return InputKey(INVALID_KEY, "", false);
+    return nullptr;
 }
 
-bool InputManager::containsKey(char key) {
+bool InputManager::containsKey(unsigned char key) {
     for(auto i = m_Inputs.begin(); i != m_Inputs.end(); ++i){
-        if(i->getCode() == key || i->getCode() == isupper(key)){
+        auto element = *i;
+        if(element->getCode() == key){
             return true;
         }
     }
@@ -41,18 +50,15 @@ bool InputManager::containsKey(char key) {
     return false;
 }
 
-InputKey InputManager::getKey(string id, bool positive) {
+InputKey* InputManager::getKey(string id, bool positive) {
     for(auto i = m_Inputs.begin(); i != m_Inputs.end(); ++i){
-        if(i->getID() == id && i->isPositive() == positive){
+        auto element = *i;
+        if(element->getID() == id && element->isPositive() == positive){
             return *i;
         }
     }
 
-    return InputKey(INVALID_KEY, "", false);
-}
-
-bool InputManager::isInvalidKey(InputKey key) {
-    return key.getCode() == INVALID_KEY;
+    return nullptr;
 }
 
 InputManager* InputManager::m_Instance = nullptr;

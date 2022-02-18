@@ -14,5 +14,5 @@ add_executable(OpenGL
         src/core/input/InputManager.cpp
         src/core/input/headers/InputManager.h
         src/core/controllers/Camera.cpp
-        src/core/controllers/headers/Camera.h)
+        src/core/controllers/headers/Camera.h src/core/tools/Drawer.cpp src/core/tools/headers/Drawer.h src/core/controllers/Scenario.cpp src/core/controllers/headers/Scenario.h)
 target_link_libraries(OpenGL ${OpenGlLinkers})

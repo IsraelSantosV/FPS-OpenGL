@@ -1,5 +1,6 @@
 #include <GL/glut.h>
 #include "controllers/headers/Camera.h"
+#include "controllers/headers/Scenario.h"
 
 #define FPS 60
 
@@ -22,6 +23,7 @@ void init(){
     Camera::getInstance()->setScreenSize(width, height);
     Camera::getInstance()->setVerticalLimit(Vector3(70, 60, 0));
     Camera::getInstance()->setCursorLockState(true);
+    Camera::getInstance()->registerActionTriggers();
 }
 
 void setupInputs(){
@@ -29,11 +31,12 @@ void setupInputs(){
     InputManager::getInstance()->addKey('s', "Vertical", false);
     InputManager::getInstance()->addKey('a', "Horizontal", false);
     InputManager::getInstance()->addKey('d', "Horizontal", true);
-    InputManager::getInstance()->addKey('27', "Escape", true);
+    InputManager::getInstance()->addKey(ESCAPE, "Escape", true);
 }
 
 void draw(){
     glEnable(GL_TEXTURE_2D);
+    glColor4f(1,1,1,1);
     GLuint texture;
     glGenTextures(1,&texture);
 
@@ -60,6 +63,8 @@ void draw(){
 
     glEnd();
     glDisable(GL_TEXTURE_2D);
+
+    Scenario::getInstance()->drawScenario();
 }
 
 void display(){
@@ -92,15 +97,7 @@ void passive_motion(int x,int y){
     int dev_x,dev_y;
     dev_x = (width/2)-x;
     dev_y = (height/2)-y;
-
-    float sensibility = Camera::getInstance()->getSensibility();
-    Vector3 currentRot = Camera::getInstance()->getRotation();
-    float currentYaw = currentRot.X();
-    float currentPitch = currentRot.Y();
-
-    float targetYaw = currentYaw + (float)dev_x/sensibility;
-    float targetPitch = currentPitch + (float)dev_y/sensibility;
-    Camera::getInstance()->setRotation(Vector3(targetYaw, targetPitch));
+    Camera::getInstance()->receiveMousePosition(dev_x, dev_y);
 }
 
 void keyboard(unsigned char key,int x,int y){
@@ -117,8 +114,8 @@ int main(int argc,char**argv){
     glutInitWindowSize(width, height);
     glutCreateWindow("FP 3D Simulation");
 
-    init();
     setupInputs();
+    init();
 
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
@@ -126,6 +123,7 @@ int main(int argc,char**argv){
     glutPassiveMotionFunc(passive_motion);
     glutKeyboardFunc(keyboard);
     glutKeyboardUpFunc(keyboard_up);
+    glutIgnoreKeyRepeat(true);
 
     glutMainLoop();
     return 0;

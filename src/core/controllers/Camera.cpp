@@ -9,34 +9,45 @@
 
 Camera::Camera() { }
 
+void Camera::receiveMousePosition(int x, int y) {
+    float sensibility = getSensibility();
+    Vector3 currentRot = getRotation();
+    float currentYaw = currentRot.X();
+    float currentPitch = currentRot.Y();
+
+    float targetYaw = isFreeze() ? currentYaw : currentYaw + (float)x/sensibility;
+    float targetPitch = isFreeze() ? currentPitch : currentPitch + (float)y/sensibility;
+    setRotation(Vector3(targetYaw, targetPitch));
+}
+
 void Camera::updateMovement() {
-    InputKey forward = InputManager::getInstance()->getKey("Vertical", true);
-    InputKey backward = InputManager::getInstance()->getKey("Vertical", false);
-    InputKey right = InputManager::getInstance()->getKey("Horizontal", true);
-    InputKey left = InputManager::getInstance()->getKey("Horizontal", false);
+    InputKey* forward = InputManager::getInstance()->getKey("Vertical", true);
+    InputKey* backward = InputManager::getInstance()->getKey("Vertical", false);
+    InputKey* right = InputManager::getInstance()->getKey("Horizontal", true);
+    InputKey* left = InputManager::getInstance()->getKey("Horizontal", false);
 
     float yaw = getRotation().X();
     float pitch = getRotation().Y();
 
-    if(!InputManager::getInstance()->isInvalidKey(forward) && forward.isPressed()){
+    if(forward != nullptr && forward->isPressed()){
         setMovement(Vector3(
                 getPosition().X() + cos((yaw+90)*TO_RADIANS)/getSpeed(), 0,
                 getPosition().Z() - sin((yaw+90)*TO_RADIANS)/getSpeed()
         ));
     }
-    if(!InputManager::getInstance()->isInvalidKey(backward) && backward.isPressed()){
+    if(backward != nullptr && backward->isPressed()){
         setMovement(Vector3(
                 getPosition().X() + cos((yaw+90+180)*TO_RADIANS)/getSpeed(), 0,
                 getPosition().Z() - sin((yaw+90+180)*TO_RADIANS)/getSpeed()
         ));
     }
-    if(!InputManager::getInstance()->isInvalidKey(right) && right.isPressed()){
+    if(right != nullptr && right->isPressed()){
         setMovement(Vector3(
                 getPosition().X() + cos((yaw+90-90)*TO_RADIANS)/getSpeed(), 0,
                 getPosition().Z() - sin((yaw+90-90)*TO_RADIANS)/getSpeed()
         ));
     }
-    if(!InputManager::getInstance()->isInvalidKey(left) && left.isPressed()){
+    if(left != nullptr && left->isPressed()){
         setMovement(Vector3(
                 getPosition().X() + cos((yaw+90+90)*TO_RADIANS)/getSpeed(), 0,
                 getPosition().Z() - sin((yaw+90+90)*TO_RADIANS)/getSpeed()
@@ -88,7 +99,7 @@ void Camera::setCursorLockState(bool locked) {
         glutSetCursor(GLUT_CURSOR_NONE);
     }
     else {
-        glutSetCursor(GLUT_CURSOR_CROSSHAIR);
+        glutSetCursor(GLUT_CURSOR_LEFT_ARROW);
     }
 }
 
@@ -117,3 +128,23 @@ float Camera::getSpeed() {
 float Camera::getSensibility() {
     return m_Sensibility;
 }
+
+void TriggerEscapeKey(){
+    Camera* currentCamera = Camera::getInstance();
+    currentCamera->setCursorLockState(!currentCamera->cursorIsLocked());
+    cout << "Using Escape Key!" << endl;
+}
+
+void Camera::registerActionTriggers() {
+    InputKey *escapeKey = InputManager::getInstance()->getKey(ESCAPE);
+    if (escapeKey != nullptr) {
+        escapeKey->registerAction(TriggerEscapeKey, ONE_TIME);
+    }
+}
+
+bool Camera::isFreeze() {
+    return !cursorIsLocked();
+}
+
+
+
