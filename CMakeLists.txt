@@ -14,5 +14,5 @@ add_executable(OpenGL
         src/core/input/InputManager.cpp
         src/core/input/headers/InputManager.h
         src/core/controllers/Camera.cpp
-        src/core/controllers/headers/Camera.h src/core/tools/Drawer.cpp src/core/tools/headers/Drawer.h src/core/controllers/Scenario.cpp src/core/controllers/headers/Scenario.h)
+        src/core/controllers/headers/Camera.h src/core/controllers/Scenario.cpp src/core/controllers/headers/Scenario.h src/core/models/WorldObject.cpp src/core/models/headers/WorldObject.h src/core/models/Component.cpp src/core/models/headers/Component.h src/core/models/Mesh.cpp src/core/models/headers/Mesh.h src/core/models/meshes/CubeMesh.h)
 target_link_libraries(OpenGL ${OpenGlLinkers})

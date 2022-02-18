@@ -65,7 +65,9 @@
 				5,
 				7,
 				9,
-				11
+				11,
+				13,
+				15
 			]
 		}
 	],
@@ -119,7 +121,9 @@
 				5,
 				7,
 				9,
-				11
+				11,
+				13,
+				15
 			]
 		},
 		{
@@ -131,7 +135,10 @@
 				6,
 				8,
 				10,
-				12
+				12,
+				14,
+				16,
+				17
 			]
 		}
 	],
@@ -190,23 +197,50 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/core/tools/Drawer.cpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "src/core/tools/headers/Drawer.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
 			"path" : "src/core/controllers/Scenario.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"path" : "src/core/controllers/headers/Scenario.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/core/models/WorldObject.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/core/models/headers/WorldObject.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/core/models/Component.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/core/models/headers/Component.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/core/models/Mesh.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/core/models/headers/Mesh.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/core/models/meshes/CubeMesh.h",
 			"sourceGroupIndex" : 1
 		}
 	],

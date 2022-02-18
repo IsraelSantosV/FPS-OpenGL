@@ -102,17 +102,29 @@ build CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o: CXX_COMPILER__Ope
   OBJECT_DIR = CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/controllers
 
-build CMakeFiles/OpenGL.dir/src/core/tools/Drawer.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/tools/Drawer.cpp || cmake_object_order_depends_target_OpenGL
-  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/tools/Drawer.cpp.o.d
-  FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles/OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/tools
-
 build CMakeFiles/OpenGL.dir/src/core/controllers/Scenario.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/controllers/Scenario.cpp || cmake_object_order_depends_target_OpenGL
   DEP_FILE = CMakeFiles/OpenGL.dir/src/core/controllers/Scenario.cpp.o.d
   FLAGS = -g -std=gnu++14
   OBJECT_DIR = CMakeFiles/OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/controllers
+
+build CMakeFiles/OpenGL.dir/src/core/models/WorldObject.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/models/WorldObject.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/models/WorldObject.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/OpenGL.dir
+  OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/models
+
+build CMakeFiles/OpenGL.dir/src/core/models/Component.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/models/Component.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/models/Component.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/OpenGL.dir
+  OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/models
+
+build CMakeFiles/OpenGL.dir/src/core/models/Mesh.cpp.o: CXX_COMPILER__OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/core/models/Mesh.cpp || cmake_object_order_depends_target_OpenGL
+  DEP_FILE = CMakeFiles/OpenGL.dir/src/core/models/Mesh.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/OpenGL.dir
+  OBJECT_FILE_DIR = CMakeFiles/OpenGL.dir/src/core/models
 
 
 # =============================================================================
@@ -122,7 +134,7 @@ build CMakeFiles/OpenGL.dir/src/core/controllers/Scenario.cpp.o: CXX_COMPILER__O
 #############################################
 # Link the executable OpenGL
 
-build OpenGL: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/src/core/main.cpp.o CMakeFiles/OpenGL.dir/src/core/tools/Vector3.cpp.o CMakeFiles/OpenGL.dir/src/core/input/InputKey.cpp.o CMakeFiles/OpenGL.dir/src/core/input/InputManager.cpp.o CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o CMakeFiles/OpenGL.dir/src/core/tools/Drawer.cpp.o CMakeFiles/OpenGL.dir/src/core/controllers/Scenario.cpp.o
+build OpenGL: CXX_EXECUTABLE_LINKER__OpenGL_Debug CMakeFiles/OpenGL.dir/src/core/main.cpp.o CMakeFiles/OpenGL.dir/src/core/tools/Vector3.cpp.o CMakeFiles/OpenGL.dir/src/core/input/InputKey.cpp.o CMakeFiles/OpenGL.dir/src/core/input/InputManager.cpp.o CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o CMakeFiles/OpenGL.dir/src/core/controllers/Scenario.cpp.o CMakeFiles/OpenGL.dir/src/core/models/WorldObject.cpp.o CMakeFiles/OpenGL.dir/src/core/models/Component.cpp.o CMakeFiles/OpenGL.dir/src/core/models/Mesh.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lglut  -lGLU  -lGL
   OBJECT_DIR = CMakeFiles/OpenGL.dir
