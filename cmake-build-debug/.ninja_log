@@ -1,10 +1,9 @@
 # ninja log v5
-1	22	1645122351812173239	CMakeFiles/OpenGL.dir/src/core/tools/Vector3.cpp.o	d614569161eea865
-1	369	1645193264582063445	CMakeFiles/OpenGL.dir/src/core/controllers/Camera.cpp.o	975b5a17efd60dc1
-0	312	1645190977601387224	CMakeFiles/OpenGL.dir/src/core/input/InputKey.cpp.o	6a7d5b58b945d932
-0	18	1645201497182127382	build.ninja	52d19f053ac90f79
-2	141	1645183190508412596	CMakeFiles/OpenGL.dir/src/core/tools/Drawer.cpp.o	74d0ccb5315b9d97
-0	22	1645193291134233461	CMakeFiles/OpenGL.dir/src/core/controllers/Scenario.cpp.o	574312080b510420
-1	326	1645191383403849650	CMakeFiles/OpenGL.dir/src/core/input/InputManager.cpp.o	793c3ca1f472811c
-1	319	1645193350002611765	CMakeFiles/OpenGL.dir/src/core/main.cpp.o	b2d8579211c28aaa
-319	402	1645193350086612306	OpenGL	8c31ec2b6358b5e0
+2	626	1645470263958136646	CMakeFiles/FP_OpenGL.dir/src/input/InputKey.cpp.o	9bbb1b9c479ed163
+362	432	1645469432846503970	FP_OpenGL	d3cd6088fb7c29a5
+1	887	1645470264218133788	CMakeFiles/FP_OpenGL.dir/src/controllers/Camera.cpp.o	6a852f2168c926a2
+2	629	1645470263962136602	CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o	66eaeae9f89b19c1
+0	361	1645469432778504076	CMakeFiles/FP_OpenGL.dir/src/main.cpp.o	e6edf9a4287d2cde
+3	84	1645470263418142588	CMakeFiles/FP_OpenGL.dir/src/tools/Vector3.cpp.o	51f2643a902dcff
+0	348	1645469366106613186	CMakeFiles/FP_OpenGL.dir/main.cpp.o	bddec8b69e2e4b29
+1	169	1645470263502141664	CMakeFiles/FP_OpenGL.dir/src/models/Mesh.cpp.o	a27852af2213fa6
