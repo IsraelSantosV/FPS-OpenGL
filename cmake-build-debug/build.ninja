@@ -78,56 +78,26 @@ build CMakeFiles/FP_OpenGL.dir/src/main.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /ho
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
 
-build CMakeFiles/FP_OpenGL.dir/src/controllers/Camera.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/controllers/Camera.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/controllers/Camera.cpp.o.d
-  FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/controllers
-
-build CMakeFiles/FP_OpenGL.dir/src/controllers/Scenario.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/controllers/Scenario.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/controllers/Scenario.cpp.o.d
-  FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/controllers
-
-build CMakeFiles/FP_OpenGL.dir/src/input/InputKey.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/input/InputKey.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/input/InputKey.cpp.o.d
-  FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/input
-
 build CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/input/InputManager.cpp || cmake_object_order_depends_target_FP_OpenGL
   DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/input
 
-build CMakeFiles/FP_OpenGL.dir/src/models/WorldObject.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/models/WorldObject.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/models/WorldObject.cpp.o.d
+build CMakeFiles/FP_OpenGL.dir/src/controllers/Controllers.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/controllers/Controllers.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/controllers/Controllers.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
+  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/controllers
+
+build CMakeFiles/FP_OpenGL.dir/src/models/Models.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/models/Models.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/models/Models.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/models
 
-build CMakeFiles/FP_OpenGL.dir/src/models/Component.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/models/Component.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/models/Component.cpp.o.d
-  FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/models
-
-build CMakeFiles/FP_OpenGL.dir/src/models/Mesh.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/models/Mesh.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/models/Mesh.cpp.o.d
-  FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/models
-
-build CMakeFiles/FP_OpenGL.dir/src/tools/Vector3.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/tools/Vector3.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/tools/Vector3.cpp.o.d
-  FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/tools
-
-build CMakeFiles/FP_OpenGL.dir/src/tools/Transform.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/tools/Transform.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/tools/Transform.cpp.o.d
+build CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/tools/Tools.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/tools
@@ -140,7 +110,7 @@ build CMakeFiles/FP_OpenGL.dir/src/tools/Transform.cpp.o: CXX_COMPILER__FP_OpenG
 #############################################
 # Link the executable FP_OpenGL
 
-build FP_OpenGL: CXX_EXECUTABLE_LINKER__FP_OpenGL_Debug CMakeFiles/FP_OpenGL.dir/src/main.cpp.o CMakeFiles/FP_OpenGL.dir/src/controllers/Camera.cpp.o CMakeFiles/FP_OpenGL.dir/src/controllers/Scenario.cpp.o CMakeFiles/FP_OpenGL.dir/src/input/InputKey.cpp.o CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o CMakeFiles/FP_OpenGL.dir/src/models/WorldObject.cpp.o CMakeFiles/FP_OpenGL.dir/src/models/Component.cpp.o CMakeFiles/FP_OpenGL.dir/src/models/Mesh.cpp.o CMakeFiles/FP_OpenGL.dir/src/tools/Vector3.cpp.o CMakeFiles/FP_OpenGL.dir/src/tools/Transform.cpp.o
+build FP_OpenGL: CXX_EXECUTABLE_LINKER__FP_OpenGL_Debug CMakeFiles/FP_OpenGL.dir/src/main.cpp.o CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o CMakeFiles/FP_OpenGL.dir/src/controllers/Controllers.cpp.o CMakeFiles/FP_OpenGL.dir/src/models/Models.cpp.o CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lglut  -lGLU  -lGL
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir

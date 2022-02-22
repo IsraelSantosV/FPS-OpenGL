@@ -1,9 +1,11 @@
 #include <GL/glut.h>
-#include "controllers/Camera.h"
-#include "controllers/Scenario.h"
-#include "input/InputManager.h"
-
+#include "controllers/Controllers.cpp"
 #define FPS 60
+
+Camera* Camera::m_Instance = nullptr;
+Scenario* Scenario::m_Instance = nullptr;
+InputManager* InputManager::m_Instance = nullptr;
+int Random::RANDOM_ID = 0;
 
 //Width and height of the window (Aspect ratio 16:9)
 const int sceneScale = 100;
@@ -118,8 +120,8 @@ int main(int argc,char**argv){
     setupInputs();
     init();
 
-    glutDisplayFunc(display);
     glutReshapeFunc(reshape);
+    glutDisplayFunc(display);
     glutTimerFunc(0,timer,0);
     glutPassiveMotionFunc(passive_motion);
     glutKeyboardFunc(keyboard);
