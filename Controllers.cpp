@@ -148,69 +148,74 @@ class Grid {
 private:
     int m_GridSize;
     int m_LateralSize;
-    int m_YLevel;
+    float m_YLevel;
     int m_SectionSize;
-    int m_SectionAmount;
-    Section** m_Sections;
+    int m_TotalSections;
+    vector<Section*> m_Sections;
 public:
-    Grid(int gridSize, int yLevel, int sectionSize){
+    Grid(int gridSize, float yLevel, int sectionSize){
         m_GridSize = gridSize;
         m_YLevel = yLevel;
         m_SectionSize = sectionSize;
 
-        m_SectionAmount = (m_GridSize * m_GridSize) / sectionSize;
-        m_LateralSize = sqrt(m_SectionAmount);
-        m_Sections = new Section*[m_LateralSize];
+        m_TotalSections = (m_GridSize * m_GridSize) / sectionSize;
+        m_LateralSize = sqrt(m_TotalSections);
 
-        int currentPos = 0;
+        float currentX = sectionSize;
+        float currentZ = sectionSize;
         int currentID = 0;
+        int iterator = 0;
 
-        for(int x = 0; x < m_LateralSize; x++){
-            for(int z = 0; z < m_LateralSize; z++){
-                cout << currentPos << " ";
-                m_Sections[x,z] = new Section(currentID, Vector3(currentPos, yLevel, currentPos));
-                currentPos += sectionSize;
-                currentID++;
+        for(int x = 0; x < m_TotalSections; x++){
+            Vector3 position = Vector3(currentX, yLevel, currentZ);
+            Section* section = new Section(currentID, position);
+            m_Sections.push_back(section);
+
+            currentID++;
+            iterator++;
+
+            //Update coordinate values
+            currentX += sectionSize;
+            if(iterator > m_LateralSize){
+                currentX = sectionSize;
+                currentZ += sectionSize;
+                iterator = 0;
             }
         }
-
-        cout << endl;
     }
 
     ~Grid(){
-        for(int i = 0; i < m_LateralSize; i++){
+        for(int i = 0; i < m_TotalSections; i++){
             delete m_Sections[i];
         }
-
-        delete[] m_Sections;
     }
 
     void debugGrid(){
-        for(int x = 0; x < m_LateralSize; x++){
-            for(int z = 0; z < m_LateralSize; z++){
-                Vector3 position = m_Sections[x,z]->getPosition();
-                cout << '[' << x << ',' << z << "]: (" << position.x << ',' << position.z << ")   ";
+        int sizeCount = 0;
+        for(auto i = m_Sections.begin(); i != m_Sections.end(); ++i){
+            auto section = *i;
+            if(sizeCount > m_LateralSize){
+                cout << endl;
+                sizeCount = 0;
             }
 
-            cout << endl;
+            cout << '[' << section->getPosition().x << ',' << section->getPosition().z << ']' << "  ";
+            sizeCount++;
         }
     }
 
-    Section* getSection(int x, int z){
+    Section* getSection(Vector3 position){
         Section* selectedSection = nullptr;
-        for(int x = 0; x < m_LateralSize; x++){
-            for(int z = 0; z < m_LateralSize; z++){
-                Section* currentSection = m_Sections[x,z];
-                Vector3 currentPos = currentSection->getPosition();
-                if(x >= currentPos.x && z >= currentPos.z){
-                    selectedSection = currentSection;
-                }
+        for(int x = 0; x < m_TotalSections; x++){
+            Vector3 sectionPos = m_Sections[x]->getPosition();
+            if(position.x >= sectionPos.x && position.z >= sectionPos.z){
+                selectedSection = m_Sections[x];
             }
+            else { break; }
         }
 
         return selectedSection;
     }
-
 };
 
 class Scenario {

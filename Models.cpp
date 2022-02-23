@@ -55,6 +55,20 @@ public:
     Vector3 getScale() { return m_Scale; }
 };
 
+class Section {
+private:
+    int m_ID;
+    Vector3 m_Position;
+public:
+    Section(int id, Vector3 position) {
+        m_ID = id;
+        m_Position.set(position.x, position.y, position.z);
+    }
+
+    Vector3 getPosition() { return m_Position; }
+    int getID() { return m_ID; }
+};
+
 class WorldObject {
 private:
     string m_Name;
@@ -64,6 +78,7 @@ private:
     vector<Component*> m_Components;
     WorldObject* m_Parent;
     Mesh* m_Mesh;
+    Section* m_CurrentSection;
 public:
     explicit WorldObject(string name, WorldObject* parent = nullptr){
         m_ID = "WO_" + Random::getNextID();
@@ -102,6 +117,48 @@ public:
     void setMesh(Mesh *mesh) { m_Mesh = mesh; }
     WorldObject* getParent() { return m_Parent; }
     Mesh* getMesh() { return m_Mesh; }
+};
+
+class ObjectLocation : public Section {
+private:
+    int getObjetIndex(WorldObject* wo){
+        for (int i = 0; i < m_InsideObjects.size(); i++){
+            if(m_InsideObjects[i] == nullptr) continue;
+            if (m_InsideObjects[i]->getID() == wo->getID()){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    vector<WorldObject*> m_InsideObjects;
+public:
+    ObjectLocation(int id, Vector3 position) : Section(id, position){
+
+    }
+
+    bool containsObject(WorldObject* wo){
+        if(wo == nullptr) return false;
+        for(auto object : m_InsideObjects){
+            if(object->getID() == wo->getID()){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void insertObject(WorldObject* wo){
+        if(containsObject(wo)) return;
+        m_InsideObjects.push_back(wo);
+    }
+
+    void removeObject(WorldObject* wo){
+        int index = getObjetIndex(wo);
+        if(index < 0) return;
+        m_InsideObjects.erase(m_InsideObjects.begin() + index);
+    }
 };
 
 class ObjectComponent : public Component {
@@ -159,59 +216,6 @@ protected:
         if(m_Wired){ glutWireCube(DEFAULT_SIZE); }
         else { glutSolidCube(DEFAULT_SIZE); }
     }
-};
-
-class Section {
-private:
-    int m_ID;
-    Vector3 m_Position;
-
-    int getObjetIndex(WorldObject* wo){
-        for (int i = 0; i < m_InsideObjects.size(); i++){
-            if(m_InsideObjects[i] == nullptr) continue;
-            if (m_InsideObjects[i]->getID() == wo->getID()){
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
-    vector<WorldObject*> m_InsideObjects;
-public:
-    Section(int id, Vector3 position) {
-        m_ID = id;
-        m_Position.set(position.x, position.y, position.z);
-    }
-
-    Vector3 getPosition() { return m_Position; }
-
-    void setPosition(Vector3 position){
-        m_Position.set(position.x, position.y, position.z);
-    }
-
-    bool containsObject(WorldObject* wo){
-        if(wo == nullptr) return false;
-        for(auto object : m_InsideObjects){
-            if(object->getID() == wo->getID()){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    void insertObject(WorldObject* wo){
-        if(containsObject(wo)) return;
-        m_InsideObjects.push_back(wo);
-    }
-
-    void removeObject(WorldObject* wo){
-        int index = getObjetIndex(wo);
-        if(index < 0) return;
-        m_InsideObjects.erase(m_InsideObjects.begin() + index);
-    }
-
 };
 
 #endif //FP_OPENGL_MODELS_CPP

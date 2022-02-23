@@ -4,6 +4,7 @@
 
 #ifndef FP_OPENGL_TOOLS_CPP
 #define FP_OPENGL_TOOLS_CPP
+#include "Models.cpp"
 
 class Vector3 {
 public:
