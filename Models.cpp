@@ -10,7 +10,7 @@
 #include <utility>
 #include <vector>
 #include <GL/glut.h>
-#include "../tools/Tools.cpp"
+#include "Tools.cpp"
 using namespace std;
 
 class WorldObject;
@@ -43,11 +43,11 @@ public:
     }
 
     void setRotation(Vector3 rotation){
-        m_Position.set(rotation.x, rotation.y, rotation.z);
+        m_Rotation.set(rotation.x, rotation.y, rotation.z);
     }
 
     void setScale(Vector3 scale){
-        m_Position.set(scale.x, scale.y, scale.z);
+        m_Scale.set(scale.x, scale.y, scale.z);
     }
 
     Vector3 getPosition() { return m_Position; }
@@ -129,8 +129,9 @@ private:
             glScalef(scale.x, scale.y, scale.z);
             glRotatef(0, rotation.x, rotation.y, rotation.z);
             glTranslatef(position.x, position.y, position.z);
+            drawProperties();
         glPopMatrix();
-        drawProperties();
+
     }
 protected:
     virtual void drawProperties() { }
@@ -163,6 +164,7 @@ protected:
 class Section {
 private:
     int m_ID;
+    Vector3 m_Position;
 
     int getObjetIndex(WorldObject* wo){
         for (int i = 0; i < m_InsideObjects.size(); i++){
@@ -177,7 +179,16 @@ private:
 
     vector<WorldObject*> m_InsideObjects;
 public:
-    Section(int id) { m_ID = id; }
+    Section(int id, Vector3 position) {
+        m_ID = id;
+        m_Position.set(position.x, position.y, position.z);
+    }
+
+    Vector3 getPosition() { return m_Position; }
+
+    void setPosition(Vector3 position){
+        m_Position.set(position.x, position.y, position.z);
+    }
 
     bool containsObject(WorldObject* wo){
         if(wo == nullptr) return false;

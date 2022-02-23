@@ -6,12 +6,14 @@
 #define FP_OPENGL_CONTROLLERS_CPP
 
 #define TO_RADIANS 3.14/180.0
+#define GROUND_SCALE 50
+#define GROUND_HEIGHT 5
 #include <math.h>
 #include <GL/glut.h>
 #include <vector>
-#include "../tools/Tools.cpp"
-#include "../input/InputManager.cpp"
-#include "../models/Models.cpp"
+#include "Tools.cpp"
+#include "InputManager.cpp"
+#include "Models.cpp"
 
 class Camera {
 private:
@@ -39,9 +41,9 @@ public:
         m_ScreenHeight = height;
     }
 
-    void initialize(float speed, float sensibility){
+    void initialize(float speed, float smoothCamera){
         m_Speed = speed;
-        m_Sensibility = sensibility;
+        m_Sensibility = smoothCamera;
     }
 
     void receiveMousePosition(int x, int y){
@@ -142,15 +144,90 @@ public:
     }
 };
 
+class Grid {
+private:
+    int m_GridSize;
+    int m_LateralSize;
+    int m_YLevel;
+    int m_SectionSize;
+    int m_SectionAmount;
+    Section** m_Sections;
+public:
+    Grid(int gridSize, int yLevel, int sectionSize){
+        m_GridSize = gridSize;
+        m_YLevel = yLevel;
+        m_SectionSize = sectionSize;
+
+        m_SectionAmount = (m_GridSize * m_GridSize) / sectionSize;
+        m_LateralSize = sqrt(m_SectionAmount);
+        m_Sections = new Section*[m_LateralSize];
+
+        int currentPos = 0;
+        int currentID = 0;
+
+        for(int x = 0; x < m_LateralSize; x++){
+            for(int z = 0; z < m_LateralSize; z++){
+                cout << currentPos << " ";
+                m_Sections[x,z] = new Section(currentID, Vector3(currentPos, yLevel, currentPos));
+                currentPos += sectionSize;
+                currentID++;
+            }
+        }
+
+        cout << endl;
+    }
+
+    ~Grid(){
+        for(int i = 0; i < m_LateralSize; i++){
+            delete m_Sections[i];
+        }
+
+        delete[] m_Sections;
+    }
+
+    void debugGrid(){
+        for(int x = 0; x < m_LateralSize; x++){
+            for(int z = 0; z < m_LateralSize; z++){
+                Vector3 position = m_Sections[x,z]->getPosition();
+                cout << '[' << x << ',' << z << "]: (" << position.x << ',' << position.z << ")   ";
+            }
+
+            cout << endl;
+        }
+    }
+
+    Section* getSection(int x, int z){
+        Section* selectedSection = nullptr;
+        for(int x = 0; x < m_LateralSize; x++){
+            for(int z = 0; z < m_LateralSize; z++){
+                Section* currentSection = m_Sections[x,z];
+                Vector3 currentPos = currentSection->getPosition();
+                if(x >= currentPos.x && z >= currentPos.z){
+                    selectedSection = currentSection;
+                }
+            }
+        }
+
+        return selectedSection;
+    }
+
+};
+
 class Scenario {
 private:
     vector<WorldObject*> m_RuntimeObjects;
     static Scenario* m_Instance;
+    Grid* m_Grid;
 
     Scenario(){
+        m_Grid = new Grid(GROUND_SCALE, 0, 100);
+        m_Grid->debugGrid();
+
         WorldObject* cube = instantiate("Cube");
         cube->setMesh(new CubeMesh(cube, false));
-        cube->getMesh()->setColor(Vector3(1, 0, 0));
+        cube->getTransform()->setScale(Vector3(2,3,5));
+        cube->getTransform()->setPosition(Vector3(-5,0,0));
+        cube->getMesh()->setColor(Vector3(0,0,1));
     }
 
     void registerObject(WorldObject* obj){
@@ -178,16 +255,6 @@ public:
         WorldObject* newObject = new WorldObject(name, parent);
         registerObject(newObject);
         return newObject;
-    }
-};
-
-class Grid {
-private:
-    Section** m_Sections;
-public:
-    Grid(int width, int height, int sectionSize){
-        int sectionAmount = (width * height) / sectionSize;
-        m_Sections = new Section*[sectionAmount];
     }
 };
 
