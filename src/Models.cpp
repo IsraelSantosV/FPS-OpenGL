@@ -5,12 +5,12 @@
 #ifndef FP_OPENGL_MODELS_CPP
 #define FP_OPENGL_MODELS_CPP
 #define DEFAULT_SIZE 1
+#define INVALID_INDEX -999
 
 #include <iostream>
-#include <utility>
 #include <vector>
 #include <GL/glut.h>
-#include "../tools/Tools.cpp"
+#include "Tools.cpp"
 using namespace std;
 
 class WorldObject;
@@ -43,16 +43,42 @@ public:
     }
 
     void setRotation(Vector3 rotation){
-        m_Position.set(rotation.x, rotation.y, rotation.z);
+        m_Rotation.set(rotation.x, rotation.y, rotation.z);
     }
 
     void setScale(Vector3 scale){
-        m_Position.set(scale.x, scale.y, scale.z);
+        m_Scale.set(scale.x, scale.y, scale.z);
     }
 
     Vector3 getPosition() { return m_Position; }
     Vector3 getRotation() { return m_Rotation; }
     Vector3 getScale() { return m_Scale; }
+};
+
+class Section {
+private:
+    int m_ID;
+    Vector3 m_Position;
+    vector<WorldObject*> m_InsideObjects;
+public:
+    Section(int id, Vector3 position) {
+        m_ID = id;
+        m_Position.set(position.x, position.y, position.z);
+    }
+
+    Vector3 getPosition() { return m_Position; }
+    int getID() { return m_ID; }
+    vector<WorldObject*> getInsideObjects() { return m_InsideObjects; }
+
+    void insertObject(WorldObject* wo){
+        if(wo == nullptr) return;
+        m_InsideObjects.push_back(wo);
+    }
+
+    void removeObject(int index){
+        if(index < 0 || index >= m_InsideObjects.size()) return;
+        m_InsideObjects.erase(m_InsideObjects.begin() + index);
+    }
 };
 
 class WorldObject {
@@ -64,6 +90,21 @@ private:
     vector<Component*> m_Components;
     WorldObject* m_Parent;
     Mesh* m_Mesh;
+    Section* m_CurrentSection;
+
+    static int getObjectSectionIndex(WorldObject* wo){
+        if(wo->m_CurrentSection == nullptr) return INVALID_INDEX;
+        vector<WorldObject*> allObjects = wo->m_CurrentSection->getInsideObjects();
+
+        for (int i = 0; i < allObjects.size(); i++){
+            if(allObjects[i] == nullptr) continue;
+            if (allObjects[i]->getID() == wo->getID()){
+                return i;
+            }
+        }
+
+        return INVALID_INDEX;
+    }
 public:
     explicit WorldObject(string name, WorldObject* parent = nullptr){
         m_ID = "WO_" + Random::getNextID();
@@ -71,6 +112,7 @@ public:
         m_Active = true;
         m_Mesh = nullptr;
         m_Parent = nullptr;
+        m_CurrentSection = nullptr;
         setParent(parent);
         m_Transform = new Transform(this);
         registerComponent(m_Transform);
@@ -92,6 +134,29 @@ public:
         return nullptr;
     }
 
+    static bool sectionContainsObject(WorldObject* wo, Section* section){
+        if(wo == nullptr || section == nullptr) return false;
+        for(auto object : section->getInsideObjects()){
+            if(object->getID() == wo->getID()){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    static void insertObjectIntoSection(WorldObject* wo, Section* section){
+        if(wo == nullptr || section == nullptr || WorldObject::sectionContainsObject(wo, section)) return;
+        section->insertObject(wo);
+    }
+
+    static void removeObjectFromSection(WorldObject* wo, Section* section){
+        if(!WorldObject::sectionContainsObject(wo, section)) return;
+        int index = WorldObject::getObjectSectionIndex(wo);
+        if(index == INVALID_INDEX) return;
+        section->removeObject(index);
+    }
+
     string getName(){ return m_Name; }
     string getID() { return m_ID; }
     Transform* getTransform() { return m_Transform; }
@@ -102,6 +167,7 @@ public:
     void setMesh(Mesh *mesh) { m_Mesh = mesh; }
     WorldObject* getParent() { return m_Parent; }
     Mesh* getMesh() { return m_Mesh; }
+    Section* getSection() { return m_CurrentSection; }
 };
 
 class ObjectComponent : public Component {
@@ -120,17 +186,18 @@ private:
 
     void internal_drawing(){
         glPushMatrix();
-            Transform* t = getObject()->getTransform();
-            Vector3 position = t->getPosition();
-            Vector3 rotation = t->getRotation();
-            Vector3 scale = t->getScale();
+        Transform* t = getObject()->getTransform();
+        Vector3 position = t->getPosition();
+        Vector3 rotation = t->getRotation();
+        Vector3 scale = t->getScale();
 
-            glColor4f(m_Color.x, m_Color.y, m_Color.z, m_Alpha);
-            glScalef(scale.x, scale.y, scale.z);
-            glRotatef(0, rotation.x, rotation.y, rotation.z);
-            glTranslatef(position.x, position.y, position.z);
-        glPopMatrix();
+        glColor4f(m_Color.x, m_Color.y, m_Color.z, m_Alpha);
+        glScalef(scale.x, scale.y, scale.z);
+        glRotatef(0, rotation.x, rotation.y, rotation.z);
+        glTranslatef(position.x, position.y, position.z);
         drawProperties();
+        glPopMatrix();
+
     }
 protected:
     virtual void drawProperties() { }

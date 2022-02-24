@@ -7,9 +7,10 @@
 
 #include<vector>
 #include <iostream>
+#include "Debug.cpp"
 using namespace std;
 const unsigned char ESCAPE = 27;
-const unsigned char ENTER = 32;
+const unsigned char SPACE = 32;
 typedef void Action();
 
 enum ActionTriggerMode {
@@ -79,7 +80,9 @@ class InputManager {
 private:
     static InputManager* m_Instance;
     vector<InputKey*> m_Inputs;
-    InputManager() = default;
+    InputManager(){
+        Debug::log("[1/5] Loading InputManager and define symbols...");
+    }
 public:
     static InputManager* getInstance(){
         if(m_Instance == nullptr){

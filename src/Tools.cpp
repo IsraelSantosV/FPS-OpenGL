@@ -5,6 +5,9 @@
 #ifndef FP_OPENGL_TOOLS_CPP
 #define FP_OPENGL_TOOLS_CPP
 
+#include <iostream>
+using namespace std;
+
 class Vector3 {
 public:
     float x;
@@ -31,6 +34,9 @@ public:
         y = _y;
         z = _z;
     }
+
+    string toString(){ return '(' + to_string(x) + ',' +
+                        to_string(y) + ',' + to_string(z) + ')'; }
 };
 
 //Random static class

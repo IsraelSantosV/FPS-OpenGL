@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/zetta/Documentos/Programas/FP-OpenGL/cmake-build-debug/
+cmake_ninja_workdir = /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/zetta/Documentos/Programas/FP-OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/zetta/Documentos/Programas/FP-OpenGL -B/home/zetta/Documentos/Programas/FP-OpenGL/cmake-build-debug
+  COMMAND = cd /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/zetta/Documentos/Programas/FPS-OpenGL -B/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,7 +57,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/zetta/Documentos/Programas/FP-OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug && /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -72,35 +72,41 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 
 build cmake_object_order_depends_target_FP_OpenGL: phony || CMakeFiles/FP_OpenGL.dir
 
-build CMakeFiles/FP_OpenGL.dir/src/main.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/main.cpp || cmake_object_order_depends_target_FP_OpenGL
+build CMakeFiles/FP_OpenGL.dir/src/main.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/main.cpp || cmake_object_order_depends_target_FP_OpenGL
   DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/main.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
   OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
 
-build CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/input/InputManager.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o.d
+build CMakeFiles/FP_OpenGL.dir/src/InputManager.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/InputManager.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/InputManager.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/input
+  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
 
-build CMakeFiles/FP_OpenGL.dir/src/controllers/Controllers.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/controllers/Controllers.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/controllers/Controllers.cpp.o.d
+build CMakeFiles/FP_OpenGL.dir/src/Controllers.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/Controllers.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/Controllers.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/controllers
+  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
 
-build CMakeFiles/FP_OpenGL.dir/src/models/Models.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/models/Models.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/models/Models.cpp.o.d
+build CMakeFiles/FP_OpenGL.dir/src/Models.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/Models.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/Models.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/models
+  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
 
-build CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FP-OpenGL/src/tools/Tools.cpp || cmake_object_order_depends_target_FP_OpenGL
-  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o.d
+build CMakeFiles/FP_OpenGL.dir/src/Tools.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/Tools.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/Tools.cpp.o.d
   FLAGS = -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
-  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src/tools
+  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
+
+build CMakeFiles/FP_OpenGL.dir/src/Debug.cpp.o: CXX_COMPILER__FP_OpenGL_Debug /home/zetta/Documentos/Programas/FPS-OpenGL/src/Debug.cpp || cmake_object_order_depends_target_FP_OpenGL
+  DEP_FILE = CMakeFiles/FP_OpenGL.dir/src/Debug.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
+  OBJECT_FILE_DIR = CMakeFiles/FP_OpenGL.dir/src
 
 
 # =============================================================================
@@ -110,7 +116,7 @@ build CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o: CXX_COMPILER__FP_OpenGL_De
 #############################################
 # Link the executable FP_OpenGL
 
-build FP_OpenGL: CXX_EXECUTABLE_LINKER__FP_OpenGL_Debug CMakeFiles/FP_OpenGL.dir/src/main.cpp.o CMakeFiles/FP_OpenGL.dir/src/input/InputManager.cpp.o CMakeFiles/FP_OpenGL.dir/src/controllers/Controllers.cpp.o CMakeFiles/FP_OpenGL.dir/src/models/Models.cpp.o CMakeFiles/FP_OpenGL.dir/src/tools/Tools.cpp.o
+build FP_OpenGL: CXX_EXECUTABLE_LINKER__FP_OpenGL_Debug CMakeFiles/FP_OpenGL.dir/src/main.cpp.o CMakeFiles/FP_OpenGL.dir/src/InputManager.cpp.o CMakeFiles/FP_OpenGL.dir/src/Controllers.cpp.o CMakeFiles/FP_OpenGL.dir/src/Models.cpp.o CMakeFiles/FP_OpenGL.dir/src/Tools.cpp.o CMakeFiles/FP_OpenGL.dir/src/Debug.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lglut  -lGLU  -lGL
   OBJECT_DIR = CMakeFiles/FP_OpenGL.dir
@@ -128,7 +134,7 @@ build FP_OpenGL: CXX_EXECUTABLE_LINKER__FP_OpenGL_Debug CMakeFiles/FP_OpenGL.dir
 # =============================================================================
 
 #############################################
-# Folder: /home/zetta/Documentos/Programas/FP-OpenGL/cmake-build-debug
+# Folder: /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
 
 build all: phony FP_OpenGL
 

@@ -1,10 +1,11 @@
 #include <GL/glut.h>
-#include "controllers/Controllers.cpp"
+#include "Controllers.cpp"
+#include "Debug.cpp"
 #define FPS 60
 
-Camera* Camera::m_Instance = nullptr;
-Scenario* Scenario::m_Instance = nullptr;
 InputManager* InputManager::m_Instance = nullptr;
+Scenario* Scenario::m_Instance = nullptr;
+Camera* Camera::m_Instance = nullptr;
 int Random::RANDOM_ID = 0;
 
 //Width and height of the window (Aspect ratio 16:9)
@@ -14,6 +15,7 @@ const int height = 9*sceneScale;
 
 void display();
 void reshape(int w,int h);
+void displayScenarioObjects();
 void timer(int);
 void passive_motion(int,int);
 void keyboard(unsigned char key,int x,int y);
@@ -22,11 +24,17 @@ void keyboard_up(unsigned char key,int x,int y);
 void init(){
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-    Camera::getInstance()->initialize(5, 10);
+
+    Debug::log("[2/5] Loading singletons and OpenGL extensions...");
+
+    Scenario::getInstance()->initialize();
+    Camera::getInstance()->initialize(5, 30);
     Camera::getInstance()->setScreenSize(width, height);
     Camera::getInstance()->setVerticalLimit(Vector3(70, 60, 0));
     Camera::getInstance()->setCursorLockState(true);
     Camera::getInstance()->registerActionTriggers();
+
+    displayScenarioObjects();
 }
 
 void setupInputs(){
@@ -35,6 +43,16 @@ void setupInputs(){
     InputManager::getInstance()->addKey('a', "Horizontal", false);
     InputManager::getInstance()->addKey('d', "Horizontal", true);
     InputManager::getInstance()->addKey(ESCAPE, "Escape", true);
+    InputManager::getInstance()->addKey(SPACE, "Submit", true);
+}
+
+void displayScenarioObjects(){
+    Debug::log("[5/5] Rendering scenario objects...");
+    WorldObject* cube = Scenario::getInstance()->instantiate("Cube");
+    cube->setMesh(new CubeMesh(cube, false));
+    cube->getTransform()->setScale(Vector3(2,3,5));
+    cube->getTransform()->setPosition(Vector3(-5,0,0));
+    cube->getMesh()->setColor(Vector3(0,0,1));
 }
 
 void draw(){
@@ -59,10 +77,10 @@ void draw(){
 
     glBegin(GL_QUADS);
 
-    glTexCoord2f(0.0,0.0);  glVertex3f(-50.0,-5.0,-50.0);
-    glTexCoord2f(25.0,0.0);  glVertex3f(50.0,-5.0,-50.0);
-    glTexCoord2f(25.0,25.0);  glVertex3f(50.0,-5.0,50.0);
-    glTexCoord2f(0.0,25.0);  glVertex3f(-50.0,-5.0,50.0);
+    glTexCoord2f(0.0,0.0);  glVertex3f(-GROUND_SCALE,-GROUND_HEIGHT,-GROUND_SCALE);
+    glTexCoord2f(GROUND_SCALE/2,0.0);  glVertex3f(GROUND_SCALE,-GROUND_HEIGHT,-GROUND_SCALE);
+    glTexCoord2f(GROUND_SCALE/2,GROUND_SCALE/2);  glVertex3f(GROUND_SCALE,-GROUND_HEIGHT,GROUND_SCALE);
+    glTexCoord2f(0.0,GROUND_SCALE/2);  glVertex3f(-GROUND_SCALE,-GROUND_HEIGHT,GROUND_SCALE);
 
     glEnd();
     glDisable(GL_TEXTURE_2D);
