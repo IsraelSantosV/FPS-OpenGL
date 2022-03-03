@@ -1,12 +1,16 @@
 #include <GL/glut.h>
 #include "Controllers.cpp"
 #include "Debug.cpp"
-#define FPS 60
+#include "Time.cpp"
+#define FPS 60.0
 
 InputManager* InputManager::m_Instance = nullptr;
 Scenario* Scenario::m_Instance = nullptr;
 Camera* Camera::m_Instance = nullptr;
+
 int Random::RANDOM_ID = 0;
+float Time::m_DeltaTime = 0;
+float Time::m_GameTime = 0;
 
 //Width and height of the window (Aspect ratio 16:9)
 const int sceneScale = 100;
@@ -15,7 +19,7 @@ const int height = 9*sceneScale;
 
 void display();
 void reshape(int w,int h);
-void displayScenarioObjects();
+void createScenarioObjects();
 void timer(int);
 void passive_motion(int,int);
 void keyboard(unsigned char key,int x,int y);
@@ -34,7 +38,7 @@ void init(){
     Camera::getInstance()->setCursorLockState(true);
     Camera::getInstance()->registerActionTriggers();
 
-    displayScenarioObjects();
+    createScenarioObjects();
 }
 
 void setupInputs(){
@@ -42,57 +46,28 @@ void setupInputs(){
     InputManager::getInstance()->addKey('s', "Vertical", false);
     InputManager::getInstance()->addKey('a', "Horizontal", false);
     InputManager::getInstance()->addKey('d', "Horizontal", true);
+    InputManager::getInstance()->addKey('f', "Interact", true);
     InputManager::getInstance()->addKey(ESCAPE, "Escape", true);
     InputManager::getInstance()->addKey(SPACE, "Submit", true);
 }
 
-void displayScenarioObjects(){
+void createScenarioObjects(){
     Debug::log("[5/5] Rendering scenario objects...");
-    WorldObject* cube = Scenario::getInstance()->instantiate("Cube");
-    cube->setMesh(new CubeMesh(cube, false));
-    cube->getTransform()->setScale(Vector3(2,3,5));
-    cube->getTransform()->setPosition(Vector3(-5,0,0));
-    cube->getMesh()->setColor(Vector3(0,0,1));
-}
-
-void draw(){
-    glEnable(GL_TEXTURE_2D);
-    glColor4f(1,1,1,1);
-    GLuint texture;
-    glGenTextures(1,&texture);
-
-    unsigned char texture_data[2][2][4] =
-            {
-                    0,0,0,255,  255,255,255,255,
-                    255,255,255,255,    0,0,0,255
-            };
-
-    glBindTexture(GL_TEXTURE_2D,texture);
-    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,2,2,0,GL_RGBA,GL_UNSIGNED_BYTE,texture_data);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-
-    glBegin(GL_QUADS);
-
-    glTexCoord2f(0.0,0.0);  glVertex3f(-GROUND_SCALE,-GROUND_HEIGHT,-GROUND_SCALE);
-    glTexCoord2f(GROUND_SCALE/2,0.0);  glVertex3f(GROUND_SCALE,-GROUND_HEIGHT,-GROUND_SCALE);
-    glTexCoord2f(GROUND_SCALE/2,GROUND_SCALE/2);  glVertex3f(GROUND_SCALE,-GROUND_HEIGHT,GROUND_SCALE);
-    glTexCoord2f(0.0,GROUND_SCALE/2);  glVertex3f(-GROUND_SCALE,-GROUND_HEIGHT,GROUND_SCALE);
-
-    glEnd();
-    glDisable(GL_TEXTURE_2D);
-
-    Scenario::getInstance()->drawScenario();
+    { //Create a cube
+        WorldObject* cube = Scenario::getInstance()->instantiate("Cube");
+        cube->setLayer(OBSTACLE);
+        cube->setMesh(new CubeMesh(cube, false));
+        cube->getTransform()->setScale(Vector3(2,3,5));
+        cube->getTransform()->setPosition(Vector3(-5,0,0));
+        cube->getMesh()->setColor(Vector3(0,0,1));
+    }
 }
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     Camera::getInstance()->updateMovement();
-    draw();
+    Scenario::getInstance()->drawScenario();
     glutSwapBuffers();
 }
 
@@ -111,6 +86,7 @@ void timer(int){
         glutWarpPointer(width/2,height/2);
     }
 
+    Time::refreshTime((1000/FPS) / 1000);
     glutTimerFunc(1000/FPS,timer,0);
 }
 
@@ -133,7 +109,7 @@ int main(int argc,char**argv){
     glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(width, height);
-    glutCreateWindow("FP 3D Simulation");
+    glutCreateWindow("VoxEngine");
 
     setupInputs();
     init();

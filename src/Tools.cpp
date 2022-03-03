@@ -6,7 +6,43 @@
 #define FP_OPENGL_TOOLS_CPP
 
 #include <iostream>
+#include <vector>
 using namespace std;
+
+enum Layer {
+    DEFAULT,
+    GROUND,
+    OBSTACLE,
+    PLAYER
+};
+
+class LayerMask {
+public:
+    explicit LayerMask(Layer layers[], bool detectWhatever = true){
+        detectAnOccurrence = detectWhatever;
+        int size = (sizeof(layers)/sizeof(*layers));
+
+        for(int i = 0; i < size; i++){
+            targets.push_back(layers[i]);
+        }
+    }
+
+    vector<Layer> targets;
+    bool detectAnOccurrence;
+};
+
+class Layers {
+public:
+    static bool layerInLayerMask(Layer layer, LayerMask* mask){
+        if(mask == nullptr) return false;
+        for(auto target : mask->targets){
+            if(target == layer && mask->detectAnOccurrence) return true;
+            else if(target != layer && !mask->detectAnOccurrence) return false;
+        }
+
+        return false;
+    }
+};
 
 class Vector3 {
 public:
@@ -36,7 +72,11 @@ public:
     }
 
     string toString(){ return '(' + to_string(x) + ',' +
-                        to_string(y) + ',' + to_string(z) + ')'; }
+                        to_string(y) + ',' + to_string(z) + ')'; };
+
+    bool equals(Vector3 otherVector){
+        return otherVector.x == x && otherVector.y == y && otherVector.z == z;
+    }
 };
 
 //Random static class
