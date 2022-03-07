@@ -4,9 +4,11 @@
 
 #ifndef FP_OPENGL_TOOLS_CPP
 #define FP_OPENGL_TOOLS_CPP
+#define TO_RADIANS 3.14/180.0
 
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 enum Layer {
@@ -76,6 +78,35 @@ public:
 
     bool equals(Vector3 otherVector){
         return otherVector.x == x && otherVector.y == y && otherVector.z == z;
+    }
+
+    /*
+     * Using angle to compute field of view:
+     * if(Vector3::angle(forwardVector, dirToTarget) < viewAngle / 2){
+     *      //INSIDE IN FIELD OF VIEW!
+     *      float distToTarget = Vector3::distance(transform.position, target.position);
+     *      if(distToTarget < distanceToInteract){
+     *          //INTERACT WITH OBJECT
+     *      }
+     * }
+     */
+
+    static float angle(Vector3 a, Vector3 b){
+        double dot = a.x * b.x + a.y * b.y + a.z * b.z;
+        double lenSq1 = a.x*a.x + a.y*a.y + a.z*a.z;
+        double lenSq2 = b.x*b.x + b.y*b.y + b.z*b.z;
+        return acos(dot/ sqrt(lenSq1 * lenSq2));
+    }
+
+    static Vector3 directionFromAngle(float angleInDegrees, bool angleIsGlobal){
+        if(!angleIsGlobal){
+            //angleInDegrees += transform.eulerAngles.y;
+        }
+        return Vector3(sin(angleInDegrees * TO_RADIANS), 0, cos(angleInDegrees * TO_RADIANS));
+    }
+
+    static float distance(Vector3 a, Vector3 b){
+        return sqrt(pow((b.x - a.x), 2) + pow((b.y - a.y), 2) + pow((b.z - a.z), 2));
     }
 };
 

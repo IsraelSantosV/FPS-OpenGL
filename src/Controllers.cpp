@@ -5,7 +5,6 @@
 #ifndef FP_OPENGL_CONTROLLERS_CPP
 #define FP_OPENGL_CONTROLLERS_CPP
 
-#define TO_RADIANS 3.14/180.0
 #define GROUND_SCALE 50
 #define GROUND_HEIGHT 5
 #include <math.h>
@@ -181,16 +180,12 @@ public:
             for(auto obj : sectionObjects){
                 if(!Layers::layerInLayerMask(obj->getLayer(), mask)) continue;
                 Vector3 objPosition = obj->getTransform()->getPosition();
-                if(Physics::distance(objPosition, finalPoint) > minDistance) continue;
+                if(Vector3::distance(objPosition, finalPoint) > minDistance) continue;
                 hitObjects.push_back(obj);
             }
         }
 
         return hitObjects;
-    }
-
-    static float distance(Vector3 a, Vector3 b){
-        return sqrt(pow((b.x - a.x), 2) + pow((b.y - a.y), 2) + pow((b.z - a.z), 2));
     }
 };
 

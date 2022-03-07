@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/israel/Documents/Projetos/OpenGL/FPS-OpenGL/cmake-build-debug",
-		"source" : "/home/israel/Documents/Projetos/OpenGL/FPS-OpenGL"
+		"build" : "/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug",
+		"source" : "/home/zetta/Documentos/Programas/FPS-OpenGL"
 	},
 	"version" : 
 	{
