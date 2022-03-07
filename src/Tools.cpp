@@ -53,7 +53,9 @@ public:
     float z;
 
     Vector3(){
-        x, y, z = 0;
+        x = 0;
+        y = 0;
+        z = 0;
     }
 
     Vector3(float _x, float _y, float _z){
@@ -80,34 +82,44 @@ public:
         return otherVector.x == x && otherVector.y == y && otherVector.z == z;
     }
 
-    /*
-     * Using angle to compute field of view:
-     * if(Vector3::angle(forwardVector, dirToTarget) < viewAngle / 2){
-     *      //INSIDE IN FIELD OF VIEW!
-     *      float distToTarget = Vector3::distance(transform.position, target.position);
-     *      if(distToTarget < distanceToInteract){
-     *          //INTERACT WITH OBJECT
-     *      }
-     * }
-     */
+    double magnitude(){ return sqrt(x*x + y*y + z*z); }
 
-    static float angle(Vector3 a, Vector3 b){
-        double dot = a.x * b.x + a.y * b.y + a.z * b.z;
-        double lenSq1 = a.x*a.x + a.y*a.y + a.z*a.z;
-        double lenSq2 = b.x*b.x + b.y*b.y + b.z*b.z;
-        return acos(dot/ sqrt(lenSq1 * lenSq2));
+    static double dot(Vector3 a, Vector3 b){
+        return (a.x * b.x + a.y * b.y + a.z * b.z);
     }
 
-    static Vector3 directionFromAngle(float angleInDegrees, bool angleIsGlobal){
-        if(!angleIsGlobal){
-            //angleInDegrees += transform.eulerAngles.y;
-        }
+    static float angle(Vector3 a, Vector3 b){
+        double dotValue = dot(a, b);
+        double lenSq1 = a.magnitude();
+        double lenSq2 = b.magnitude();
+        return acos(dotValue / (lenSq1 * lenSq2));
+    }
+
+    static Vector3 directionFromAngle(float angleInDegrees){
         return Vector3(sin(angleInDegrees * TO_RADIANS), 0, cos(angleInDegrees * TO_RADIANS));
     }
 
     static float distance(Vector3 a, Vector3 b){
         return sqrt(pow((b.x - a.x), 2) + pow((b.y - a.y), 2) + pow((b.z - a.z), 2));
     }
+
+    static Vector3 normalize(Vector3 target){
+        double magnitude = target.magnitude();
+        if(magnitude == 0){
+            return ZERO();
+        }
+
+        return target / magnitude;
+    }
+
+    static const Vector3 ZERO() { return {0,0,0}; }
+    static Vector3 ONE() { return {1,1,1}; }
+    static Vector3 UP() { return {0,1,0}; }
+    static Vector3 DOWN() { return {0,-1,0}; }
+    static Vector3 LEFT() { return {-1,0,0}; }
+    static Vector3 RIGHT() { return {1,0,0}; }
+    static Vector3 FORWARD() { return {0,0,1}; }
+    static Vector3 BACKWARD() { return {0,0,-1}; }
 };
 
 //Random static class

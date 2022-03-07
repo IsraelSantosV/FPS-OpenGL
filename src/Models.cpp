@@ -67,9 +67,9 @@ private:
     }
 public:
     explicit Transform(WorldObject *wo) : Component(wo){
-        setPosition(Vector3());
-        setRotation(Vector3());
-        setScale(Vector3(1,1,1));
+        setPosition(Vector3::ZERO());
+        setRotation(Vector3::ZERO());
+        setScale(Vector3::ONE());
     }
 
     void registerAction(TransformAction action, TransformCategory category){
@@ -135,6 +135,10 @@ public:
     Vector3 getEndPosition() { return m_EndPosition; }
     int getID() const { return m_ID; }
     vector<WorldObject*> getInsideObjects() { return m_InsideObjects; }
+
+    bool positionInsideSection(Vector3 position){
+        return position >= m_StartPosition && position <= m_EndPosition;
+    }
 
     void insertObject(WorldObject* wo){
         if(wo == nullptr) return;
@@ -267,7 +271,7 @@ public:
 
 class Mesh : public ObjectComponent {
 private:
-    Vector3 m_Color = Vector3(1,1,1);
+    Vector3 m_Color = Vector3::ONE();
     float m_Alpha = 1;
 
     void internal_drawing(){

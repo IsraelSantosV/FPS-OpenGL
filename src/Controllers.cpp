@@ -159,32 +159,108 @@ public:
     }
 };
 
-class Physics {
+class FieldOfView {
+private:
+    float m_ViewAngle;
+    Vector3 m_ForwardVector;
+    Vector3 m_DebugColor;
+    WorldObject* m_Object;
 public:
-    static vector<WorldObject*> raycast(Vector3 origin, Vector3 forward, float raySize, int precision,
-                                        float minDistance, LayerMask* mask){
+    FieldOfView(WorldObject* wo, float viewAngle, Vector3 forwardVector){
+        m_ViewAngle = viewAngle;
+        m_ForwardVector = forwardVector;
+        m_DebugColor = Vector3(0, 1, 0);
+    }
 
-        float sectionedRaySize = raySize / (float)precision;
+    vector<WorldObject*> getObjectsInsideView(Vector3 directionToTarget, vector<WorldObject*>& objects){
+        vector<WorldObject*> result;
+        for(auto obj : objects){
+            if(Vector3::angle(getForwardVector(), directionToTarget) < getViewAngle() / 2){
+                result.push_back(obj);
+            }
+        }
+
+        return result;
+    }
+
+    void drawDebug(){
+        glPushMatrix();
+        glColor4f(m_DebugColor.x, m_DebugColor.y, m_DebugColor.z, 0.8);
+
+        Transform* transform = m_Object->getTransform();
+        Vector3 position = transform->getPosition();
+
+        Vector3 viewAngleA = (Vector3::directionFromAngle(-getViewAngle() / 2) * getViewAngle()) + position;
+        Vector3 viewAngleB = (Vector3::directionFromAngle(getViewAngle() / 2) * getViewAngle()) + position;
+
+        //Draw first line
+        glVertex3f(position.x, position.y, position.z);
+        glVertex3f(viewAngleA.x, viewAngleA.y, viewAngleA.z);
+
+        //Draw second line
+        glVertex3f(position.x, position.y, position.z);
+        glVertex3f(viewAngleB.x, viewAngleB.y, viewAngleB.z);
+
+        glPopMatrix();
+    }
+
+    float getViewAngle(){ return m_ViewAngle; }
+    Vector3 getForwardVector() { return m_ForwardVector; }
+    void setViewAngle(float angle) { m_ViewAngle = angle; }
+    void setForwardVector(Vector3 forwardVector) { m_ForwardVector.set(forwardVector); }
+};
+
+class Physics {
+    static vector<WorldObject*> getSectionRayObjects(Section* currentSection, Vector3 currentRayPoint){
+        vector<WorldObject*> insideRadiusObjects;
         Grid* grid = Scenario::getInstance()->getGrid();
 
+        for(auto obj : currentSection->getInsideObjects()){
+            insideRadiusObjects.push_back(obj);
+        }
+
+        //TODO -> THINK: Use the remainder of the division between the radius size and
+        // the size of a section to define how many times the radius should be
+        // partitioned to perform section calculations
+
+        if(!currentSection->positionInsideSection(currentRayPoint)){
+            //When ray size is bigger than section size -> add all elements from target section
+            //TODO -> Insert loop to handle a ray that is greater than a section
+            Section* incrementSection = grid->getSection(currentRayPoint);
+            if(incrementSection != nullptr && incrementSection->getID() != currentSection->getID()) {
+                for (auto obj: incrementSection->getInsideObjects()) {
+                    insideRadiusObjects.push_back(obj);
+                }
+            }
+        }
+
+        return insideRadiusObjects;
+    }
+public:
+    static vector<WorldObject*> raycast(Vector3 origin, FieldOfView* fov, float raySize, LayerMask* mask){
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+
+        //Initialize values
+        Grid* myGrid = Scenario::getInstance()->getGrid();
         vector<WorldObject*> hitObjects;
-        for(int i = 0; i < precision; ++i){
-            Vector3 finalPoint = Vector3(origin.x * sectionedRaySize * i * forward.x,
-                                         origin.y * sectionedRaySize * i * forward.y,
-                                         origin.z * sectionedRaySize * i * forward.z);
 
-            Section* raySection = grid->getSection(finalPoint);
-            if(raySection == nullptr) continue;
+        //Get all objects in field of view of the origin
+        Section* currentSection = myGrid->getSection(origin);
+        Vector3 targetRayPoint = origin * raySize;
+        Vector3 rayDirection = Vector3::normalize((targetRayPoint - origin));
 
-            vector<WorldObject*> sectionObjects = raySection->getInsideObjects();
-            for(auto obj : sectionObjects){
-                if(!Layers::layerInLayerMask(obj->getLayer(), mask)) continue;
-                Vector3 objPosition = obj->getTransform()->getPosition();
-                if(Vector3::distance(objPosition, finalPoint) > minDistance) continue;
+        vector<WorldObject*> insideSectionObjects = getSectionRayObjects(currentSection, targetRayPoint);
+        vector<WorldObject*> objectsInsideFov = fov->getObjectsInsideView(rayDirection, insideSectionObjects);
+
+        for(auto obj : objectsInsideFov){
+            float distToTarget = Vector3::distance(origin, targetRayPoint);
+            if(distToTarget <= 0){
                 hitObjects.push_back(obj);
             }
         }
 
+        glMatrixMode(GL_MODELVIEW);
         return hitObjects;
     }
 };
@@ -198,6 +274,7 @@ private:
     float m_Sensibility;
     bool m_CursorLocked;
     WorldObject* m_WorldObject;
+    FieldOfView* m_FieldOfView;
 
     static Camera* m_Instance;
     Camera(){
@@ -210,6 +287,8 @@ private:
         m_WorldObject = Scenario::getInstance()->instantiate("Controller");
         m_WorldObject->setLayer(PLAYER);
         m_WorldObject->registerComponent(new Movable(m_WorldObject));
+        m_FieldOfView = new FieldOfView(m_WorldObject, 90, Vector3::FORWARD());
+
         Debug::log("[4/5] Creating camera...");
     }
 public:
@@ -231,6 +310,12 @@ public:
     void initialize(float speed, float smoothCamera){
         m_Speed = speed;
         m_Sensibility = smoothCamera;
+    }
+
+    void drawCameraDebug(){
+        if(getFieldOfView() != nullptr){
+            getFieldOfView()->drawDebug();
+        }
     }
 
     void receiveMousePosition(int x, int y){
@@ -309,6 +394,7 @@ public:
     float getSensibility() { return m_Sensibility; }
     bool cursorIsLocked() { return m_CursorLocked; }
     bool isFreeze() { return !cursorIsLocked(); }
+    FieldOfView* getFieldOfView() { return m_FieldOfView; }
 
     void setCursorLockState(bool locked){
         m_CursorLocked = locked;
@@ -353,8 +439,7 @@ public:
 
                 Layer layers[] = { DEFAULT, OBSTACLE };
                 vector<WorldObject*> hitResult = Physics::raycast(camera->getPosition(),
-                                                                  camera->getRotation(), 5, 30,
-                                                                  0.5, new LayerMask(layers));
+                                                                  camera->getFieldOfView(), 5, new LayerMask(layers));
 
                 Scenario::getInstance()->drawDebug(new CustomMesh(new WorldObject("Debug"), [](WorldObject* obj){
                     Camera* camera = Camera::getInstance();

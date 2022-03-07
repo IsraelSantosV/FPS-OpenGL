@@ -67,6 +67,7 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     Camera::getInstance()->updateMovement();
+    if(DRAW_DEBUG) { Camera::getInstance()->drawCameraDebug(); }
     Scenario::getInstance()->drawScenario();
     glutSwapBuffers();
 }
@@ -112,9 +113,9 @@ int main(int argc,char**argv){
     glutCreateWindow("VoxEngine");
 
     setupInputs();
-    init();
-
     glutReshapeFunc(reshape);
+
+    init();
     glutDisplayFunc(display);
     glutTimerFunc(0,timer,0);
     glutPassiveMotionFunc(passive_motion);
