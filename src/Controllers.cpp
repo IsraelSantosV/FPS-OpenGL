@@ -97,8 +97,6 @@ public:
         //Draw WorldObjects
         for(auto obj : m_RuntimeObjects){
             if(obj == nullptr || !obj->isActive()) continue;
-            //Update object components
-            obj->updateComponents();
 
             if(DRAW_DEBUG) {
                 auto *i = dynamic_cast<Collider *>(obj->getComponent(typeid(Collider)));
@@ -127,6 +125,15 @@ public:
                 }
             }
         }*/
+    }
+
+    //Update runtime objects for each frame (FPS) - DeltaTime
+    void updateRuntimeObjects(){
+        for(auto obj : m_RuntimeObjects) {
+            if(obj == nullptr || !obj->isActive()) continue;
+            //Update object components
+            obj->updateComponents();
+        }
     }
 
     WorldObject* instantiate(string name, WorldObject* parent, bool registerMoveAction){

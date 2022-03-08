@@ -111,6 +111,14 @@ public:
         }
     }
 
+    Vector3 forward(){
+        //float xPos = sin(transform.eulerAngles.y * TO_RADIANS) * cos(transform.eulerAngles.x * TO_RADIANS);
+        //float yPos = sin(-transform.eulerAngles.x * TO_RADIANS);
+        //float zPos = cos(transform.eulerAngles.x * TO_RADIANS) * cos(transform.eulerAngles.y * TO_RADIANS);
+        //return Vector3(xPos, yPos, zPos);
+        return Vector3::FORWARD();
+    }
+
     Vector3 getPosition() { return m_Position; }
     Vector3 getRotation() { return m_Rotation; }
     Vector3 getScale() { return m_Scale; }

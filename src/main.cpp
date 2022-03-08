@@ -100,6 +100,7 @@ void timer(int){
 
     Time::refreshTime((1000/FPS) / 1000);
     glutTimerFunc(1000/FPS,timer,0);
+    Scenario::getInstance()->updateRuntimeObjects();
 }
 
 void passive_motion(int x,int y){

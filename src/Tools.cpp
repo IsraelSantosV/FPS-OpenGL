@@ -159,7 +159,9 @@ public:
         return otherVector.x == x && otherVector.y == y && otherVector.z == z;
     }
 
-    double magnitude(){ return sqrt(x*x + y*y + z*z); }
+    double magnitude(){
+        return sqrt(x*x + y*y + z*z);
+    }
 
     static double dot(Vector3 a, Vector3 b) {
         return (a.x * b.x + a.y * b.y + a.z * b.z);
@@ -227,6 +229,25 @@ public:
         }
 
         return target / magnitude;
+    }
+
+    static Vector3 lerp(Vector3 start, Vector3 end, float percent){
+        Vector3 rightOperand = (end - start) * percent;
+        return start + rightOperand;
+    }
+
+    static Vector3 slerp(Vector3 start, Vector3 end, float percent){
+        double dot = Vector3::dot(start, end);
+        clamp(dot, -1.0, 1.0);
+        float theta = acos(dot) * percent;
+        Vector3 relativeVec = end - start * dot;
+
+        relativeVec = Vector3::normalize(relativeVec);
+        return ((start * cos(theta)) + (relativeVec * sin(theta)));
+    }
+
+    static Vector3 Nlerp(Vector3 start, Vector3 end, float percent){
+        return Vector3::normalize(lerp(start, end, percent));
     }
 
     static const Vector3 ZERO() { return {0,0,0}; }
