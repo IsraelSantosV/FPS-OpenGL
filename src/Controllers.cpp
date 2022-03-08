@@ -194,6 +194,7 @@ private:
     WorldObject* m_Object;
 public:
     FieldOfView(WorldObject* wo, float viewAngle, Vector3 forwardVector){
+        m_Object = wo;
         m_ViewAngle = viewAngle;
         m_ForwardVector = forwardVector;
         m_DebugColor = Vector3(0, 1, 0);
@@ -212,22 +213,21 @@ public:
 
     void drawDebug(){
         glPushMatrix();
-        glColor4f(m_DebugColor.x, m_DebugColor.y, m_DebugColor.z, 0.8);
+            glColor4f(m_DebugColor.x, m_DebugColor.y, m_DebugColor.z, 0.8);
 
-        Transform* transform = m_Object->getTransform();
-        Vector3 position = transform->getPosition();
+            Transform* transform = m_Object->getTransform();
+            Vector3 position = transform->getPosition();
 
-        Vector3 viewAngleA = (Vector3::directionFromAngle(-getViewAngle() / 2) * getViewAngle()) + position;
-        Vector3 viewAngleB = (Vector3::directionFromAngle(getViewAngle() / 2) * getViewAngle()) + position;
+            Vector3 viewAngleA = (Vector3::directionFromAngle(-getViewAngle() / 2) * getViewAngle()) + position;
+            Vector3 viewAngleB = (Vector3::directionFromAngle(getViewAngle() / 2) * getViewAngle()) + position;
 
-        //Draw first line
-        glVertex3f(position.x, position.y, position.z);
-        glVertex3f(viewAngleA.x, viewAngleA.y, viewAngleA.z);
+            //Draw first line
+            glVertex3f(position.x, position.y, position.z);
+            glVertex3f(viewAngleA.x, viewAngleA.y, viewAngleA.z);
 
-        //Draw second line
-        glVertex3f(position.x, position.y, position.z);
-        glVertex3f(viewAngleB.x, viewAngleB.y, viewAngleB.z);
-
+            //Draw second line
+            glVertex3f(position.x, position.y, position.z);
+            glVertex3f(viewAngleB.x, viewAngleB.y, viewAngleB.z);
         glPopMatrix();
     }
 

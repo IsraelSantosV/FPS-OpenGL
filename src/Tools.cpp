@@ -181,8 +181,28 @@ public:
         return {x / value, y / value, z / value};
     }
 
+    bool operator>(Vector3 value) const {
+        return x > value.x && y > value.y && z > value.z;
+    }
+
+    bool operator>=(Vector3 value) const {
+        return x >= value.x && y >= value.y && z >= value.z;
+    }
+
+    bool operator<(Vector3 value) const {
+        return x < value.x && y < value.y && z < value.z;
+    }
+
+    bool operator<=(Vector3 value) const {
+        return x <= value.x && y <= value.y && z <= value.z;
+    }
+
     bool operator!=(Vector3 otherVector) const {
         return otherVector.x != x && otherVector.y != y && otherVector.z != z;
+    }
+
+    bool operator==(Vector3 otherVector) const {
+        return otherVector.x == x && otherVector.y == y && otherVector.z == z;
     }
 
     static float angle(Vector3 a, Vector3 b){
