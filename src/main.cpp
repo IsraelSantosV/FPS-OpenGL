@@ -7,6 +7,7 @@
 InputManager* InputManager::m_Instance = nullptr;
 Scenario* Scenario::m_Instance = nullptr;
 Camera* Camera::m_Instance = nullptr;
+LayerMatrix* LayerMatrix::m_Instance = nullptr;
 
 int Random::RANDOM_ID = 0;
 float Time::m_DeltaTime = 0;
@@ -31,6 +32,14 @@ void init(){
 
     Debug::log("[2/5] Loading singletons and OpenGL extensions...");
 
+    LayerMatrix::getInstance()->initialize();
+    LayerMatrix::getInstance()->addToEverything(DEFAULT);
+    LayerMatrix::getInstance()->addToEverything(OBSTACLE);
+    LayerMatrix::getInstance()->addToEverything(PLAYER);
+
+    LayerMatrix::getInstance()->clearLayer(NO_COLLISION);
+    LayerMatrix::getInstance()->clearLayer(GROUND);
+
     Scenario::getInstance()->initialize();
     Camera::getInstance()->initialize(5, 30);
     Camera::getInstance()->setScreenSize(width, height);
@@ -54,12 +63,14 @@ void setupInputs(){
 void createScenarioObjects(){
     Debug::log("[5/5] Rendering scenario objects...");
     { //Create a cube
-        WorldObject* cube = Scenario::getInstance()->instantiate("Cube");
+        WorldObject* cube = Scenario::getInstance()->instantiate("Cube", Vector3(-5, 0, 5), Vector3::ZERO(), true);
         cube->setLayer(OBSTACLE);
         cube->setMesh(new CubeMesh(cube, false));
         cube->getTransform()->setScale(Vector3(2,3,5));
-        cube->getTransform()->setPosition(Vector3(-5,0,0));
         cube->getMesh()->setColor(Vector3(0,0,1));
+        cube->registerComponent(new Collider(cube, cube->getTransform()->getScale(), Vector3::ZERO()));
+
+        Debug::log(cube->getTransform()->getPosition().toString());
     }
 }
 
@@ -67,6 +78,7 @@ void display(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     Camera::getInstance()->updateMovement();
+    if(DRAW_DEBUG) { Camera::getInstance()->drawCameraDebug(); }
     Scenario::getInstance()->drawScenario();
     glutSwapBuffers();
 }
@@ -112,9 +124,9 @@ int main(int argc,char**argv){
     glutCreateWindow("VoxEngine");
 
     setupInputs();
-    init();
-
     glutReshapeFunc(reshape);
+
+    init();
     glutDisplayFunc(display);
     glutTimerFunc(0,timer,0);
     glutPassiveMotionFunc(passive_motion);

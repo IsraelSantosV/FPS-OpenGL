@@ -11,6 +11,7 @@
 #include <vector>
 #include <GL/glut.h>
 #include "Tools.cpp"
+#include <typeinfo>
 using namespace std;
 
 enum TransformCategory {
@@ -26,13 +27,10 @@ typedef void CustomDrawer(WorldObject*);
 
 class Component {
 private:
-    string m_Name;
     WorldObject* m_Object;
 public:
     explicit Component(WorldObject* wo){ m_Object = wo; }
-    string getName() { return m_Name; }
     WorldObject* getObject() { return m_Object; }
-
     virtual void update(){ }
 };
 
@@ -67,9 +65,9 @@ private:
     }
 public:
     explicit Transform(WorldObject *wo) : Component(wo){
-        setPosition(Vector3());
-        setRotation(Vector3());
-        setScale(Vector3(1,1,1));
+        setPosition(Vector3::ZERO());
+        setRotation(Vector3::ZERO());
+        setScale(Vector3::ONE());
     }
 
     void registerAction(TransformAction action, TransformCategory category){
@@ -136,6 +134,10 @@ public:
     int getID() const { return m_ID; }
     vector<WorldObject*> getInsideObjects() { return m_InsideObjects; }
 
+    bool positionInsideSection(Vector3 position){
+        return position >= m_StartPosition && position <= m_EndPosition;
+    }
+
     void insertObject(WorldObject* wo){
         if(wo == nullptr) return;
         m_InsideObjects.push_back(wo);
@@ -199,9 +201,9 @@ public:
         }
     }
 
-    Component* getComponent(const string& name){
+    Component* getComponent(const type_info& type){
         for(auto element : m_Components){
-            if(element->getName() == name){
+            if(typeid(*element).name() == type.name()){
                 return element;
             }
         }
@@ -254,20 +256,38 @@ public:
     Section* getSection() { return m_CurrentSection; }
 };
 
-class ObjectComponent : public Component {
+class Collider : public Component {
+private:
+    Vector3 m_Size;
+    Vector3 m_Offset;
 public:
-    explicit ObjectComponent(WorldObject* wo) : Component(wo) {
-        if(wo != nullptr){
-            wo->registerComponent(this);
-        }
+    explicit Collider(WorldObject* wo, Vector3 size, Vector3 offset) : Component(wo){
+        m_Size.set(size);
+        m_Offset.set(offset);
     }
 
-    void update() override { }
+    Vector3 getPosition(){
+        Vector3 woPosition = getObject()->getTransform()->getPosition();
+        return Vector3(woPosition.x, woPosition.y, woPosition.z) + m_Offset;
+    }
+
+    void drawDebug(){
+        Transform* t = getObject()->getTransform();
+        glPushMatrix();
+        glScalef(m_Size.x, m_Size.y, m_Size.z);
+        glRotatef(0, t->getRotation().x, t->getRotation().y, t->getRotation().z);
+        glTranslatef(getPosition().x, 0, getPosition().z);
+        glutWireCube(DEFAULT_SIZE);
+        glPopMatrix();
+    }
+
+    Vector3 getSize() { return m_Size; }
+    Vector3 getOffset() { return m_Offset; }
 };
 
-class Mesh : public ObjectComponent {
+class Mesh : public Component {
 private:
-    Vector3 m_Color = Vector3(1,1,1);
+    Vector3 m_Color = Vector3::ONE();
     float m_Alpha = 1;
 
     void internal_drawing(){
@@ -287,7 +307,7 @@ private:
 protected:
     virtual void drawProperties() { }
 public:
-    explicit Mesh(WorldObject* obj) : ObjectComponent(obj){ }
+    explicit Mesh(WorldObject* obj) : Component(obj){ }
     void draw() { internal_drawing(); }
 
     void setColor(Vector3 color, float alpha = 1){
