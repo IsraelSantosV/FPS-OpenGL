@@ -35,7 +35,7 @@ private:
                           50, Vector3(-GROUND_SCALE, 0, -GROUND_SCALE));
 
         //Create a ground to test scenario
-        WorldObject* ground = instantiate("Ground");
+        WorldObject* ground = instantiate("Ground", Vector3(), Vector3(), false);
         CustomMesh* customMesh = new CustomMesh(ground, [](WorldObject* wo){
             glEnable(GL_TEXTURE_2D);
                 glColor4f(1,1,1,1);
@@ -100,13 +100,20 @@ public:
             //Update object components
             obj->updateComponents();
 
+            if(DRAW_DEBUG) {
+                auto *i = dynamic_cast<Collider *>(obj->getComponent(typeid(Collider)));
+                if (i != nullptr){
+                    i->drawDebug();
+                }
+            }
+
             //Update object mesh
             if(obj->getMesh() == nullptr) continue;
             obj->getMesh()->draw();
         }
 
         //Draw debug gizmos
-        for(auto i = 0; i < m_DebugObjects.size(); ++i){
+        /*for(auto i = 0; i < m_DebugObjects.size(); ++i){
             auto debug = m_DebugObjects[i];
             if(debug == nullptr || debug->Mesh == nullptr) continue;
             debug->CurrentTime += Time::deltaTime();
@@ -119,11 +126,31 @@ public:
                     debug->Mesh->draw();
                 }
             }
-        }
+        }*/
     }
 
-    WorldObject* instantiate(string name, WorldObject* parent = nullptr){
-        WorldObject* newObject = new WorldObject(name, parent);
+    WorldObject* instantiate(string name, WorldObject* parent, bool registerMoveAction){
+        WorldObject* wo = instantiate(name, Vector3(), Vector3(), registerMoveAction);
+        wo->setParent(parent);
+        return wo;
+    }
+
+    WorldObject* instantiate(string name, Vector3 position, bool registerMoveAction){
+        return instantiate(name, position, Vector3(), registerMoveAction);
+    }
+
+    WorldObject* instantiate(string name, Vector3 position, Vector3 rotation, bool registerMoveAction){
+        WorldObject* newObject = new WorldObject(name, nullptr);
+        newObject->getTransform()->setPosition(position);
+        newObject->getTransform()->setRotation(rotation);
+
+        if(registerMoveAction) {
+            newObject->getTransform()->registerAction([](Vector3 position, WorldObject *wo) {
+                Grid *currentGrid = Scenario::getInstance()->getGrid();
+                WorldObject::insertObjectIntoSection(wo, currentGrid->getSection(position));
+            }, POSITION);
+        }
+
         registerObject(newObject);
         return newObject;
     }
@@ -140,11 +167,11 @@ public:
 };
 
 //STRONG DEPENDENCY WITH CONTROLLER
-class Movable : public ObjectComponent {
+class SectionMovable : public Component {
 private:
     Transform* m_Transform;
 public:
-    explicit Movable(WorldObject *wo) : ObjectComponent(wo){
+    explicit SectionMovable(WorldObject *wo) : Component(wo){
         m_Transform = wo->getTransform();
 
         m_Transform->registerAction([](Vector3 currentPosition, WorldObject* myObject){
@@ -211,6 +238,7 @@ public:
 };
 
 class Physics {
+private:
     static vector<WorldObject*> getSectionRayObjects(Section* currentSection, Vector3 currentRayPoint){
         vector<WorldObject*> insideRadiusObjects;
         Grid* grid = Scenario::getInstance()->getGrid();
@@ -237,6 +265,41 @@ class Physics {
         return insideRadiusObjects;
     }
 public:
+    static bool detectCollision(WorldObject* target, Vector3 nextStep, double minDistance) {
+        if (target == nullptr || nextStep.equals(Vector3(0, 0, 0))) return false;
+
+        auto* targetCollider = dynamic_cast<Collider *>(target->getComponent(typeid(Collider)));
+        if(targetCollider == nullptr) return false;
+
+        Section* targetSection = target->getSection();
+        if(targetSection == nullptr) return false;
+
+        vector<WorldObject*> sectionObjects = targetSection->getInsideObjects();
+        LayerMatrix* physicsMatrix = LayerMatrix::getInstance();
+
+        Vector3 currentPosition = targetCollider->getPosition() + nextStep;
+
+        for(auto object : sectionObjects){
+            if(object == nullptr || object->getID() == target->getID()) continue;
+            if(!physicsMatrix->canApplyPhysics(target->getLayer(), object->getLayer())){
+                continue;
+            }
+
+            //Get object collider to get position offset
+            auto* collider = dynamic_cast<Collider *>(object->getComponent(typeid(Collider)));
+            if(collider == nullptr) continue;
+
+            double targetDistance = Vector3::distance(currentPosition, collider->getPosition());
+            Debug::log("Trying collision with (" + object->getName() + ") | Distance: " + to_string(targetDistance));
+
+            if(targetDistance < minDistance){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     static vector<WorldObject*> raycast(Vector3 origin, FieldOfView* fov, float raySize, LayerMask* mask){
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
@@ -275,6 +338,7 @@ private:
     bool m_CursorLocked;
     WorldObject* m_WorldObject;
     FieldOfView* m_FieldOfView;
+    bool m_DetectCollisions;
 
     static Camera* m_Instance;
     Camera(){
@@ -283,11 +347,18 @@ private:
         m_CursorLocked = true;
         m_ScreenWidth = 800;
         m_ScreenHeight = 600;
+        m_DetectCollisions = true;
 
-        m_WorldObject = Scenario::getInstance()->instantiate("Controller");
+        m_WorldObject = Scenario::getInstance()->instantiate("Controller", Vector3::ZERO(), Vector3::ZERO(), false);
         m_WorldObject->setLayer(PLAYER);
-        m_WorldObject->registerComponent(new Movable(m_WorldObject));
+        m_WorldObject->registerComponent(new SectionMovable(m_WorldObject));
         m_FieldOfView = new FieldOfView(m_WorldObject, 90, Vector3::FORWARD());
+        m_WorldObject->registerComponent(new SectionMovable(m_WorldObject));
+
+        if(m_DetectCollisions){
+            m_WorldObject->registerComponent(
+                    new Collider(m_WorldObject, Vector3(1,2,1), Vector3()));
+        }
 
         Debug::log("[4/5] Creating camera...");
     }
@@ -373,7 +444,14 @@ public:
     }
 
     void setMovement(Vector3 position){
-        getObject()->getTransform()->setPosition(position);
+        Vector3 targetMovement = Vector3(position.x, GROUND_HEIGHT, position.z);
+        if(m_DetectCollisions){
+            if(Physics::detectCollision(m_WorldObject, targetMovement, 1)){
+                return;
+            }
+        }
+
+        getObject()->getTransform()->setPosition(targetMovement);
     }
 
     void setRotation(Vector3 rotation){

@@ -11,11 +11,84 @@
 #include <cmath>
 using namespace std;
 
+//When add layer, update layer count
+const int LayersAmount = 5;
 enum Layer {
-    DEFAULT,
-    GROUND,
-    OBSTACLE,
-    PLAYER
+    DEFAULT = 0,
+    GROUND = 1,
+    OBSTACLE = 2,
+    PLAYER = 3,
+    NO_COLLISION = 4
+};
+
+struct LayerData {
+    Layer targetLayer;
+    bool collisions[LayersAmount];
+};
+
+class LayerMatrix {
+private:
+    LayerData m_LayerMatrix[LayersAmount];
+    static LayerMatrix* m_Instance;
+
+    LayerMatrix() {
+        for(int i = 0; i < LayersAmount; i++){
+            m_LayerMatrix[i].targetLayer = static_cast<Layer>(i);
+
+            for(int j = 0; j < LayersAmount; j++){
+                m_LayerMatrix[i].collisions[j] = false;
+            }
+        }
+    }
+
+    bool containsRule(Layer layerA, Layer layerB){
+        return m_LayerMatrix[layerA].collisions[layerB] ||
+               m_LayerMatrix[layerB].collisions[layerA];
+    }
+public:
+    static LayerMatrix* getInstance(){
+        if(m_Instance == nullptr){
+            m_Instance = new LayerMatrix();
+        }
+
+        return m_Instance;
+    }
+
+    void initialize(){ }
+
+    void addRule(Layer fromLayer, Layer targetLayer){
+        m_LayerMatrix[fromLayer].collisions[targetLayer] = true;
+        m_LayerMatrix[targetLayer].collisions[fromLayer] = true;
+    }
+
+    void removeRule(Layer fromLayer, Layer targetLayer){
+        m_LayerMatrix[fromLayer].collisions[targetLayer] = false;
+        m_LayerMatrix[targetLayer].collisions[fromLayer] = false;
+    }
+
+    void addToEverything(Layer targetLayer){
+        for(int i = 0; i < LayersAmount; i++){
+            m_LayerMatrix[i].collisions[targetLayer] = true;
+        }
+    }
+
+    void removeToEverything(Layer targetLayer){
+        for(int i = 0; i < LayersAmount; i++){
+            m_LayerMatrix[i].collisions[targetLayer] = false;
+        }
+    }
+
+    void clearLayer(Layer targetLayer){
+        for(int i = 0; i < LayersAmount; i++){
+            m_LayerMatrix[targetLayer].collisions[i] = false;
+        }
+
+        removeToEverything(targetLayer);
+    }
+
+    bool canApplyPhysics(Layer layerA, Layer layerB){
+        return containsRule(layerA, layerB);
+    }
 };
 
 class LayerMask {
@@ -75,6 +148,10 @@ public:
         z = _z;
     }
 
+    void set(Vector3 fromVector){
+        set(fromVector.x, fromVector.y, fromVector.z);
+    }
+
     string toString(){ return '(' + to_string(x) + ',' +
                         to_string(y) + ',' + to_string(z) + ')'; };
 
@@ -84,8 +161,28 @@ public:
 
     double magnitude(){ return sqrt(x*x + y*y + z*z); }
 
-    static double dot(Vector3 a, Vector3 b){
+    static double dot(Vector3 a, Vector3 b) {
         return (a.x * b.x + a.y * b.y + a.z * b.z);
+    }
+
+    Vector3 operator+(Vector3 other) const {
+        return {x + other.x, y + other.y, z + other.z};
+    }
+
+    Vector3 operator-(Vector3 other) const {
+        return {x - other.x, y - other.y, z - other.z};
+    }
+
+    Vector3 operator*(float value) const {
+        return {x * value, y * value, z * value};
+    }
+
+    Vector3 operator/(float value) const {
+        return {x / value, y / value, z / value};
+    }
+
+    bool operator!=(Vector3 otherVector) const {
+        return otherVector.x != x && otherVector.y != y && otherVector.z != z;
     }
 
     static float angle(Vector3 a, Vector3 b){
