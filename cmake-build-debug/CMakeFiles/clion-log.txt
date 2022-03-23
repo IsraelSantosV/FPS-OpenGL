@@ -1,16 +1,7 @@
-/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/ninja/linux/ninja -G Ninja /home/zetta/Documentos/Programas/FPS-OpenGL
--- The C compiler identification is GNU 9.4.0
--- The CXX compiler identification is GNU 9.4.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
+/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine
 -- Configuring done
--- Generating done
--- Build files have been written to: /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
+CMake Error at CMakeLists.txt:7 (add_executable):
+  No SOURCES given to target: VoxEngine
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

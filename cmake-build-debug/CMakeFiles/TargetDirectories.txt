@@ -1,3 +1,0 @@
-/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles/VoxEngine.dir
