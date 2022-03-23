@@ -1,0 +1,7 @@
+[requires]
+opengl/system
+libudev/system
+sfml/2.5.1
+
+[generators]
+cmake
