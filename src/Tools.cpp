@@ -238,7 +238,7 @@ public:
 
     static Vector3 slerp(Vector3 start, Vector3 end, float percent){
         double dot = Vector3::dot(start, end);
-        clamp(dot, -1.0, 1.0);
+        //clamp(dot, -1.0, 1.0);
         float theta = acos(dot) * percent;
         Vector3 relativeVec = end - start * dot;
 

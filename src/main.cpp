@@ -72,6 +72,13 @@ void createScenarioObjects(){
 
         Debug::log(cube->getTransform()->getPosition().toString());
     }
+
+    {
+        WorldObject* cubao = Scenario::getInstance()->instantiate("Cubao", Vector3(0,0,0), Vector3::ZERO(), true);
+        cubao->setMesh(new CubeMesh(cubao, false));
+        cubao->getTransform()->setScale(Vector3(2, 5, 2));
+        cubao->getMesh()->setColor(Vector3(0,1,0));
+    }
 }
 
 void display(){
