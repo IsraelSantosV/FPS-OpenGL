@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine
+CMAKE_SOURCE_DIR = /home/aluno/Downloads/Vox-Engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug
+CMAKE_BINARY_DIR = /home/aluno/Downloads/Vox-Engine/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmak
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -78,7 +78,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aluno/Downloads/Vox-Engine/cmake-build-debug/CMakeFiles /home/aluno/Downloads/Vox-Engine/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aluno/Downloads/Vox-Engine/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -513,6 +513,30 @@ src/resources/Animator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/Animator.cpp.s
 .PHONY : src/resources/Animator.cpp.s
 
+src/resources/FilePath.o: src/resources/FilePath.cpp.o
+.PHONY : src/resources/FilePath.o
+
+# target to build an object file
+src/resources/FilePath.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FilePath.cpp.o
+.PHONY : src/resources/FilePath.cpp.o
+
+src/resources/FilePath.i: src/resources/FilePath.cpp.i
+.PHONY : src/resources/FilePath.i
+
+# target to preprocess a source file
+src/resources/FilePath.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FilePath.cpp.i
+.PHONY : src/resources/FilePath.cpp.i
+
+src/resources/FilePath.s: src/resources/FilePath.cpp.s
+.PHONY : src/resources/FilePath.s
+
+# target to generate assembly for a file
+src/resources/FilePath.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FilePath.cpp.s
+.PHONY : src/resources/FilePath.cpp.s
+
 src/resources/Scene.o: src/resources/Scene.cpp.o
 .PHONY : src/resources/Scene.o
 
@@ -657,6 +681,30 @@ src/system/SceneManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/SceneManager.cpp.s
 .PHONY : src/system/SceneManager.cpp.s
 
+src/util/GLError.o: src/util/GLError.cpp.o
+.PHONY : src/util/GLError.o
+
+# target to build an object file
+src/util/GLError.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/GLError.cpp.o
+.PHONY : src/util/GLError.cpp.o
+
+src/util/GLError.i: src/util/GLError.cpp.i
+.PHONY : src/util/GLError.i
+
+# target to preprocess a source file
+src/util/GLError.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/GLError.cpp.i
+.PHONY : src/util/GLError.cpp.i
+
+src/util/GLError.s: src/util/GLError.cpp.s
+.PHONY : src/util/GLError.s
+
+# target to generate assembly for a file
+src/util/GLError.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/GLError.cpp.s
+.PHONY : src/util/GLError.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -714,6 +762,9 @@ help:
 	@echo "... src/resources/Animator.o"
 	@echo "... src/resources/Animator.i"
 	@echo "... src/resources/Animator.s"
+	@echo "... src/resources/FilePath.o"
+	@echo "... src/resources/FilePath.i"
+	@echo "... src/resources/FilePath.s"
 	@echo "... src/resources/Scene.o"
 	@echo "... src/resources/Scene.i"
 	@echo "... src/resources/Scene.s"
@@ -732,6 +783,9 @@ help:
 	@echo "... src/system/SceneManager.o"
 	@echo "... src/system/SceneManager.i"
 	@echo "... src/system/SceneManager.s"
+	@echo "... src/util/GLError.o"
+	@echo "... src/util/GLError.i"
+	@echo "... src/util/GLError.s"
 .PHONY : help
 
 

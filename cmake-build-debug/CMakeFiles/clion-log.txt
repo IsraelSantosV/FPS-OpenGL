@@ -1,13 +1,4 @@
-/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.6777.58/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine
-CMake Error at CMakeLists.txt:5 (include):
-  include could not find requested file:
-
-    /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/conanbuildinfo.cmake
-
-
-CMake Error at CMakeLists.txt:6 (conan_basic_setup):
-  Unknown CMake command "conan_basic_setup".
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+/home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/aluno/Downloads/Vox-Engine
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/aluno/Downloads/Vox-Engine/cmake-build-debug

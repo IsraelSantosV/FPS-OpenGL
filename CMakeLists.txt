@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.21)
 project(VoxEngine)
 
 add_definitions("-std=c++11")
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
 
 set(OpenGlLinkers -lglut -lGLU -lGL)
 set(CMAKE_CXX_STANDARD 20)
@@ -51,6 +49,6 @@ add_executable(VoxEngine src/core/Application.cpp
         src/resources/Scene.cpp
         include/vox-engine/resources/Scene.h
         src/resources/Texture.cpp
-        include/vox-engine/resources/Texture.h)
+        include/vox-engine/resources/Texture.h include/vox-engine/util/Logger.h src/util/GLError.cpp include/vox-engine/util/GLError.h src/resources/FilePath.cpp include/vox-engine/resources/FilePath.h)
 
-target_link_libraries(VoxEngine ${OpenGlLinkers} ${CONAN_LIBS})
+target_link_libraries(VoxEngine ${OpenGlLinkers})
