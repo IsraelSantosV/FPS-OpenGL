@@ -5,8 +5,9 @@
 #ifndef VOXENGINE_SCENEMANAGER_H
 #define VOXENGINE_SCENEMANAGER_H
 
+#include "ISystem.h"
 
-class SceneManager {
+class SceneManager : public ISystem {
 
 };
 

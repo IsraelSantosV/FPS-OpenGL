@@ -5,8 +5,9 @@
 #ifndef VOXENGINE_LOGIC_H
 #define VOXENGINE_LOGIC_H
 
+#include "ISystem.h"
 
-class Logic {
+class Logic : public ISystem {
 
 };
 

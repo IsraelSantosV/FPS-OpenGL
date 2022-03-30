@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/aluno/Downloads/Vox-Engine
+CMAKE_SOURCE_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/aluno/Downloads/Vox-Engine/cmake-build-debug
+CMAKE_BINARY_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/aluno/Downloads/Vox-Engine/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -78,7 +78,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aluno/Downloads/Vox-Engine/cmake-build-debug/CMakeFiles /home/aluno/Downloads/Vox-Engine/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aluno/Downloads/Vox-Engine/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,6 +128,54 @@ VoxEngine: cmake_check_build_system
 VoxEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build
 .PHONY : VoxEngine/fast
+
+include/vox-engine/util/Resources.o: include/vox-engine/util/Resources.cpp.o
+.PHONY : include/vox-engine/util/Resources.o
+
+# target to build an object file
+include/vox-engine/util/Resources.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/include/vox-engine/util/Resources.cpp.o
+.PHONY : include/vox-engine/util/Resources.cpp.o
+
+include/vox-engine/util/Resources.i: include/vox-engine/util/Resources.cpp.i
+.PHONY : include/vox-engine/util/Resources.i
+
+# target to preprocess a source file
+include/vox-engine/util/Resources.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/include/vox-engine/util/Resources.cpp.i
+.PHONY : include/vox-engine/util/Resources.cpp.i
+
+include/vox-engine/util/Resources.s: include/vox-engine/util/Resources.cpp.s
+.PHONY : include/vox-engine/util/Resources.s
+
+# target to generate assembly for a file
+include/vox-engine/util/Resources.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/include/vox-engine/util/Resources.cpp.s
+.PHONY : include/vox-engine/util/Resources.cpp.s
+
+src/Main.o: src/Main.cpp.o
+.PHONY : src/Main.o
+
+# target to build an object file
+src/Main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/Main.cpp.o
+.PHONY : src/Main.cpp.o
+
+src/Main.i: src/Main.cpp.i
+.PHONY : src/Main.i
+
+# target to preprocess a source file
+src/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/Main.cpp.i
+.PHONY : src/Main.cpp.i
+
+src/Main.s: src/Main.cpp.s
+.PHONY : src/Main.s
+
+# target to generate assembly for a file
+src/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/Main.cpp.s
+.PHONY : src/Main.cpp.s
 
 src/component/Behaviour.o: src/component/Behaviour.cpp.o
 .PHONY : src/component/Behaviour.o
@@ -201,30 +249,6 @@ src/component/Light.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Light.cpp.s
 .PHONY : src/component/Light.cpp.s
 
-src/component/Time.o: src/component/Time.cpp.o
-.PHONY : src/component/Time.o
-
-# target to build an object file
-src/component/Time.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Time.cpp.o
-.PHONY : src/component/Time.cpp.o
-
-src/component/Time.i: src/component/Time.cpp.i
-.PHONY : src/component/Time.i
-
-# target to preprocess a source file
-src/component/Time.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Time.cpp.i
-.PHONY : src/component/Time.cpp.i
-
-src/component/Time.s: src/component/Time.cpp.s
-.PHONY : src/component/Time.s
-
-# target to generate assembly for a file
-src/component/Time.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Time.cpp.s
-.PHONY : src/component/Time.cpp.s
-
 src/component/Transform.o: src/component/Transform.cpp.o
 .PHONY : src/component/Transform.o
 
@@ -297,30 +321,6 @@ src/core/Config.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Config.cpp.s
 .PHONY : src/core/Config.cpp.s
 
-src/core/Display.o: src/core/Display.cpp.o
-.PHONY : src/core/Display.o
-
-# target to build an object file
-src/core/Display.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Display.cpp.o
-.PHONY : src/core/Display.cpp.o
-
-src/core/Display.i: src/core/Display.cpp.i
-.PHONY : src/core/Display.i
-
-# target to preprocess a source file
-src/core/Display.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Display.cpp.i
-.PHONY : src/core/Display.cpp.i
-
-src/core/Display.s: src/core/Display.cpp.s
-.PHONY : src/core/Display.s
-
-# target to generate assembly for a file
-src/core/Display.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Display.cpp.s
-.PHONY : src/core/Display.cpp.s
-
 src/core/Entity.o: src/core/Entity.cpp.o
 .PHONY : src/core/Entity.o
 
@@ -344,30 +344,6 @@ src/core/Entity.s: src/core/Entity.cpp.s
 src/core/Entity.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Entity.cpp.s
 .PHONY : src/core/Entity.cpp.s
-
-src/core/InputManager.o: src/core/InputManager.cpp.o
-.PHONY : src/core/InputManager.o
-
-# target to build an object file
-src/core/InputManager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/InputManager.cpp.o
-.PHONY : src/core/InputManager.cpp.o
-
-src/core/InputManager.i: src/core/InputManager.cpp.i
-.PHONY : src/core/InputManager.i
-
-# target to preprocess a source file
-src/core/InputManager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/InputManager.cpp.i
-.PHONY : src/core/InputManager.cpp.i
-
-src/core/InputManager.s: src/core/InputManager.cpp.s
-.PHONY : src/core/InputManager.s
-
-# target to generate assembly for a file
-src/core/InputManager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/InputManager.cpp.s
-.PHONY : src/core/InputManager.cpp.s
 
 src/math/Matrix4f.o: src/math/Matrix4f.cpp.o
 .PHONY : src/math/Matrix4f.o
@@ -609,6 +585,54 @@ src/system/Component.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Component.cpp.s
 .PHONY : src/system/Component.cpp.s
 
+src/system/Display.o: src/system/Display.cpp.o
+.PHONY : src/system/Display.o
+
+# target to build an object file
+src/system/Display.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Display.cpp.o
+.PHONY : src/system/Display.cpp.o
+
+src/system/Display.i: src/system/Display.cpp.i
+.PHONY : src/system/Display.i
+
+# target to preprocess a source file
+src/system/Display.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Display.cpp.i
+.PHONY : src/system/Display.cpp.i
+
+src/system/Display.s: src/system/Display.cpp.s
+.PHONY : src/system/Display.s
+
+# target to generate assembly for a file
+src/system/Display.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Display.cpp.s
+.PHONY : src/system/Display.cpp.s
+
+src/system/InputManager.o: src/system/InputManager.cpp.o
+.PHONY : src/system/InputManager.o
+
+# target to build an object file
+src/system/InputManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/InputManager.cpp.o
+.PHONY : src/system/InputManager.cpp.o
+
+src/system/InputManager.i: src/system/InputManager.cpp.i
+.PHONY : src/system/InputManager.i
+
+# target to preprocess a source file
+src/system/InputManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/InputManager.cpp.i
+.PHONY : src/system/InputManager.cpp.i
+
+src/system/InputManager.s: src/system/InputManager.cpp.s
+.PHONY : src/system/InputManager.s
+
+# target to generate assembly for a file
+src/system/InputManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/InputManager.cpp.s
+.PHONY : src/system/InputManager.cpp.s
+
 src/system/LightManager.o: src/system/LightManager.cpp.o
 .PHONY : src/system/LightManager.o
 
@@ -705,6 +729,102 @@ src/util/GLError.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/GLError.cpp.s
 .PHONY : src/util/GLError.cpp.s
 
+src/util/MaxQueue.o: src/util/MaxQueue.cpp.o
+.PHONY : src/util/MaxQueue.o
+
+# target to build an object file
+src/util/MaxQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/MaxQueue.cpp.o
+.PHONY : src/util/MaxQueue.cpp.o
+
+src/util/MaxQueue.i: src/util/MaxQueue.cpp.i
+.PHONY : src/util/MaxQueue.i
+
+# target to preprocess a source file
+src/util/MaxQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/MaxQueue.cpp.i
+.PHONY : src/util/MaxQueue.cpp.i
+
+src/util/MaxQueue.s: src/util/MaxQueue.cpp.s
+.PHONY : src/util/MaxQueue.s
+
+# target to generate assembly for a file
+src/util/MaxQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/MaxQueue.cpp.s
+.PHONY : src/util/MaxQueue.cpp.s
+
+src/util/Profiler.o: src/util/Profiler.cpp.o
+.PHONY : src/util/Profiler.o
+
+# target to build an object file
+src/util/Profiler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Profiler.cpp.o
+.PHONY : src/util/Profiler.cpp.o
+
+src/util/Profiler.i: src/util/Profiler.cpp.i
+.PHONY : src/util/Profiler.i
+
+# target to preprocess a source file
+src/util/Profiler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Profiler.cpp.i
+.PHONY : src/util/Profiler.cpp.i
+
+src/util/Profiler.s: src/util/Profiler.cpp.s
+.PHONY : src/util/Profiler.s
+
+# target to generate assembly for a file
+src/util/Profiler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Profiler.cpp.s
+.PHONY : src/util/Profiler.cpp.s
+
+src/util/Time.o: src/util/Time.cpp.o
+.PHONY : src/util/Time.o
+
+# target to build an object file
+src/util/Time.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Time.cpp.o
+.PHONY : src/util/Time.cpp.o
+
+src/util/Time.i: src/util/Time.cpp.i
+.PHONY : src/util/Time.i
+
+# target to preprocess a source file
+src/util/Time.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Time.cpp.i
+.PHONY : src/util/Time.cpp.i
+
+src/util/Time.s: src/util/Time.cpp.s
+.PHONY : src/util/Time.s
+
+# target to generate assembly for a file
+src/util/Time.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Time.cpp.s
+.PHONY : src/util/Time.cpp.s
+
+src/util/Utils.o: src/util/Utils.cpp.o
+.PHONY : src/util/Utils.o
+
+# target to build an object file
+src/util/Utils.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Utils.cpp.o
+.PHONY : src/util/Utils.cpp.o
+
+src/util/Utils.i: src/util/Utils.cpp.i
+.PHONY : src/util/Utils.i
+
+# target to preprocess a source file
+src/util/Utils.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Utils.cpp.i
+.PHONY : src/util/Utils.cpp.i
+
+src/util/Utils.s: src/util/Utils.cpp.s
+.PHONY : src/util/Utils.s
+
+# target to generate assembly for a file
+src/util/Utils.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/util/Utils.cpp.s
+.PHONY : src/util/Utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -714,6 +834,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... VoxEngine"
+	@echo "... include/vox-engine/util/Resources.o"
+	@echo "... include/vox-engine/util/Resources.i"
+	@echo "... include/vox-engine/util/Resources.s"
+	@echo "... src/Main.o"
+	@echo "... src/Main.i"
+	@echo "... src/Main.s"
 	@echo "... src/component/Behaviour.o"
 	@echo "... src/component/Behaviour.i"
 	@echo "... src/component/Behaviour.s"
@@ -723,9 +849,6 @@ help:
 	@echo "... src/component/Light.o"
 	@echo "... src/component/Light.i"
 	@echo "... src/component/Light.s"
-	@echo "... src/component/Time.o"
-	@echo "... src/component/Time.i"
-	@echo "... src/component/Time.s"
 	@echo "... src/component/Transform.o"
 	@echo "... src/component/Transform.i"
 	@echo "... src/component/Transform.s"
@@ -735,15 +858,9 @@ help:
 	@echo "... src/core/Config.o"
 	@echo "... src/core/Config.i"
 	@echo "... src/core/Config.s"
-	@echo "... src/core/Display.o"
-	@echo "... src/core/Display.i"
-	@echo "... src/core/Display.s"
 	@echo "... src/core/Entity.o"
 	@echo "... src/core/Entity.i"
 	@echo "... src/core/Entity.s"
-	@echo "... src/core/InputManager.o"
-	@echo "... src/core/InputManager.i"
-	@echo "... src/core/InputManager.s"
 	@echo "... src/math/Matrix4f.o"
 	@echo "... src/math/Matrix4f.i"
 	@echo "... src/math/Matrix4f.s"
@@ -774,6 +891,12 @@ help:
 	@echo "... src/system/Component.o"
 	@echo "... src/system/Component.i"
 	@echo "... src/system/Component.s"
+	@echo "... src/system/Display.o"
+	@echo "... src/system/Display.i"
+	@echo "... src/system/Display.s"
+	@echo "... src/system/InputManager.o"
+	@echo "... src/system/InputManager.i"
+	@echo "... src/system/InputManager.s"
 	@echo "... src/system/LightManager.o"
 	@echo "... src/system/LightManager.i"
 	@echo "... src/system/LightManager.s"
@@ -786,6 +909,18 @@ help:
 	@echo "... src/util/GLError.o"
 	@echo "... src/util/GLError.i"
 	@echo "... src/util/GLError.s"
+	@echo "... src/util/MaxQueue.o"
+	@echo "... src/util/MaxQueue.i"
+	@echo "... src/util/MaxQueue.s"
+	@echo "... src/util/Profiler.o"
+	@echo "... src/util/Profiler.i"
+	@echo "... src/util/Profiler.s"
+	@echo "... src/util/Time.o"
+	@echo "... src/util/Time.i"
+	@echo "... src/util/Time.s"
+	@echo "... src/util/Utils.o"
+	@echo "... src/util/Utils.i"
+	@echo "... src/util/Utils.s"
 .PHONY : help
 
 

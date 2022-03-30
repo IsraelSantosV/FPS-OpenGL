@@ -3,15 +3,15 @@ project(VoxEngine)
 
 add_definitions("-std=c++11")
 
-set(OpenGlLinkers -lglut -lGLU -lGL)
+set(OpenGlLinkers -lglut -lGLU -lGL -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(VoxEngine src/core/Application.cpp
         include/vox-engine/core/Application.h
-        src/core/Display.cpp
-        include/vox-engine/core/Display.h
-        src/core/InputManager.cpp
-        include/vox-engine/core/InputManager.h
+        src/system/Display.cpp
+        include/vox-engine/system/Display.h
+        src/system/InputManager.cpp
+        include/vox-engine/system/InputManager.h
         src/core/Config.cpp
         include/vox-engine/core/Config.h
         src/core/Entity.cpp
@@ -24,8 +24,8 @@ add_executable(VoxEngine src/core/Application.cpp
         include/vox-engine/system/SceneManager.h
         src/system/Component.cpp
         include/vox-engine/system/Component.h
-        src/component/Time.cpp
-        include/vox-engine/component/Time.h
+        src/util/Time.cpp
+        include/vox-engine/util/Time.h
         src/component/Light.cpp
         include/vox-engine/component/Light.h
         src/component/Camera.cpp
@@ -49,6 +49,6 @@ add_executable(VoxEngine src/core/Application.cpp
         src/resources/Scene.cpp
         include/vox-engine/resources/Scene.h
         src/resources/Texture.cpp
-        include/vox-engine/resources/Texture.h include/vox-engine/util/Logger.h src/util/GLError.cpp include/vox-engine/util/GLError.h src/resources/FilePath.cpp include/vox-engine/resources/FilePath.h)
+        include/vox-engine/resources/Texture.h include/vox-engine/util/Logger.h src/util/GLError.cpp include/vox-engine/util/GLError.h src/resources/FilePath.cpp include/vox-engine/resources/FilePath.h src/util/Utils.cpp include/vox-engine/util/Utils.h src/util/Profiler.cpp include/vox-engine/util/Profiler.h src/util/MaxQueue.cpp include/vox-engine/util/MaxQueue.h src/Main.cpp include/vox-engine/system/ISystem.h include/vox-engine/core/ApplicationVersion.h include/vox-engine/util/Resources.h)
 
 target_link_libraries(VoxEngine ${OpenGlLinkers})

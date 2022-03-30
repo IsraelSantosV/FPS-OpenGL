@@ -1,4 +1,4 @@
-/home/aluno/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/aluno/Downloads/Vox-Engine
+/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/zetta/Documentos/Programas/FPS-OpenGL
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/aluno/Downloads/Vox-Engine/cmake-build-debug
+-- Build files have been written to: /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug

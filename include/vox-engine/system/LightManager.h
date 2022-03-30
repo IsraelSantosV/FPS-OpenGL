@@ -5,8 +5,9 @@
 #ifndef VOXENGINE_LIGHTMANAGER_H
 #define VOXENGINE_LIGHTMANAGER_H
 
+#include "ISystem.h"
 
-class LightManager {
+class LightManager : public ISystem {
 
 };
 
