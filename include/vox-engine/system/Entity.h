@@ -1,6 +1,7 @@
 //
 // Created by Israel on 22/03/2022.
 //
+#pragma once
 
 #ifndef VOXENGINE_ENTITY_H
 #define VOXENGINE_ENTITY_H
@@ -9,14 +10,11 @@
 #include <unordered_map>
 #include <typeindex>
 
-#include "Transform.h"
-#include "Component.h"
 #include "Scene.h"
+#include "Transform.h"
 
 class Entity {
 public:
-    Entity(Scene scene, std::string basicString);
-
     Scene * parentScene;
     Transform* transform;
     std::string name;
@@ -27,7 +25,7 @@ public:
     template <class T>
     T* addComponent() {
         if (_componentMap.find(typeid(T)) != _componentMap.end()) {
-            Logger::errln(name, "Entity already contains Component");
+            Logger::errorln(name, "Entity already contains Component");
             return nullptr;
         }
 
@@ -41,14 +39,13 @@ public:
     template<class T>
     T* getComponent() {
         if (_componentMap.find(typeid(T)) == _componentMap.end()) {
-            for (std::unordered_map<std::type_index, Component *>::iterator it = _componentMap.begin();
-                 it != _componentMap.end(); ++it) {
-                if (typeid(T).hash_code() == it->second->getBaseType().hash_code()) {
-                    return (T *) it->second;
+            for (auto & it : _componentMap) {
+                if (typeid(T).hash_code() == it.second->getBaseType().hash_code()) {
+                    return (T *) it.second;
                 }
             }
 
-            Logger::errln("Component", typeid(T).name(), "could not be found!");
+            Logger::errorln("Component", typeid(T).name(), "could not be found!");
             return nullptr;
         }
 

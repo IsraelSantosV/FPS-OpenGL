@@ -7,7 +7,8 @@
 void Scene::unload() {
     OnUnload();
     for (auto & it : _entityList) {
-        (*it)->destroyComponents();
+        SceneManager::destroyComponentsFromEntity(it);
+        //(*it)->destroyComponents();
         delete it;
     }
 
@@ -15,27 +16,6 @@ void Scene::unload() {
 }
 
 void Scene::OnUnload() {}
-
-Entity* Scene::instantiate(std::string name) {
-    auto *entity = new Entity(*this, name);
-    addToList(entity);
-    entity->parentScene = this;
-    return entity;
-}
-
-Entity* Scene::getObjectByName(std::string name) {
-    std::vector<Entity *> entitys = SceneManager::getCurrentScene()->_entityList;
-    for (std::vector<Entity *>::iterator obj = entitys.begin(); obj != entitys.end(); ++obj) {
-        if ((*obj)->name.find(name) != std::string::npos || (*obj)->name.compare(name) == 0) {
-            return *obj;
-        }
-    }
-    return nullptr;
-}
-
-void Scene::destroy(Entity* go) {
-    go->destroy();
-}
 
 void Scene::addToList(Entity* go) {
     _entityList.push_back(go);

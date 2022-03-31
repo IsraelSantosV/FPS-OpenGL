@@ -23,10 +23,10 @@ void Application::init() {
     // Core Systems
     _display = new Display();
     _debugGUI = new DebugGUI();
-    _inputManager = new InputManager();
-    _logic = new Logic();
-    _lighting = new LightManager();
-    _sceneManager = new SceneManager();
+    //_inputManager = new InputManager();
+    //_logic = new Logic();
+    //_lighting = new LightManager();
+    //_sceneManager = new SceneManager();
     //_sceneManager->setSceneMap(sceneMap);
 
     // Helper
@@ -34,11 +34,11 @@ void Application::init() {
     _time = new Time();
 
     _systems.push_back(_display);
-    _systems.push_back(_sceneManager);
+    //_systems.push_back(_sceneManager);
     _systems.push_back(_debugGUI);
-    _systems.push_back(_inputManager);
-    _systems.push_back(_logic);
-    _systems.push_back(_lighting);
+    //_systems.push_back(_inputManager);
+    //_systems.push_back(_logic);
+    //_systems.push_back(_lighting);
 
     for (auto & _system : _systems) {
         _system->init(Config::profile);
@@ -54,7 +54,7 @@ void Application::init() {
 
 void Application::start() {
     Logger::hr();
-    Logger::logln("            LOADING SCENE ", SceneManager::getQueuedName(), "\n");
+    //Logger::logln("            LOADING SCENE ", SceneManager::getQueuedName(), "\n");
 
     for (auto & _system : _systems) {
         _system->start();
@@ -94,7 +94,7 @@ void Application::run() {
             lastSecond = 0;
         }
 
-        _inputManager->pollEvents();
+        /*_inputManager->pollEvents();
 
         // Update Physics
         _accumulatedTime += Time::deltaTime;
@@ -110,7 +110,7 @@ void Application::run() {
         _logic->lateUpdate();
 
         // Update input
-        _inputManager->update();
+        _inputManager->update();*/
 
         // Start Rendering
         _check_gl_error("Pre Frame", 0);
@@ -147,10 +147,10 @@ void Application::run() {
 
         ++flop;
 
-        _logic->tick();
+        //_logic->tick();
 
         // End of Frame
-        if (_sceneManager->sceneQueued()) {
+        /*if (_sceneManager->sceneQueued()) {
             //_sceneManager->unloadScene(SceneManager::getCurrentScene());
             reset();
             start();
@@ -159,7 +159,7 @@ void Application::run() {
             _accumulatedTime = 0;
             flop = -1;
             lastTime = Time::now();
-        }
+        }*/
     }
 }
 
@@ -182,11 +182,11 @@ void Application::destroy() {
 
     delete _time;
     delete _display;
-    delete _inputManager;
+    //delete _inputManager;
     delete _debugGUI;
-    delete _sceneManager;
-    delete _logic;
-    delete _lighting;
+    //delete _sceneManager;
+    //delete _logic;
+    //delete _lighting;
     delete _profiler;
     delete _config;
     delete _logger;

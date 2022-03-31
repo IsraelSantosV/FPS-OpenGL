@@ -6,7 +6,7 @@
 #define VOXENGINE_QUATERNION_H
 
 #include "Matrix4f.h"
-#include "Math.h"
+//#include "Math.h"
 #include <iostream>
 #include "../util/Logger.h"
 

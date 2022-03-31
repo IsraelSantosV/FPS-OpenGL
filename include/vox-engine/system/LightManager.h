@@ -8,7 +8,9 @@
 #include "ISystem.h"
 
 class LightManager : public ISystem {
-
+public:
+    void start() override;
+    void destroy() override;
 };
 
 

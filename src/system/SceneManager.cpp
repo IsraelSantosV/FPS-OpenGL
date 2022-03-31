@@ -88,3 +88,30 @@ void SceneManager::drawSceneList() {
     }
     ImGui::End();
 }
+
+Entity *SceneManager::instantiate(std::string name) {
+    Scene* currentScene = getCurrentScene();
+    auto *entity = new Entity(reinterpret_cast<Scene &>(currentScene, name));
+    currentScene->addToList(entity);
+    entity->parentScene = currentScene;
+    return entity;
+}
+
+Entity* SceneManager::getObjectByName(std::string name) {
+    std::vector<Entity *> entities = SceneManager::getCurrentScene()->getEntities();
+    for (auto & entity : entities) {
+        if (entity->name.find(name) != std::string::npos || entity->name == name) {
+            return entity;
+        }
+    }
+
+    return nullptr;
+}
+
+void SceneManager::destroyEntity(Entity* go) {
+    go->destroy();
+}
+
+void SceneManager::destroyComponentsFromEntity(Entity* go) {
+    go->destroyComponents();
+}

@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <cmath>
-#include "Math.h"
+//#include "Math.h"
 
 class Vector2f {
 public:

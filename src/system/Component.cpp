@@ -24,10 +24,6 @@ bool Component::getEnable() {
     return _isEnabled;
 }
 
-Transform * Component::getTransform() {
-    return transform;
-}
-
 Entity * Component::getEntity() {
     return entity;
 }

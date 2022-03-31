@@ -7,19 +7,17 @@
 
 #include <iostream>
 #include <typeindex>
-#include "Transform.h"
+#include "Entity.h"
 
 class Component {
 public:
     void setEnable(bool enable);
     std::string getName();
     bool getEnable();
-    Transform* getTransform();
     Entity* getEntity();
 
-    void setup(Entity* entity, Transform* transform){
+    void setup(Entity* entity){
         this->entity = entity;
-        this->transform = transform;
         init();
     }
 
@@ -31,7 +29,6 @@ public:
     virtual std::type_index getBaseType();
 protected:
     Entity* entity;
-    Transform* transform;
 private:
     bool _isEnabled = true;
 };

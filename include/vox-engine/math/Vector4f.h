@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Vector3f.h"
 #include "../util/Logger.h"
-#include "Math.h"
+//#include "Math.h"
 
 class Vector4f {
 public:

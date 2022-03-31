@@ -113,6 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -128,6 +129,198 @@ VoxEngine: cmake_check_build_system
 VoxEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build
 .PHONY : VoxEngine/fast
+
+imgui/imgui.o: imgui/imgui.cpp.o
+.PHONY : imgui/imgui.o
+
+# target to build an object file
+imgui/imgui.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui.cpp.o
+.PHONY : imgui/imgui.cpp.o
+
+imgui/imgui.i: imgui/imgui.cpp.i
+.PHONY : imgui/imgui.i
+
+# target to preprocess a source file
+imgui/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui.cpp.i
+.PHONY : imgui/imgui.cpp.i
+
+imgui/imgui.s: imgui/imgui.cpp.s
+.PHONY : imgui/imgui.s
+
+# target to generate assembly for a file
+imgui/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui.cpp.s
+.PHONY : imgui/imgui.cpp.s
+
+imgui/imgui_demo.o: imgui/imgui_demo.cpp.o
+.PHONY : imgui/imgui_demo.o
+
+# target to build an object file
+imgui/imgui_demo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_demo.cpp.o
+.PHONY : imgui/imgui_demo.cpp.o
+
+imgui/imgui_demo.i: imgui/imgui_demo.cpp.i
+.PHONY : imgui/imgui_demo.i
+
+# target to preprocess a source file
+imgui/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_demo.cpp.i
+.PHONY : imgui/imgui_demo.cpp.i
+
+imgui/imgui_demo.s: imgui/imgui_demo.cpp.s
+.PHONY : imgui/imgui_demo.s
+
+# target to generate assembly for a file
+imgui/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_demo.cpp.s
+.PHONY : imgui/imgui_demo.cpp.s
+
+imgui/imgui_draw.o: imgui/imgui_draw.cpp.o
+.PHONY : imgui/imgui_draw.o
+
+# target to build an object file
+imgui/imgui_draw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_draw.cpp.o
+.PHONY : imgui/imgui_draw.cpp.o
+
+imgui/imgui_draw.i: imgui/imgui_draw.cpp.i
+.PHONY : imgui/imgui_draw.i
+
+# target to preprocess a source file
+imgui/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_draw.cpp.i
+.PHONY : imgui/imgui_draw.cpp.i
+
+imgui/imgui_draw.s: imgui/imgui_draw.cpp.s
+.PHONY : imgui/imgui_draw.s
+
+# target to generate assembly for a file
+imgui/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_draw.cpp.s
+.PHONY : imgui/imgui_draw.cpp.s
+
+imgui/imgui_impl_glfw.o: imgui/imgui_impl_glfw.cpp.o
+.PHONY : imgui/imgui_impl_glfw.o
+
+# target to build an object file
+imgui/imgui_impl_glfw.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_glfw.cpp.o
+.PHONY : imgui/imgui_impl_glfw.cpp.o
+
+imgui/imgui_impl_glfw.i: imgui/imgui_impl_glfw.cpp.i
+.PHONY : imgui/imgui_impl_glfw.i
+
+# target to preprocess a source file
+imgui/imgui_impl_glfw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_glfw.cpp.i
+.PHONY : imgui/imgui_impl_glfw.cpp.i
+
+imgui/imgui_impl_glfw.s: imgui/imgui_impl_glfw.cpp.s
+.PHONY : imgui/imgui_impl_glfw.s
+
+# target to generate assembly for a file
+imgui/imgui_impl_glfw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_glfw.cpp.s
+.PHONY : imgui/imgui_impl_glfw.cpp.s
+
+imgui/imgui_impl_glut.o: imgui/imgui_impl_glut.cpp.o
+.PHONY : imgui/imgui_impl_glut.o
+
+# target to build an object file
+imgui/imgui_impl_glut.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_glut.cpp.o
+.PHONY : imgui/imgui_impl_glut.cpp.o
+
+imgui/imgui_impl_glut.i: imgui/imgui_impl_glut.cpp.i
+.PHONY : imgui/imgui_impl_glut.i
+
+# target to preprocess a source file
+imgui/imgui_impl_glut.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_glut.cpp.i
+.PHONY : imgui/imgui_impl_glut.cpp.i
+
+imgui/imgui_impl_glut.s: imgui/imgui_impl_glut.cpp.s
+.PHONY : imgui/imgui_impl_glut.s
+
+# target to generate assembly for a file
+imgui/imgui_impl_glut.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_glut.cpp.s
+.PHONY : imgui/imgui_impl_glut.cpp.s
+
+imgui/imgui_impl_opengl3.o: imgui/imgui_impl_opengl3.cpp.o
+.PHONY : imgui/imgui_impl_opengl3.o
+
+# target to build an object file
+imgui/imgui_impl_opengl3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_opengl3.cpp.o
+.PHONY : imgui/imgui_impl_opengl3.cpp.o
+
+imgui/imgui_impl_opengl3.i: imgui/imgui_impl_opengl3.cpp.i
+.PHONY : imgui/imgui_impl_opengl3.i
+
+# target to preprocess a source file
+imgui/imgui_impl_opengl3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_opengl3.cpp.i
+.PHONY : imgui/imgui_impl_opengl3.cpp.i
+
+imgui/imgui_impl_opengl3.s: imgui/imgui_impl_opengl3.cpp.s
+.PHONY : imgui/imgui_impl_opengl3.s
+
+# target to generate assembly for a file
+imgui/imgui_impl_opengl3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_impl_opengl3.cpp.s
+.PHONY : imgui/imgui_impl_opengl3.cpp.s
+
+imgui/imgui_tables.o: imgui/imgui_tables.cpp.o
+.PHONY : imgui/imgui_tables.o
+
+# target to build an object file
+imgui/imgui_tables.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_tables.cpp.o
+.PHONY : imgui/imgui_tables.cpp.o
+
+imgui/imgui_tables.i: imgui/imgui_tables.cpp.i
+.PHONY : imgui/imgui_tables.i
+
+# target to preprocess a source file
+imgui/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_tables.cpp.i
+.PHONY : imgui/imgui_tables.cpp.i
+
+imgui/imgui_tables.s: imgui/imgui_tables.cpp.s
+.PHONY : imgui/imgui_tables.s
+
+# target to generate assembly for a file
+imgui/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_tables.cpp.s
+.PHONY : imgui/imgui_tables.cpp.s
+
+imgui/imgui_widgets.o: imgui/imgui_widgets.cpp.o
+.PHONY : imgui/imgui_widgets.o
+
+# target to build an object file
+imgui/imgui_widgets.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_widgets.cpp.o
+.PHONY : imgui/imgui_widgets.cpp.o
+
+imgui/imgui_widgets.i: imgui/imgui_widgets.cpp.i
+.PHONY : imgui/imgui_widgets.i
+
+# target to preprocess a source file
+imgui/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_widgets.cpp.i
+.PHONY : imgui/imgui_widgets.cpp.i
+
+imgui/imgui_widgets.s: imgui/imgui_widgets.cpp.s
+.PHONY : imgui/imgui_widgets.s
+
+# target to generate assembly for a file
+imgui/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_widgets.cpp.s
+.PHONY : imgui/imgui_widgets.cpp.s
 
 src/Main.o: src/Main.cpp.o
 .PHONY : src/Main.o
@@ -225,30 +418,6 @@ src/component/Light.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Light.cpp.s
 .PHONY : src/component/Light.cpp.s
 
-src/component/Transform.o: src/component/Transform.cpp.o
-.PHONY : src/component/Transform.o
-
-# target to build an object file
-src/component/Transform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Transform.cpp.o
-.PHONY : src/component/Transform.cpp.o
-
-src/component/Transform.i: src/component/Transform.cpp.i
-.PHONY : src/component/Transform.i
-
-# target to preprocess a source file
-src/component/Transform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Transform.cpp.i
-.PHONY : src/component/Transform.cpp.i
-
-src/component/Transform.s: src/component/Transform.cpp.s
-.PHONY : src/component/Transform.s
-
-# target to generate assembly for a file
-src/component/Transform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Transform.cpp.s
-.PHONY : src/component/Transform.cpp.s
-
 src/core/Application.o: src/core/Application.cpp.o
 .PHONY : src/core/Application.o
 
@@ -297,29 +466,29 @@ src/core/Config.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Config.cpp.s
 .PHONY : src/core/Config.cpp.s
 
-src/core/Entity.o: src/core/Entity.cpp.o
-.PHONY : src/core/Entity.o
+src/math/Math.o: src/math/Math.cpp.o
+.PHONY : src/math/Math.o
 
 # target to build an object file
-src/core/Entity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Entity.cpp.o
-.PHONY : src/core/Entity.cpp.o
+src/math/Math.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/math/Math.cpp.o
+.PHONY : src/math/Math.cpp.o
 
-src/core/Entity.i: src/core/Entity.cpp.i
-.PHONY : src/core/Entity.i
+src/math/Math.i: src/math/Math.cpp.i
+.PHONY : src/math/Math.i
 
 # target to preprocess a source file
-src/core/Entity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Entity.cpp.i
-.PHONY : src/core/Entity.cpp.i
+src/math/Math.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/math/Math.cpp.i
+.PHONY : src/math/Math.cpp.i
 
-src/core/Entity.s: src/core/Entity.cpp.s
-.PHONY : src/core/Entity.s
+src/math/Math.s: src/math/Math.cpp.s
+.PHONY : src/math/Math.s
 
 # target to generate assembly for a file
-src/core/Entity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/core/Entity.cpp.s
-.PHONY : src/core/Entity.cpp.s
+src/math/Math.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/math/Math.cpp.s
+.PHONY : src/math/Math.cpp.s
 
 src/math/Matrix4f.o: src/math/Matrix4f.cpp.o
 .PHONY : src/math/Matrix4f.o
@@ -489,30 +658,6 @@ src/resources/FilePath.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FilePath.cpp.s
 .PHONY : src/resources/FilePath.cpp.s
 
-src/resources/Scene.o: src/resources/Scene.cpp.o
-.PHONY : src/resources/Scene.o
-
-# target to build an object file
-src/resources/Scene.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/Scene.cpp.o
-.PHONY : src/resources/Scene.cpp.o
-
-src/resources/Scene.i: src/resources/Scene.cpp.i
-.PHONY : src/resources/Scene.i
-
-# target to preprocess a source file
-src/resources/Scene.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/Scene.cpp.i
-.PHONY : src/resources/Scene.cpp.i
-
-src/resources/Scene.s: src/resources/Scene.cpp.s
-.PHONY : src/resources/Scene.s
-
-# target to generate assembly for a file
-src/resources/Scene.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/Scene.cpp.s
-.PHONY : src/resources/Scene.cpp.s
-
 src/resources/Texture.o: src/resources/Texture.cpp.o
 .PHONY : src/resources/Texture.o
 
@@ -609,6 +754,30 @@ src/system/Display.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Display.cpp.s
 .PHONY : src/system/Display.cpp.s
 
+src/system/Entity.o: src/system/Entity.cpp.o
+.PHONY : src/system/Entity.o
+
+# target to build an object file
+src/system/Entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Entity.cpp.o
+.PHONY : src/system/Entity.cpp.o
+
+src/system/Entity.i: src/system/Entity.cpp.i
+.PHONY : src/system/Entity.i
+
+# target to preprocess a source file
+src/system/Entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Entity.cpp.i
+.PHONY : src/system/Entity.cpp.i
+
+src/system/Entity.s: src/system/Entity.cpp.s
+.PHONY : src/system/Entity.s
+
+# target to generate assembly for a file
+src/system/Entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Entity.cpp.s
+.PHONY : src/system/Entity.cpp.s
+
 src/system/InputManager.o: src/system/InputManager.cpp.o
 .PHONY : src/system/InputManager.o
 
@@ -681,6 +850,54 @@ src/system/Logic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Logic.cpp.s
 .PHONY : src/system/Logic.cpp.s
 
+src/system/Models.o: src/system/Models.cpp.o
+.PHONY : src/system/Models.o
+
+# target to build an object file
+src/system/Models.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Models.cpp.o
+.PHONY : src/system/Models.cpp.o
+
+src/system/Models.i: src/system/Models.cpp.i
+.PHONY : src/system/Models.i
+
+# target to preprocess a source file
+src/system/Models.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Models.cpp.i
+.PHONY : src/system/Models.cpp.i
+
+src/system/Models.s: src/system/Models.cpp.s
+.PHONY : src/system/Models.s
+
+# target to generate assembly for a file
+src/system/Models.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Models.cpp.s
+.PHONY : src/system/Models.cpp.s
+
+src/system/Scene.o: src/system/Scene.cpp.o
+.PHONY : src/system/Scene.o
+
+# target to build an object file
+src/system/Scene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Scene.cpp.o
+.PHONY : src/system/Scene.cpp.o
+
+src/system/Scene.i: src/system/Scene.cpp.i
+.PHONY : src/system/Scene.i
+
+# target to preprocess a source file
+src/system/Scene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Scene.cpp.i
+.PHONY : src/system/Scene.cpp.i
+
+src/system/Scene.s: src/system/Scene.cpp.s
+.PHONY : src/system/Scene.s
+
+# target to generate assembly for a file
+src/system/Scene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Scene.cpp.s
+.PHONY : src/system/Scene.cpp.s
+
 src/system/SceneManager.o: src/system/SceneManager.cpp.o
 .PHONY : src/system/SceneManager.o
 
@@ -704,6 +921,30 @@ src/system/SceneManager.s: src/system/SceneManager.cpp.s
 src/system/SceneManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/SceneManager.cpp.s
 .PHONY : src/system/SceneManager.cpp.s
+
+src/system/Transform.o: src/system/Transform.cpp.o
+.PHONY : src/system/Transform.o
+
+# target to build an object file
+src/system/Transform.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Transform.cpp.o
+.PHONY : src/system/Transform.cpp.o
+
+src/system/Transform.i: src/system/Transform.cpp.i
+.PHONY : src/system/Transform.i
+
+# target to preprocess a source file
+src/system/Transform.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Transform.cpp.i
+.PHONY : src/system/Transform.cpp.i
+
+src/system/Transform.s: src/system/Transform.cpp.s
+.PHONY : src/system/Transform.s
+
+# target to generate assembly for a file
+src/system/Transform.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Transform.cpp.s
+.PHONY : src/system/Transform.cpp.s
 
 src/util/GLError.o: src/util/GLError.cpp.o
 .PHONY : src/util/GLError.o
@@ -834,6 +1075,30 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... VoxEngine"
+	@echo "... imgui/imgui.o"
+	@echo "... imgui/imgui.i"
+	@echo "... imgui/imgui.s"
+	@echo "... imgui/imgui_demo.o"
+	@echo "... imgui/imgui_demo.i"
+	@echo "... imgui/imgui_demo.s"
+	@echo "... imgui/imgui_draw.o"
+	@echo "... imgui/imgui_draw.i"
+	@echo "... imgui/imgui_draw.s"
+	@echo "... imgui/imgui_impl_glfw.o"
+	@echo "... imgui/imgui_impl_glfw.i"
+	@echo "... imgui/imgui_impl_glfw.s"
+	@echo "... imgui/imgui_impl_glut.o"
+	@echo "... imgui/imgui_impl_glut.i"
+	@echo "... imgui/imgui_impl_glut.s"
+	@echo "... imgui/imgui_impl_opengl3.o"
+	@echo "... imgui/imgui_impl_opengl3.i"
+	@echo "... imgui/imgui_impl_opengl3.s"
+	@echo "... imgui/imgui_tables.o"
+	@echo "... imgui/imgui_tables.i"
+	@echo "... imgui/imgui_tables.s"
+	@echo "... imgui/imgui_widgets.o"
+	@echo "... imgui/imgui_widgets.i"
+	@echo "... imgui/imgui_widgets.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
@@ -846,18 +1111,15 @@ help:
 	@echo "... src/component/Light.o"
 	@echo "... src/component/Light.i"
 	@echo "... src/component/Light.s"
-	@echo "... src/component/Transform.o"
-	@echo "... src/component/Transform.i"
-	@echo "... src/component/Transform.s"
 	@echo "... src/core/Application.o"
 	@echo "... src/core/Application.i"
 	@echo "... src/core/Application.s"
 	@echo "... src/core/Config.o"
 	@echo "... src/core/Config.i"
 	@echo "... src/core/Config.s"
-	@echo "... src/core/Entity.o"
-	@echo "... src/core/Entity.i"
-	@echo "... src/core/Entity.s"
+	@echo "... src/math/Math.o"
+	@echo "... src/math/Math.i"
+	@echo "... src/math/Math.s"
 	@echo "... src/math/Matrix4f.o"
 	@echo "... src/math/Matrix4f.i"
 	@echo "... src/math/Matrix4f.s"
@@ -879,9 +1141,6 @@ help:
 	@echo "... src/resources/FilePath.o"
 	@echo "... src/resources/FilePath.i"
 	@echo "... src/resources/FilePath.s"
-	@echo "... src/resources/Scene.o"
-	@echo "... src/resources/Scene.i"
-	@echo "... src/resources/Scene.s"
 	@echo "... src/resources/Texture.o"
 	@echo "... src/resources/Texture.i"
 	@echo "... src/resources/Texture.s"
@@ -894,6 +1153,9 @@ help:
 	@echo "... src/system/Display.o"
 	@echo "... src/system/Display.i"
 	@echo "... src/system/Display.s"
+	@echo "... src/system/Entity.o"
+	@echo "... src/system/Entity.i"
+	@echo "... src/system/Entity.s"
 	@echo "... src/system/InputManager.o"
 	@echo "... src/system/InputManager.i"
 	@echo "... src/system/InputManager.s"
@@ -903,9 +1165,18 @@ help:
 	@echo "... src/system/Logic.o"
 	@echo "... src/system/Logic.i"
 	@echo "... src/system/Logic.s"
+	@echo "... src/system/Models.o"
+	@echo "... src/system/Models.i"
+	@echo "... src/system/Models.s"
+	@echo "... src/system/Scene.o"
+	@echo "... src/system/Scene.i"
+	@echo "... src/system/Scene.s"
 	@echo "... src/system/SceneManager.o"
 	@echo "... src/system/SceneManager.i"
 	@echo "... src/system/SceneManager.s"
+	@echo "... src/system/Transform.o"
+	@echo "... src/system/Transform.i"
+	@echo "... src/system/Transform.s"
 	@echo "... src/util/GLError.o"
 	@echo "... src/util/GLError.i"
 	@echo "... src/util/GLError.s"
@@ -932,6 +1203,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

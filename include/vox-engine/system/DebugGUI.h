@@ -11,7 +11,6 @@
 
 #include "Display.h"
 #include "ISystem.h"
-#include "../component/Camera.h"
 #include "../util/Logger.h"
 
 class DebugGUI : public ISystem {

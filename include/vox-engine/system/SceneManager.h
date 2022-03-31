@@ -5,6 +5,7 @@
 #ifndef VOXENGINE_SCENEMANAGER_H
 #define VOXENGINE_SCENEMANAGER_H
 
+#include "Entity.h"
 #include "Scene.h"
 #include "ISystem.h"
 #include <iostream>
@@ -25,6 +26,11 @@ public:
 
     void start() override;
     void destroy() override;
+
+    static Entity* instantiate(std::string name);
+    static Entity* getObjectByName(std::string name);
+    static void destroyEntity(Entity* go);
+    static void destroyComponentsFromEntity(Entity* go);
 
     void loadSceneImmediately(const std::string &name);
     void loadQueuedScene();

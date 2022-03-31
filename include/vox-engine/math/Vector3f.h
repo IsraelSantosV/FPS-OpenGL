@@ -9,7 +9,7 @@
 #include "Vector2f.h"
 #include "../util/Logger.h"
 #include <cmath>
-#include "Math.h"
+//#include "Math.h"
 
 class Vector3f {
 public:

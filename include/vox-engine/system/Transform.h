@@ -5,7 +5,6 @@
 #ifndef VOXENGINE_TRANSFORM_H
 #define VOXENGINE_TRANSFORM_H
 
-#include <iostream>
 #include "../math/Quaternion.h"
 #include "../math/Matrix4f.h"
 #include "../math/Vector3f.h"

@@ -9,9 +9,9 @@
 
 #include "ISystem.h"
 #include "GLFW/glfw3.h"
-#include "../math/Vector2f.h"
 #include "Display.h"
 #include "../util/Time.h"
+#include "../math/Vector2f.h"
 
 class InputManager : public ISystem {
 public:

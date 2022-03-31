@@ -1,6 +1,7 @@
 //
 // Created by Israel on 22/03/2022.
 //
+#pragma once
 
 #ifndef VOXENGINE_SCENE_H
 #define VOXENGINE_SCENE_H
@@ -8,7 +9,8 @@
 #include <iostream>
 #include <vector>
 #include "SceneManager.h"
-#include "Entity.h"
+
+class Entity;
 
 class Scene {
 public:
@@ -16,16 +18,12 @@ public:
     virtual void OnUnload();
     void unload();
 
-    Entity* instantiate(std::string name);
-
-    void destroy(Entity* go);
+    void addToList(Entity* go);
     void removeFromList(Entity* go);
-    Entity* getObjectByName(std::string name);
+
     std::vector<Entity*>& getEntities();
 private:
     std::vector<Entity*> _entityList;
-
-    void addToList(Entity* go);
 };
 
 

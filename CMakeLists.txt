@@ -6,7 +6,10 @@ add_definitions("-std=c++11")
 set(OpenGlLinkers -lglut -lGLU -lGL -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor)
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(VoxEngine src/Main.cpp
+find_package(ZLIB)
+file(GLOB SRC CONFIGURE_DEPENDS "imgui/*.hpp" "imgui/*.cpp")
+
+add_executable(VoxEngine src/Main.cpp ${SRC} imgui/imgui.cpp
         src/core/Application.cpp
         include/vox-engine/core/Application.h
         src/system/Display.cpp
@@ -64,6 +67,11 @@ add_executable(VoxEngine src/Main.cpp
         include/vox-engine/util/MaxQueue.h
         include/vox-engine/system/ISystem.h
         include/vox-engine/core/ApplicationVersion.h
-        include/vox-engine/util/Resources.h include/vox-engine/math/Math.h src/system/DebugGUI.cpp include/vox-engine/system/DebugGUI.h include/vox-engine/system/IBehaviour.h)
+        include/vox-engine/util/Resources.h
+        include/vox-engine/math/Math.h
+        src/system/DebugGUI.cpp
+        include/vox-engine/system/DebugGUI.h
+        include/vox-engine/system/IBehaviour.h
+        src/math/Math.cpp src/system/Models.cpp include/vox-engine/system/Models.h)
 
-target_link_libraries(VoxEngine ${OpenGlLinkers})
+target_link_libraries(VoxEngine ${OpenGlLinkers} ZLIB::ZLIB)

@@ -21,7 +21,6 @@
 #include <iostream>
 #include "Vector3f.h"
 #include "Vector4f.h"
-#include "Math.h"
 
 class Matrix4f {
 public:

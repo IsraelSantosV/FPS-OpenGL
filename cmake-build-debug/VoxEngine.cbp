@@ -84,6 +84,42 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_demo.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_draw.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_impl_glfw.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_impl_glfw.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_impl_glut.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_impl_glut.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_impl_opengl3.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_impl_opengl3.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_tables.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/imgui/imgui_widgets.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/component/Behaviour.h">
 			<Option target="VoxEngine"/>
 		</Unit>
@@ -93,9 +129,6 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/component/Light.h">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/component/Transform.h">
-			<Option target="VoxEngine"/>
-		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/core/Application.h">
 			<Option target="VoxEngine"/>
 		</Unit>
@@ -103,9 +136,6 @@
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/core/Config.h">
-			<Option target="VoxEngine"/>
-		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/core/Entity.h">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/math/Math.h">
@@ -132,9 +162,6 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/resources/FilePath.h">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/resources/Scene.h">
-			<Option target="VoxEngine"/>
-		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/resources/Texture.h">
 			<Option target="VoxEngine"/>
 		</Unit>
@@ -147,10 +174,10 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/Display.h">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/IBehaviour.h">
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/Entity.h">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/IComponent.h">
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/IBehaviour.h">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/ISystem.h">
@@ -165,7 +192,13 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/Logic.h">
 			<Option target="VoxEngine"/>
 		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/Scene.h">
+			<Option target="VoxEngine"/>
+		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/SceneManager.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/system/Transform.h">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/include/vox-engine/util/GLError.h">
@@ -201,16 +234,13 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/component/Light.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/component/Transform.cpp">
-			<Option target="VoxEngine"/>
-		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/core/Application.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/core/Config.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/core/Entity.cpp">
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/math/Math.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/math/Matrix4f.cpp">
@@ -234,9 +264,6 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/resources/FilePath.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
-		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/resources/Scene.cpp">
-			<Option target="VoxEngine"/>
-		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/resources/Texture.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
@@ -249,6 +276,9 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Display.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Entity.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/InputManager.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
@@ -258,7 +288,19 @@
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Logic.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Models.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Models.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Scene.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/SceneManager.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/system/Transform.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/src/util/GLError.cpp">
