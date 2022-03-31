@@ -22,6 +22,7 @@ void Application::init() {
 
     // Core Systems
     _display = new Display();
+    _debugGUI = new DebugGUI();
     _inputManager = new InputManager();
     _logic = new Logic();
     _lighting = new LightManager();
@@ -34,6 +35,7 @@ void Application::init() {
 
     _systems.push_back(_display);
     _systems.push_back(_sceneManager);
+    _systems.push_back(_debugGUI);
     _systems.push_back(_inputManager);
     _systems.push_back(_logic);
     _systems.push_back(_lighting);
@@ -123,6 +125,10 @@ void Application::run() {
         // Refeed position updates to physics system
         //_physics->refeed();
 
+        _debugGUI->render();
+        _debugGUI->newFrame();
+        _check_gl_error("debugGUI", 0);
+
         // Stop Rendering
         Display::swapBuffer();
         //_renderer->clearDrawCalls();
@@ -135,7 +141,7 @@ void Application::run() {
 
         if (flop == -1) {
             Logger::infoln("Generate Lighting!");
-            LightManager::generate();
+            //LightManager::generate();
             //_renderer->_shadowsAreDirty = true;
         }
 
@@ -170,13 +176,14 @@ void Application::reset() {
 }
 
 void Application::destroy() {
-    for (auto & _system : std::ranges::reverse_view(_systems)) {
+    for (auto & _system : _systems) {
         _system->destroy();
     }
 
     delete _time;
     delete _display;
     delete _inputManager;
+    delete _debugGUI;
     delete _sceneManager;
     delete _logic;
     delete _lighting;

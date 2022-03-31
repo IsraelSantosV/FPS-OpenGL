@@ -17,5 +17,25 @@ namespace Utils {
         }
         output.push_back(s);
     }
+
+    unsigned char* loadIcon(const std::string& fileName, int& width, int& height) {
+        int numComponents;
+        unsigned char *data = stbi_load((fileName).c_str(), &width, &height, &numComponents, 4);
+
+        if (data == nullptr){
+            Logger::errorln("Unable to load Icon:", fileName);
+        }
+
+        return data;
+    }
+
+    void freeIcon(unsigned char* data) {
+        if (data == nullptr) {
+            Logger::errorln("Unable to free icon");
+            return;
+        }
+
+        stbi_image_free(data);
+    }
 }
 

@@ -4,9 +4,10 @@ project(VoxEngine)
 add_definitions("-std=c++11")
 
 set(OpenGlLinkers -lglut -lGLU -lGL -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor)
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 11)
 
-add_executable(VoxEngine src/core/Application.cpp
+add_executable(VoxEngine src/Main.cpp
+        src/core/Application.cpp
         include/vox-engine/core/Application.h
         src/system/Display.cpp
         include/vox-engine/system/Display.h
@@ -14,8 +15,8 @@ add_executable(VoxEngine src/core/Application.cpp
         include/vox-engine/system/InputManager.h
         src/core/Config.cpp
         include/vox-engine/core/Config.h
-        src/core/Entity.cpp
-        include/vox-engine/core/Entity.h
+        src/system/Entity.cpp
+        include/vox-engine/system/Entity.h
         src/system/LightManager.cpp
         include/vox-engine/system/LightManager.h
         src/system/Logic.cpp
@@ -30,8 +31,8 @@ add_executable(VoxEngine src/core/Application.cpp
         include/vox-engine/component/Light.h
         src/component/Camera.cpp
         include/vox-engine/component/Camera.h
-        src/component/Transform.cpp
-        include/vox-engine/component/Transform.h
+        src/system/Transform.cpp
+        include/vox-engine/system/Transform.h
         src/component/Behaviour.cpp
         include/vox-engine/component/Behaviour.h
         src/math/Matrix4f.cpp
@@ -46,9 +47,23 @@ add_executable(VoxEngine src/core/Application.cpp
         include/vox-engine/math/Vector4f.h
         src/resources/Animator.cpp
         include/vox-engine/resources/Animator.h
-        src/resources/Scene.cpp
-        include/vox-engine/resources/Scene.h
+        src/system/Scene.cpp
+        include/vox-engine/system/Scene.h
         src/resources/Texture.cpp
-        include/vox-engine/resources/Texture.h include/vox-engine/util/Logger.h src/util/GLError.cpp include/vox-engine/util/GLError.h src/resources/FilePath.cpp include/vox-engine/resources/FilePath.h src/util/Utils.cpp include/vox-engine/util/Utils.h src/util/Profiler.cpp include/vox-engine/util/Profiler.h src/util/MaxQueue.cpp include/vox-engine/util/MaxQueue.h src/Main.cpp include/vox-engine/system/ISystem.h include/vox-engine/core/ApplicationVersion.h include/vox-engine/util/Resources.h)
+        include/vox-engine/resources/Texture.h
+        include/vox-engine/util/Logger.h
+        src/util/GLError.cpp
+        include/vox-engine/util/GLError.h
+        src/resources/FilePath.cpp
+        include/vox-engine/resources/FilePath.h
+        src/util/Utils.cpp
+        include/vox-engine/util/Utils.h
+        src/util/Profiler.cpp
+        include/vox-engine/util/Profiler.h
+        src/util/MaxQueue.cpp
+        include/vox-engine/util/MaxQueue.h
+        include/vox-engine/system/ISystem.h
+        include/vox-engine/core/ApplicationVersion.h
+        include/vox-engine/util/Resources.h include/vox-engine/math/Math.h src/system/DebugGUI.cpp include/vox-engine/system/DebugGUI.h include/vox-engine/system/IBehaviour.h)
 
 target_link_libraries(VoxEngine ${OpenGlLinkers})

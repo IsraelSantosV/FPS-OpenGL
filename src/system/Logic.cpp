@@ -3,3 +3,57 @@
 //
 
 #include "../../include/vox-engine/system/Logic.h"
+
+std::vector<IBehaviour*> Logic::_behaviourList;
+unsigned long int ::Logic::_tickIndex;
+
+void Logic::start() {
+    for (auto & it : _behaviourList) {
+        it->Start();
+    }
+}
+
+void Logic::reset() {
+    _tickIndex = 0;
+}
+
+void Logic::update() {
+    for (auto & it : _behaviourList) {
+        if (it->getEnable())
+            it->Update();
+    }
+}
+
+void Logic::tick() {
+    ++_tickIndex;
+}
+
+void Logic::fixedUpdate() {
+    for (auto & it : _behaviourList) {
+        if (it->getEnable())
+            it->FixedUpdate();
+    }
+}
+
+void Logic::lateUpdate() {
+    for (auto & it : _behaviourList) {
+        if (it->getEnable())
+            it->LateUpdate();
+    }
+}
+
+void Logic::destroy() {
+    _behaviourList.clear();
+}
+
+void Logic::removeFromList(IBehaviour* behaviour) {
+    _behaviourList.erase(std::remove(_behaviourList.begin(), _behaviourList.end(), behaviour), _behaviourList.end());
+}
+
+void Logic::addToUpdateList(IBehaviour* behaviour) {
+    _behaviourList.push_back(behaviour);
+}
+
+unsigned long int Logic::getTickIndex() {
+    return _tickIndex;
+}

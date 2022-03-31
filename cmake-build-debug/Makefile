@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL
+CMAKE_SOURCE_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
+CMAKE_BINARY_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -78,7 +78,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -128,30 +128,6 @@ VoxEngine: cmake_check_build_system
 VoxEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build
 .PHONY : VoxEngine/fast
-
-include/vox-engine/util/Resources.o: include/vox-engine/util/Resources.cpp.o
-.PHONY : include/vox-engine/util/Resources.o
-
-# target to build an object file
-include/vox-engine/util/Resources.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/include/vox-engine/util/Resources.cpp.o
-.PHONY : include/vox-engine/util/Resources.cpp.o
-
-include/vox-engine/util/Resources.i: include/vox-engine/util/Resources.cpp.i
-.PHONY : include/vox-engine/util/Resources.i
-
-# target to preprocess a source file
-include/vox-engine/util/Resources.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/include/vox-engine/util/Resources.cpp.i
-.PHONY : include/vox-engine/util/Resources.cpp.i
-
-include/vox-engine/util/Resources.s: include/vox-engine/util/Resources.cpp.s
-.PHONY : include/vox-engine/util/Resources.s
-
-# target to generate assembly for a file
-include/vox-engine/util/Resources.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/include/vox-engine/util/Resources.cpp.s
-.PHONY : include/vox-engine/util/Resources.cpp.s
 
 src/Main.o: src/Main.cpp.o
 .PHONY : src/Main.o
@@ -585,6 +561,30 @@ src/system/Component.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Component.cpp.s
 .PHONY : src/system/Component.cpp.s
 
+src/system/DebugGUI.o: src/system/DebugGUI.cpp.o
+.PHONY : src/system/DebugGUI.o
+
+# target to build an object file
+src/system/DebugGUI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/DebugGUI.cpp.o
+.PHONY : src/system/DebugGUI.cpp.o
+
+src/system/DebugGUI.i: src/system/DebugGUI.cpp.i
+.PHONY : src/system/DebugGUI.i
+
+# target to preprocess a source file
+src/system/DebugGUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/DebugGUI.cpp.i
+.PHONY : src/system/DebugGUI.cpp.i
+
+src/system/DebugGUI.s: src/system/DebugGUI.cpp.s
+.PHONY : src/system/DebugGUI.s
+
+# target to generate assembly for a file
+src/system/DebugGUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/DebugGUI.cpp.s
+.PHONY : src/system/DebugGUI.cpp.s
+
 src/system/Display.o: src/system/Display.cpp.o
 .PHONY : src/system/Display.o
 
@@ -834,9 +834,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... VoxEngine"
-	@echo "... include/vox-engine/util/Resources.o"
-	@echo "... include/vox-engine/util/Resources.i"
-	@echo "... include/vox-engine/util/Resources.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
@@ -891,6 +888,9 @@ help:
 	@echo "... src/system/Component.o"
 	@echo "... src/system/Component.i"
 	@echo "... src/system/Component.s"
+	@echo "... src/system/DebugGUI.o"
+	@echo "... src/system/DebugGUI.i"
+	@echo "... src/system/DebugGUI.s"
 	@echo "... src/system/Display.o"
 	@echo "... src/system/Display.i"
 	@echo "... src/system/Display.s"

@@ -16,7 +16,7 @@
 
 #include "../system/ISystem.h"
 #include "../util/Time.h"
-#include "../../include/vox-engine/core/ApplicationVersion.h"
+#include "ApplicationVersion.h"
 #include "../system/SceneManager.h"
 #include "../system/Logic.h"
 #include "../system/LightManager.h"
@@ -38,6 +38,7 @@ private:
     Time *_time;
     Display *_display;
     InputManager *_inputManager;
+    DebugGUI *_debugGUI;
     SceneManager *_sceneManager;
     Logic *_logic;
     LightManager *_lighting;

@@ -9,6 +9,7 @@
 #include <limits>
 #include <iostream>
 #include <string>
+#include "../system/DebugGUI.h"
 
 #define FRAME_WINDOW_SIZE 30
 

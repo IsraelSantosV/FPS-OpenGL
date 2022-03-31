@@ -42,5 +42,8 @@ void Profiler::startProfiling() {
 
 void Profiler::drawGraph() {
     std::string fps = "FPS " + std::to_string((int) _frames.getLast());
-    //TODO -> USE HISTOGRAM TO SHOW FPS GRAPH
+
+    ImGui::Begin("FPS Graph");
+    ImGui::PlotHistogram(fps.c_str(), _frames.getStart(), FRAME_WINDOW_SIZE, 0, NULL, 0, _frames.getMax() + 20, ImVec2(180, 50));
+    ImGui::End();
 }
