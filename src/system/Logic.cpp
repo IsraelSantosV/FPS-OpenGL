@@ -4,7 +4,7 @@
 
 #include "../../include/vox-engine/system/Logic.h"
 
-std::vector<IBehaviour*> Logic::_behaviourList;
+std::vector<Behaviour*> Logic::_behaviourList;
 unsigned long int ::Logic::_tickIndex;
 
 void Logic::start() {
@@ -46,11 +46,11 @@ void Logic::destroy() {
     _behaviourList.clear();
 }
 
-void Logic::removeFromList(IBehaviour* behaviour) {
+void Logic::removeFromList(Behaviour* behaviour) {
     _behaviourList.erase(std::remove(_behaviourList.begin(), _behaviourList.end(), behaviour), _behaviourList.end());
 }
 
-void Logic::addToUpdateList(IBehaviour* behaviour) {
+void Logic::addToUpdateList(Behaviour* behaviour) {
     _behaviourList.push_back(behaviour);
 }
 

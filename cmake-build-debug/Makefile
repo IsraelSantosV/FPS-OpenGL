@@ -394,6 +394,30 @@ src/component/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Camera.cpp.s
 .PHONY : src/component/Camera.cpp.s
 
+src/component/Component.o: src/component/Component.cpp.o
+.PHONY : src/component/Component.o
+
+# target to build an object file
+src/component/Component.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Component.cpp.o
+.PHONY : src/component/Component.cpp.o
+
+src/component/Component.i: src/component/Component.cpp.i
+.PHONY : src/component/Component.i
+
+# target to preprocess a source file
+src/component/Component.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Component.cpp.i
+.PHONY : src/component/Component.cpp.i
+
+src/component/Component.s: src/component/Component.cpp.s
+.PHONY : src/component/Component.s
+
+# target to generate assembly for a file
+src/component/Component.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Component.cpp.s
+.PHONY : src/component/Component.cpp.s
+
 src/component/Light.o: src/component/Light.cpp.o
 .PHONY : src/component/Light.o
 
@@ -682,30 +706,6 @@ src/resources/Texture.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/Texture.cpp.s
 .PHONY : src/resources/Texture.cpp.s
 
-src/system/Component.o: src/system/Component.cpp.o
-.PHONY : src/system/Component.o
-
-# target to build an object file
-src/system/Component.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Component.cpp.o
-.PHONY : src/system/Component.cpp.o
-
-src/system/Component.i: src/system/Component.cpp.i
-.PHONY : src/system/Component.i
-
-# target to preprocess a source file
-src/system/Component.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Component.cpp.i
-.PHONY : src/system/Component.cpp.i
-
-src/system/Component.s: src/system/Component.cpp.s
-.PHONY : src/system/Component.s
-
-# target to generate assembly for a file
-src/system/Component.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Component.cpp.s
-.PHONY : src/system/Component.cpp.s
-
 src/system/DebugGUI.o: src/system/DebugGUI.cpp.o
 .PHONY : src/system/DebugGUI.o
 
@@ -849,30 +849,6 @@ src/system/Logic.s: src/system/Logic.cpp.s
 src/system/Logic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Logic.cpp.s
 .PHONY : src/system/Logic.cpp.s
-
-src/system/Models.o: src/system/Models.cpp.o
-.PHONY : src/system/Models.o
-
-# target to build an object file
-src/system/Models.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Models.cpp.o
-.PHONY : src/system/Models.cpp.o
-
-src/system/Models.i: src/system/Models.cpp.i
-.PHONY : src/system/Models.i
-
-# target to preprocess a source file
-src/system/Models.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Models.cpp.i
-.PHONY : src/system/Models.cpp.i
-
-src/system/Models.s: src/system/Models.cpp.s
-.PHONY : src/system/Models.s
-
-# target to generate assembly for a file
-src/system/Models.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Models.cpp.s
-.PHONY : src/system/Models.cpp.s
 
 src/system/Scene.o: src/system/Scene.cpp.o
 .PHONY : src/system/Scene.o
@@ -1108,6 +1084,9 @@ help:
 	@echo "... src/component/Camera.o"
 	@echo "... src/component/Camera.i"
 	@echo "... src/component/Camera.s"
+	@echo "... src/component/Component.o"
+	@echo "... src/component/Component.i"
+	@echo "... src/component/Component.s"
 	@echo "... src/component/Light.o"
 	@echo "... src/component/Light.i"
 	@echo "... src/component/Light.s"
@@ -1144,9 +1123,6 @@ help:
 	@echo "... src/resources/Texture.o"
 	@echo "... src/resources/Texture.i"
 	@echo "... src/resources/Texture.s"
-	@echo "... src/system/Component.o"
-	@echo "... src/system/Component.i"
-	@echo "... src/system/Component.s"
 	@echo "... src/system/DebugGUI.o"
 	@echo "... src/system/DebugGUI.i"
 	@echo "... src/system/DebugGUI.s"
@@ -1165,9 +1141,6 @@ help:
 	@echo "... src/system/Logic.o"
 	@echo "... src/system/Logic.i"
 	@echo "... src/system/Logic.s"
-	@echo "... src/system/Models.o"
-	@echo "... src/system/Models.i"
-	@echo "... src/system/Models.s"
 	@echo "... src/system/Scene.o"
 	@echo "... src/system/Scene.i"
 	@echo "... src/system/Scene.s"

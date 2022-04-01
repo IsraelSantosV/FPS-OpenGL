@@ -6,8 +6,6 @@
 #include "../include/vox-engine/core/Application.h"
 
 int main(int argc, char* argv[]){
-    Logger::infoln("Hello VoxEngine!");
-
     Application* voxApplication = new Application();
     voxApplication->init();
     voxApplication->run();

@@ -6,22 +6,18 @@
 
 int Entity::_idCnt = 0;
 
-Entity::Entity(Scene &_scene) {
-    Entity(_scene, "Entity");
-}
-
-Entity::Entity(Scene &_scene, std::string _name) {
+Entity::Entity(std::string _name) {
     _componentMap = std::unordered_map<std::type_index, Component *>();
     name = _name;
     _id = Entity::_idCnt++;
     _isEnabled = true;
     _isStatic = true;
     transform = addComponent<Transform>();
+    transform->setup(this);
 }
 
 void Entity::destroyComponents() {
-    for (auto it = _componentMap.begin();
-         it != _componentMap.end();) {
+    for (auto it = _componentMap.begin(); it != _componentMap.end();) {
         Component *c = _componentMap[(it->first)];
         c->destroy();
         it = _componentMap.erase(it);
@@ -36,7 +32,6 @@ void Entity::destroy() {
     }
 
     destroyComponents();
-    parentScene->removeFromList(this);
 }
 
 int Entity::getId() {

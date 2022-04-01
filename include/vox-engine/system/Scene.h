@@ -8,9 +8,7 @@
 
 #include <iostream>
 #include <vector>
-#include "SceneManager.h"
-
-class Entity;
+#include "Entity.h"
 
 class Scene {
 public:
@@ -18,12 +16,14 @@ public:
     virtual void OnUnload();
     void unload();
 
-    void addToList(Entity* go);
-    void removeFromList(Entity* go);
-
-    std::vector<Entity*>& getEntities();
+    Entity *instantiate(std::string name);
+    void destroy(Entity *go);
+    void removeFromList(Entity *go);
+    Entity *getObjectByName(std::string name);
+    std::vector<Entity *> &getEntities();
 private:
-    std::vector<Entity*> _entityList;
+    std::vector<Entity *> _entityList;
+    void addToList(Entity *go);
 };
 
 

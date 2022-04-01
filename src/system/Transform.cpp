@@ -62,8 +62,8 @@ void Transform::removeChild(Transform * child) {
 void Transform::renderHandels() {
     {
         ImGui::BeginGroup();
-        ImGui::TextUnformatted(entity->name.c_str());
-        ImGui::SliderFloat3(("Pos##" + entity->name).c_str(), &(_position[0]), -10, 10);
+        //ImGui::TextUnformatted(entity->name.c_str());
+        //ImGui::SliderFloat3(("Pos##" + entity->name).c_str(), &(_position[0]), -10, 10);
         //ImGui::SliderFloat4("Rotation", &(_rotation[0]), -10, 10);
         setChanged();
         ImGui::EndGroup();
@@ -130,10 +130,6 @@ void Transform::setParent(Transform *parent) {
         parent->_children.push_back(this);
 
     setChanged();
-}
-
-void Transform::setParent(Entity *_entity) {
-    setParent(_entity->transform);
 }
 
 void Transform::rotate(Quaternion quat) {

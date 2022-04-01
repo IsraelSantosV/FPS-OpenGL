@@ -10,9 +10,9 @@
 
 namespace Resources {
 #if BUILD_MODE
-    const std::string ENGINE_RESOURCES = "./res";
+    const std::string ENGINE_RESOURCES = "./resources";
 #else
-    const std::string ENGINE_RESOURCES = "./ve_res";
+    const std::string ENGINE_RESOURCES = "./ve_resources";
 #endif
 };
 

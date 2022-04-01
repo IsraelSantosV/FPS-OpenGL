@@ -47,10 +47,10 @@ void Display::init(Config::Profile profile) {
     glfwMakeContextCurrent(_window);
 
     // Set Icon
-    /*GLFWimage icon[1];
-    icon[0].pixels = Util::loadIcon(Resources::ENGINE_RESOURCES + "/logo.png", icon[0].width, icon[0].height);
+    GLFWimage icon[1];
+    icon[0].pixels = Utils::loadIcon(Resources::ENGINE_RESOURCES + "/logo.png", icon[0].width, icon[0].height);
     glfwSetWindowIcon(_window, 1, icon);
-    Util::freeIcon(icon[0].pixels);*/
+    Utils::freeIcon(icon[0].pixels);
 
     setVSync(profile.vsync);
     _isRunning = true;

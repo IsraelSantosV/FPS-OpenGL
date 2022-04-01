@@ -6,6 +6,7 @@
 #define VOXENGINE_DISPLAY_H
 
 #include "ISystem.h"
+#include "../util/Resources.h"
 #include <GLFW/glfw3.h>
 
 class Display : public ISystem {

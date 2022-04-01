@@ -3,6 +3,7 @@ project(VoxEngine)
 
 add_definitions("-std=c++11")
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(OpenGlLinkers -lglut -lGLU -lGL -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor)
 set(CMAKE_CXX_STANDARD 11)
 
@@ -26,8 +27,8 @@ add_executable(VoxEngine src/Main.cpp ${SRC} imgui/imgui.cpp
         include/vox-engine/system/Logic.h
         src/system/SceneManager.cpp
         include/vox-engine/system/SceneManager.h
-        src/system/Component.cpp
-        include/vox-engine/system/Component.h
+        src/component/Component.cpp
+        include/vox-engine/component/Component.h
         src/util/Time.cpp
         include/vox-engine/util/Time.h
         src/component/Light.cpp
@@ -71,7 +72,6 @@ add_executable(VoxEngine src/Main.cpp ${SRC} imgui/imgui.cpp
         include/vox-engine/math/Math.h
         src/system/DebugGUI.cpp
         include/vox-engine/system/DebugGUI.h
-        include/vox-engine/system/IBehaviour.h
-        src/math/Math.cpp src/system/Models.cpp include/vox-engine/system/Models.h)
+        src/math/Math.cpp)
 
 target_link_libraries(VoxEngine ${OpenGlLinkers} ZLIB::ZLIB)

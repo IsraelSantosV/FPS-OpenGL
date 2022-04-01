@@ -8,8 +8,8 @@
 #include "../math/Quaternion.h"
 #include "../math/Matrix4f.h"
 #include "../math/Vector3f.h"
-#include "Logic.h"
 #include "DebugGUI.h"
+#include "Logic.h"
 
 class Transform : public Component {
 public:
@@ -18,7 +18,6 @@ public:
     void setRotation(Quaternion rotation);
     void setScale(Vector3f scale);
     void setParent(Transform *_parent);
-    void setParent(Entity *_entity);
     void rotate(Quaternion quat);
     Matrix4f getRotationMatrix();
     Quaternion getRotation();

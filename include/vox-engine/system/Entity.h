@@ -1,7 +1,6 @@
 //
 // Created by Israel on 22/03/2022.
 //
-#pragma once
 
 #ifndef VOXENGINE_ENTITY_H
 #define VOXENGINE_ENTITY_H
@@ -9,18 +8,15 @@
 #include <iostream>
 #include <unordered_map>
 #include <typeindex>
-
-#include "Scene.h"
 #include "Transform.h"
 
 class Entity {
 public:
-    Scene * parentScene;
     Transform* transform;
     std::string name;
 
-    Entity(Scene &_scene);
-    Entity(Scene &_scene, std::string _name);
+    Entity() = default;
+    Entity(std::string _name);
 
     template <class T>
     T* addComponent() {
@@ -30,7 +26,7 @@ public:
         }
 
         T *c = new T();
-        c->setup(this, transform);
+        c->setup(this);
 
         _componentMap.insert(std::pair<std::type_index, Component *>(typeid(T), c));
         return c;
