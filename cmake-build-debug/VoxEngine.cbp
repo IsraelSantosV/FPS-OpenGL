@@ -187,7 +187,13 @@
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/resources/FilePath.h">
 			<Option target="VoxEngine"/>
 		</Unit>
+		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/resources/FrameBuffer.h">
+			<Option target="VoxEngine"/>
+		</Unit>
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/resources/Texture.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/resources/Vertex.h">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/system/DebugGUI.h">
@@ -200,6 +206,9 @@
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/system/ISystem.h">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/system/ImageBuffer.h">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/include/vox-engine/system/InputManager.h">
@@ -284,6 +293,9 @@
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/src/resources/FilePath.cpp">
+			<Option target="VoxEngine"/>
+		</Unit>
+		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/src/resources/FrameBuffer.cpp">
 			<Option target="VoxEngine"/>
 		</Unit>
 		<Unit filename="/home/zetta/Documentos/Programas/FPS-OpenGL/src/resources/Texture.cpp">

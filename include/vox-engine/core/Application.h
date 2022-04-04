@@ -21,6 +21,7 @@
 #include "../system/Logic.h"
 #include "../system/LightManager.h"
 #include "../system/Renderer.h"
+#include "../resources/FrameBuffer.h"
 
 class Application {
 public:

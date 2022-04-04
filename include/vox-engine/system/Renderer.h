@@ -5,6 +5,10 @@
 #ifndef VOXENGINE_RENDERER_H
 #define VOXENGINE_RENDERER_H
 
+#define GL_GLEXT_PROTOTYPES
+#define GLEW_STATIC
+
+#include <GL/freeglut.h>
 #include <GLFW/glfw3.h>
 
 #include <vector>
@@ -13,6 +17,7 @@
 #include "../component/ObjectRenderer.h"
 #include "ISystem.h"
 #include "../component/Camera.h"
+#include "../resources/FrameBuffer.h"
 
 class Renderer : public ISystem {
 public:
@@ -23,6 +28,9 @@ public:
     static Vector3f getClearColor() { return _clearColor; }
     static void addDrawCall();
     static int getDrawCalls() { return _drawCalls; }
+    static FrameBuffer* getMainFrameBuffer() { return _mainFrameBuffer; }
+    static FrameBuffer* getGBuffer() { return _gBuffer; }
+    static FrameBuffer* getDebugBuffer() { return _gizmoBuffer; }
     static void addToRenderQueue(ObjectRenderer* renderer);
     static void removeFromRenderQueue(ObjectRenderer* renderer);
 
@@ -44,6 +52,10 @@ private:
     static int _debugMode;
     static std::vector<ObjectRenderer*> _renderList;
     static Vector3f _clearColor;
+
+    static FrameBuffer* _mainFrameBuffer;
+    static FrameBuffer* _gBuffer;
+    static FrameBuffer* _gizmoBuffer;
 
     static void renderObjects();
 };

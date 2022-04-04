@@ -78,6 +78,6 @@ add_executable(VoxEngine build/Sandbox/Main.cpp ${SRC} imgui/imgui.cpp
         include/vox-engine/resources/BoundingSphere.h
         include/vox-engine/component/CustomMesh.h
         build/VoxEngineCore.h
-        build/Sandbox/Scenes/SampleScene.cpp build/Sandbox/Scripts/CameraController.cpp build/Sandbox/Scripts/StateController.cpp build/Sandbox/Scripts/Spawner.cpp)
+        build/Sandbox/Scenes/SampleScene.cpp build/Sandbox/Scripts/CameraController.cpp build/Sandbox/Scripts/StateController.cpp build/Sandbox/Scripts/Spawner.cpp src/resources/FrameBuffer.cpp include/vox-engine/resources/FrameBuffer.h include/vox-engine/system/ImageBuffer.h include/vox-engine/resources/Vertex.h)
 
 target_link_libraries(VoxEngine ${OpenGlLinkers} ZLIB::ZLIB)

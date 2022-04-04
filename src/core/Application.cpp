@@ -121,7 +121,7 @@ void Application::run() {
         // Start Rendering
         _check_gl_error("Pre Frame", 0);
         glClearColor(0,0,0,0);
-        //TODO -> CLEAR DEFAULT BUFFER
+        FrameBuffer::clearDefaultBuffer();
         _check_gl_error("First Clear", 0);
 
         //Fill buffers
@@ -139,6 +139,8 @@ void Application::run() {
 
         _renderer->renderGizmos();
         _check_gl_error("Gizmos", 0);
+
+        FrameBuffer::resetDefaultBuffer();
 
         Profiler::drawGraph();
         _check_gl_error("SystemUI", 0);
@@ -194,6 +196,7 @@ void Application::reset() {
 }
 
 void Application::destroy() {
+    FrameBuffer::destroy();
     for (auto & _system : _systems) {
         _system->destroy();
     }

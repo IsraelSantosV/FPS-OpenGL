@@ -778,6 +778,30 @@ src/resources/FilePath.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FilePath.cpp.s
 .PHONY : src/resources/FilePath.cpp.s
 
+src/resources/FrameBuffer.o: src/resources/FrameBuffer.cpp.o
+.PHONY : src/resources/FrameBuffer.o
+
+# target to build an object file
+src/resources/FrameBuffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FrameBuffer.cpp.o
+.PHONY : src/resources/FrameBuffer.cpp.o
+
+src/resources/FrameBuffer.i: src/resources/FrameBuffer.cpp.i
+.PHONY : src/resources/FrameBuffer.i
+
+# target to preprocess a source file
+src/resources/FrameBuffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FrameBuffer.cpp.i
+.PHONY : src/resources/FrameBuffer.cpp.i
+
+src/resources/FrameBuffer.s: src/resources/FrameBuffer.cpp.s
+.PHONY : src/resources/FrameBuffer.s
+
+# target to generate assembly for a file
+src/resources/FrameBuffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/resources/FrameBuffer.cpp.s
+.PHONY : src/resources/FrameBuffer.cpp.s
+
 src/resources/Texture.o: src/resources/Texture.cpp.o
 .PHONY : src/resources/Texture.o
 
@@ -1252,6 +1276,9 @@ help:
 	@echo "... src/resources/FilePath.o"
 	@echo "... src/resources/FilePath.i"
 	@echo "... src/resources/FilePath.s"
+	@echo "... src/resources/FrameBuffer.o"
+	@echo "... src/resources/FrameBuffer.i"
+	@echo "... src/resources/FrameBuffer.s"
 	@echo "... src/resources/Texture.o"
 	@echo "... src/resources/Texture.i"
 	@echo "... src/resources/Texture.s"

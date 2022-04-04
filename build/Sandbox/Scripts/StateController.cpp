@@ -45,6 +45,10 @@ public:
             Logger::logln(sr);
             Logger::br();
         }
+
+        if(InputManager::keyPressed(InputManager::KEY_G)){
+            FrameBuffer::clearDefaultBuffer();
+        }
     }
 
     void toggleCursor() {
