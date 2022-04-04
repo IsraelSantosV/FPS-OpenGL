@@ -34,6 +34,11 @@ Entity* Scene::getObjectByName(std::string name) {
 }
 
 void Scene::destroy(Entity* go) {
+    auto* renderer = go->getComponent<ObjectRenderer>();
+    if(renderer != nullptr) {
+        Renderer::removeFromRenderQueue(renderer);
+    }
+
     go->destroy();
     removeFromList(go);
 }

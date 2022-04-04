@@ -13,7 +13,6 @@
 #include "../component/ObjectRenderer.h"
 #include "ISystem.h"
 #include "../component/Camera.h"
-#include "SceneManager.h"
 
 class Renderer : public ISystem {
 public:
@@ -24,10 +23,10 @@ public:
     static Vector3f getClearColor() { return _clearColor; }
     static void addDrawCall();
     static int getDrawCalls() { return _drawCalls; }
+    static void addToRenderQueue(ObjectRenderer* renderer);
+    static void removeFromRenderQueue(ObjectRenderer* renderer);
 
     static void render();
-    static void populateShadowBuffer();
-
     static unsigned long int getFrameIndex();
 
     void init(Config::Profile profile) override;

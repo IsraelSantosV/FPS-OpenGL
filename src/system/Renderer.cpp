@@ -24,14 +24,14 @@ void Renderer::init(Config::Profile profile){
 
 void Renderer::reset() {
     _frameIndex = 0;
-    _renderList.clear();
+    //_renderList.clear();
 }
 
 void Renderer::start(){ }
 
 void Renderer::newFrame() {
     ++_frameIndex;
-    _renderList.clear();
+    //_renderList.clear();
 }
 
 void Renderer::prePass() {
@@ -46,12 +46,6 @@ void Renderer::clearDrawCalls() {
     _drawCalls = 0;
 }
 
-void Renderer::populateShadowBuffer() {
-    glCullFace(GL_FRONT);
-    glEnable(GL_DEPTH_TEST);
-    glCullFace(GL_BACK);
-}
-
 void Renderer::renderObjects(){
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -59,6 +53,7 @@ void Renderer::renderObjects(){
 
     for (auto & it : _renderList){
         if (it->getEnable() && Camera::getMainCamera()->frustumTest(it)){
+            Logger::infoln("Debuggin object: " + it->getName());
             it->render();
         }
     }
@@ -74,12 +69,12 @@ void Renderer::render() {
 
 void Renderer::renderGizmos() {
     if (_debugMode >= 1) {
-        SceneManager::getCurrentScene()->getEntities();
+        /*SceneManager::getCurrentScene()->getEntities();
         for (auto &it: SceneManager::getCurrentScene()->getEntities()) {
             if (it->getEnable()) {
                 it->transform->renderHandels();
             }
-        }
+        }*/
     }
 
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -103,4 +98,12 @@ void Renderer::setClearColor(Vector3f color) {
 
 void Renderer::addDrawCall() {
     ++_drawCalls;
+}
+
+void Renderer::addToRenderQueue(ObjectRenderer *renderer) {
+    _renderList.push_back(renderer);
+}
+
+void Renderer::removeFromRenderQueue(ObjectRenderer *renderer) {
+    _renderList.erase(std::remove(_renderList.begin(), _renderList.end(), renderer), _renderList.end());
 }

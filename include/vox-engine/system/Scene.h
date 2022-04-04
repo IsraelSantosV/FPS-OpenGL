@@ -9,12 +9,20 @@
 #include <iostream>
 #include <vector>
 #include "Entity.h"
+#include "Renderer.h"
 
 class Scene {
 public:
     virtual void Load() = 0;
     virtual void OnUnload();
     void unload();
+
+    template <class T>
+    T *createRenderer(Entity* entity){
+        T* targetRenderer = entity->template addComponent<T>();
+        Renderer::addToRenderQueue(targetRenderer);
+        return targetRenderer;
+    }
 
     Entity *instantiate(std::string name);
     void destroy(Entity *go);

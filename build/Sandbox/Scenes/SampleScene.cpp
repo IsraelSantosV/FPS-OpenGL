@@ -26,8 +26,10 @@ public:
 
         //Entities settings
         Entity* floor = instantiate("Floor");
-        CustomMesh* mesh = floor->addComponent<CustomMesh>();
-        mesh->setMesh([](){ glutSolidCube(1); });
+        CustomMesh* mesh = createRenderer<CustomMesh>(floor);
+        mesh->setMesh([](){
+
+        });
 
         floor->getComponent<Transform>()->setScale(Vector3f(10, 10, 10));
     }

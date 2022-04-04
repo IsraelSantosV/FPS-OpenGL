@@ -33,11 +33,13 @@ void Camera::setFOV(float fov) {
 }
 
 void Camera::updateProjection() {
-    if (_isPerspective)
+    if (_isPerspective){
         _projectionMatrix = Matrix4f::createPerspective(_fov, _aspect, _zNear, _zFar);
-    else
+    }
+    else {
         _projectionMatrix = Matrix4f::createOrthographic(-_radius * _aspect, _radius * _aspect, -_radius, _radius,
                                                          _zNear, _zFar);
+    }
 }
 
 void Camera::setOrthographicProjection(float radius, float zNear, float zFar) {
