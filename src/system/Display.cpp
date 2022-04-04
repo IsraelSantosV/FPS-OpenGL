@@ -8,6 +8,7 @@ bool Display::_isRunning;
 int Display::_width, Display::_height;
 GLFWwindow* Display::_window;
 bool Display::_isVSync;
+std::vector<DisplayAction*> Display::_displayActions;
 
 void window_size_callback(GLFWwindow*, int, int);
 
@@ -45,18 +46,21 @@ void Display::init(Config::Profile profile) {
     }
 
     glfwMakeContextCurrent(_window);
-
-    // Set Icon
-    GLFWimage icon[1];
-    icon[0].pixels = Utils::loadIcon(Resources::ENGINE_RESOURCES + "/logo.png", icon[0].width, icon[0].height);
-    glfwSetWindowIcon(_window, 1, icon);
-    Utils::freeIcon(icon[0].pixels);
+    setDisplayIcon();
 
     setVSync(profile.vsync);
     _isRunning = true;
 
     Logger::infoln("OpenGL Version", glGetString(GL_VERSION));
     glfwSetWindowSizeCallback(_window, window_size_callback);
+}
+
+void Display::setDisplayIcon() {
+    // Set Icon
+    /*GLFWimage icon[1];
+    icon[0].pixels = Utils::loadIcon(Resources::ENGINE_RESOURCES + "/logo.png", icon[0].width, icon[0].height);
+    glfwSetWindowIcon(_window, 1, icon);
+    Utils::freeIcon(icon[0].pixels);*/
 }
 
 void Display::destroy() {
@@ -86,9 +90,21 @@ unsigned int Display::getHeight() {
     return _height;
 }
 
+void Display::triggerDisplayActions() {
+    for(auto event : _displayActions){
+        if(event != nullptr) {
+            (event)(getWidth(), getHeight());
+        }
+    }
+}
+
+void Display::addDisplayAction(DisplayAction action) {
+    _displayActions.push_back(action);
+}
+
 void window_size_callback(GLFWwindow* window, int width, int height) {
     if (width == 0 || height == 0) return;
 
     Display::setRect(width, height);
-    //Camera::getMainCamera()->updateAspect();
+    Display::triggerDisplayActions();
 }

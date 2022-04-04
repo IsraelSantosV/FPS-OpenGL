@@ -5,12 +5,12 @@ add_definitions("-std=c++11")
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 set(OpenGlLinkers -lglut -lGLU -lGL -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 find_package(ZLIB)
 file(GLOB SRC CONFIGURE_DEPENDS "imgui/*.hpp" "imgui/*.cpp")
 
-add_executable(VoxEngine src/Main.cpp ${SRC} imgui/imgui.cpp
+add_executable(VoxEngine build/Sandbox/Main.cpp ${SRC} imgui/imgui.cpp
         src/core/Application.cpp
         include/vox-engine/core/Application.h
         src/system/Display.cpp
@@ -37,8 +37,6 @@ add_executable(VoxEngine src/Main.cpp ${SRC} imgui/imgui.cpp
         include/vox-engine/component/Camera.h
         src/system/Transform.cpp
         include/vox-engine/system/Transform.h
-        src/component/Behaviour.cpp
-        include/vox-engine/component/Behaviour.h
         src/math/Matrix4f.cpp
         include/vox-engine/math/Matrix4f.h
         src/math/Quaternion.cpp
@@ -72,6 +70,14 @@ add_executable(VoxEngine src/Main.cpp ${SRC} imgui/imgui.cpp
         include/vox-engine/math/Math.h
         src/system/DebugGUI.cpp
         include/vox-engine/system/DebugGUI.h
-        src/math/Math.cpp)
+        src/math/Math.cpp
+        src/component/ObjectRenderer.cpp
+        include/vox-engine/component/ObjectRenderer.h
+        src/system/Renderer.cpp
+        include/vox-engine/system/Renderer.h
+        include/vox-engine/resources/BoundingSphere.h
+        include/vox-engine/component/CustomMesh.h
+        build/VoxEngineCore.h
+        build/Sandbox/Scenes/SampleScene.cpp build/Sandbox/Scripts/CameraController.cpp build/Sandbox/Scripts/StateController.cpp build/Sandbox/Scripts/Spawner.cpp)
 
 target_link_libraries(VoxEngine ${OpenGlLinkers} ZLIB::ZLIB)

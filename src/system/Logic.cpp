@@ -57,3 +57,18 @@ void Logic::addToUpdateList(Behaviour* behaviour) {
 unsigned long int Logic::getTickIndex() {
     return _tickIndex;
 }
+
+void Behaviour::init() {
+    Logic::addToUpdateList(this);
+}
+
+void Behaviour::destroy() {
+    OnDestroy();
+    Logic::removeFromList(this);
+}
+
+void Behaviour::Start() {}
+void Behaviour::Update() {}
+void Behaviour::FixedUpdate() {}
+void Behaviour::LateUpdate() {}
+void Behaviour::OnDestroy() {}

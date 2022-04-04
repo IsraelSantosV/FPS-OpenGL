@@ -11,6 +11,10 @@
 #include "Logger.h"
 #include "zlib.h"
 
+enum RenderType {
+    RT_OPAQUE, RT_CUTOUT, RT_TRANSPARENT
+};
+
 class Utils {
 public:
     static void split(const std::string &line, const std::string &delimiter, std::vector <std::string> &output);

@@ -11,6 +11,7 @@
 #define PI 3.14159265358979323846
 
 class Math {
+public:
     static const Vector2f halton_seq_16[16];
 
     static float lerp(float a, float b, float percent) {

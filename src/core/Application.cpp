@@ -9,7 +9,7 @@ const double Application::FIXED_TIME_INTERVAL = 1.0f / 60.0f;
 
 bool Application::_isRunning;
 
-void Application::init() {
+void Application::init(std::map<std::string, Scene*>& sceneMap) {
     _logger = new Logger();
 
     Logger::logln(VOX_ENGINE_VERSION);
@@ -23,11 +23,12 @@ void Application::init() {
     // Core Systems
     _display = new Display();
     _debugGUI = new DebugGUI();
+    _renderer = new Renderer();
     _inputManager = new InputManager();
     _logic = new Logic();
     //_lighting = new LightManager();
     _sceneManager = new SceneManager();
-    //_sceneManager->setSceneMap(sceneMap);
+    _sceneManager->setSceneMap(sceneMap);
 
     // Helper
     _profiler = new Profiler();
@@ -36,6 +37,7 @@ void Application::init() {
     _systems.push_back(_display);
     _systems.push_back(_sceneManager);
     _systems.push_back(_debugGUI);
+    _systems.push_back(_renderer);
     _systems.push_back(_inputManager);
     _systems.push_back(_logic);
     //_systems.push_back(_lighting);
@@ -45,6 +47,10 @@ void Application::init() {
     }
 
     Logger::logln("\n                   SYSTEMS READY");
+    Logger::hr();
+    Logger::br();
+
+    Logger::logln("\n                   CREATE PROJECTS");
     Logger::hr();
     Logger::br();
 
@@ -118,13 +124,21 @@ void Application::run() {
         //TODO -> CLEAR DEFAULT BUFFER
         _check_gl_error("First Clear", 0);
 
+        //Fill buffers
+        _renderer->newFrame();
+        _renderer->prePass();
+        _check_gl_error("Pre Pass", 0);
+
         // Render Scene
-        //Renderer::render();
+        Renderer::render();
         nbFrames++;
         _check_gl_error("Main Render", 0);
 
         // Refeed position updates to physics system
         //_physics->refeed();
+
+        _renderer->renderGizmos();
+        _check_gl_error("Gizmos", 0);
 
         Profiler::drawGraph();
         _check_gl_error("SystemUI", 0);
@@ -135,7 +149,7 @@ void Application::run() {
 
         // Stop Rendering
         Display::swapBuffer();
-        //_renderer->clearDrawCalls();
+        _renderer->clearDrawCalls();
 
         /*
         *	After Render events
@@ -189,6 +203,7 @@ void Application::destroy() {
     delete _inputManager;
     delete _debugGUI;
     delete _sceneManager;
+    delete _renderer;
     delete _logic;
     //delete _lighting;
     delete _profiler;

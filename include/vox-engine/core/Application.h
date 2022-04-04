@@ -20,12 +20,13 @@
 #include "../system/SceneManager.h"
 #include "../system/Logic.h"
 #include "../system/LightManager.h"
+#include "../system/Renderer.h"
 
 class Application {
 public:
     static const double FIXED_TIME_INTERVAL;
 
-    void init();
+    void init(std::map<std::string, Scene*>& sceneMap);
     void start();
     void reset();
     void run();
@@ -33,7 +34,6 @@ public:
 
     static bool isRunning() { return _isRunning; }
     static void stop();
-
 private:
     Time *_time;
     Display *_display;
@@ -42,6 +42,7 @@ private:
     SceneManager *_sceneManager;
     Logic *_logic;
     LightManager *_lighting;
+    Renderer* _renderer;
 
     Profiler *_profiler;
     Config *_config;

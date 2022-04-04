@@ -48,19 +48,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
+RM = /home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine
+CMAKE_SOURCE_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug
+CMAKE_BINARY_DIR = /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmak
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -78,7 +78,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/Israel/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/zetta/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -87,9 +87,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,7 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -129,6 +129,126 @@ VoxEngine: cmake_check_build_system
 VoxEngine/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build
 .PHONY : VoxEngine/fast
+
+build/Sandbox/Main.o: build/Sandbox/Main.cpp.o
+.PHONY : build/Sandbox/Main.o
+
+# target to build an object file
+build/Sandbox/Main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Main.cpp.o
+.PHONY : build/Sandbox/Main.cpp.o
+
+build/Sandbox/Main.i: build/Sandbox/Main.cpp.i
+.PHONY : build/Sandbox/Main.i
+
+# target to preprocess a source file
+build/Sandbox/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Main.cpp.i
+.PHONY : build/Sandbox/Main.cpp.i
+
+build/Sandbox/Main.s: build/Sandbox/Main.cpp.s
+.PHONY : build/Sandbox/Main.s
+
+# target to generate assembly for a file
+build/Sandbox/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Main.cpp.s
+.PHONY : build/Sandbox/Main.cpp.s
+
+build/Sandbox/Scenes/SampleScene.o: build/Sandbox/Scenes/SampleScene.cpp.o
+.PHONY : build/Sandbox/Scenes/SampleScene.o
+
+# target to build an object file
+build/Sandbox/Scenes/SampleScene.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scenes/SampleScene.cpp.o
+.PHONY : build/Sandbox/Scenes/SampleScene.cpp.o
+
+build/Sandbox/Scenes/SampleScene.i: build/Sandbox/Scenes/SampleScene.cpp.i
+.PHONY : build/Sandbox/Scenes/SampleScene.i
+
+# target to preprocess a source file
+build/Sandbox/Scenes/SampleScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scenes/SampleScene.cpp.i
+.PHONY : build/Sandbox/Scenes/SampleScene.cpp.i
+
+build/Sandbox/Scenes/SampleScene.s: build/Sandbox/Scenes/SampleScene.cpp.s
+.PHONY : build/Sandbox/Scenes/SampleScene.s
+
+# target to generate assembly for a file
+build/Sandbox/Scenes/SampleScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scenes/SampleScene.cpp.s
+.PHONY : build/Sandbox/Scenes/SampleScene.cpp.s
+
+build/Sandbox/Scripts/CameraController.o: build/Sandbox/Scripts/CameraController.cpp.o
+.PHONY : build/Sandbox/Scripts/CameraController.o
+
+# target to build an object file
+build/Sandbox/Scripts/CameraController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/CameraController.cpp.o
+.PHONY : build/Sandbox/Scripts/CameraController.cpp.o
+
+build/Sandbox/Scripts/CameraController.i: build/Sandbox/Scripts/CameraController.cpp.i
+.PHONY : build/Sandbox/Scripts/CameraController.i
+
+# target to preprocess a source file
+build/Sandbox/Scripts/CameraController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/CameraController.cpp.i
+.PHONY : build/Sandbox/Scripts/CameraController.cpp.i
+
+build/Sandbox/Scripts/CameraController.s: build/Sandbox/Scripts/CameraController.cpp.s
+.PHONY : build/Sandbox/Scripts/CameraController.s
+
+# target to generate assembly for a file
+build/Sandbox/Scripts/CameraController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/CameraController.cpp.s
+.PHONY : build/Sandbox/Scripts/CameraController.cpp.s
+
+build/Sandbox/Scripts/Spawner.o: build/Sandbox/Scripts/Spawner.cpp.o
+.PHONY : build/Sandbox/Scripts/Spawner.o
+
+# target to build an object file
+build/Sandbox/Scripts/Spawner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/Spawner.cpp.o
+.PHONY : build/Sandbox/Scripts/Spawner.cpp.o
+
+build/Sandbox/Scripts/Spawner.i: build/Sandbox/Scripts/Spawner.cpp.i
+.PHONY : build/Sandbox/Scripts/Spawner.i
+
+# target to preprocess a source file
+build/Sandbox/Scripts/Spawner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/Spawner.cpp.i
+.PHONY : build/Sandbox/Scripts/Spawner.cpp.i
+
+build/Sandbox/Scripts/Spawner.s: build/Sandbox/Scripts/Spawner.cpp.s
+.PHONY : build/Sandbox/Scripts/Spawner.s
+
+# target to generate assembly for a file
+build/Sandbox/Scripts/Spawner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/Spawner.cpp.s
+.PHONY : build/Sandbox/Scripts/Spawner.cpp.s
+
+build/Sandbox/Scripts/StateController.o: build/Sandbox/Scripts/StateController.cpp.o
+.PHONY : build/Sandbox/Scripts/StateController.o
+
+# target to build an object file
+build/Sandbox/Scripts/StateController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/StateController.cpp.o
+.PHONY : build/Sandbox/Scripts/StateController.cpp.o
+
+build/Sandbox/Scripts/StateController.i: build/Sandbox/Scripts/StateController.cpp.i
+.PHONY : build/Sandbox/Scripts/StateController.i
+
+# target to preprocess a source file
+build/Sandbox/Scripts/StateController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/StateController.cpp.i
+.PHONY : build/Sandbox/Scripts/StateController.cpp.i
+
+build/Sandbox/Scripts/StateController.s: build/Sandbox/Scripts/StateController.cpp.s
+.PHONY : build/Sandbox/Scripts/StateController.s
+
+# target to generate assembly for a file
+build/Sandbox/Scripts/StateController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/build/Sandbox/Scripts/StateController.cpp.s
+.PHONY : build/Sandbox/Scripts/StateController.cpp.s
 
 imgui/imgui.o: imgui/imgui.cpp.o
 .PHONY : imgui/imgui.o
@@ -322,54 +442,6 @@ imgui/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/imgui/imgui_widgets.cpp.s
 .PHONY : imgui/imgui_widgets.cpp.s
 
-src/Main.o: src/Main.cpp.o
-.PHONY : src/Main.o
-
-# target to build an object file
-src/Main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/Main.cpp.o
-.PHONY : src/Main.cpp.o
-
-src/Main.i: src/Main.cpp.i
-.PHONY : src/Main.i
-
-# target to preprocess a source file
-src/Main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/Main.cpp.i
-.PHONY : src/Main.cpp.i
-
-src/Main.s: src/Main.cpp.s
-.PHONY : src/Main.s
-
-# target to generate assembly for a file
-src/Main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/Main.cpp.s
-.PHONY : src/Main.cpp.s
-
-src/component/Behaviour.o: src/component/Behaviour.cpp.o
-.PHONY : src/component/Behaviour.o
-
-# target to build an object file
-src/component/Behaviour.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Behaviour.cpp.o
-.PHONY : src/component/Behaviour.cpp.o
-
-src/component/Behaviour.i: src/component/Behaviour.cpp.i
-.PHONY : src/component/Behaviour.i
-
-# target to preprocess a source file
-src/component/Behaviour.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Behaviour.cpp.i
-.PHONY : src/component/Behaviour.cpp.i
-
-src/component/Behaviour.s: src/component/Behaviour.cpp.s
-.PHONY : src/component/Behaviour.s
-
-# target to generate assembly for a file
-src/component/Behaviour.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Behaviour.cpp.s
-.PHONY : src/component/Behaviour.cpp.s
-
 src/component/Camera.o: src/component/Camera.cpp.o
 .PHONY : src/component/Camera.o
 
@@ -441,6 +513,30 @@ src/component/Light.s: src/component/Light.cpp.s
 src/component/Light.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/Light.cpp.s
 .PHONY : src/component/Light.cpp.s
+
+src/component/ObjectRenderer.o: src/component/ObjectRenderer.cpp.o
+.PHONY : src/component/ObjectRenderer.o
+
+# target to build an object file
+src/component/ObjectRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/ObjectRenderer.cpp.o
+.PHONY : src/component/ObjectRenderer.cpp.o
+
+src/component/ObjectRenderer.i: src/component/ObjectRenderer.cpp.i
+.PHONY : src/component/ObjectRenderer.i
+
+# target to preprocess a source file
+src/component/ObjectRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/ObjectRenderer.cpp.i
+.PHONY : src/component/ObjectRenderer.cpp.i
+
+src/component/ObjectRenderer.s: src/component/ObjectRenderer.cpp.s
+.PHONY : src/component/ObjectRenderer.s
+
+# target to generate assembly for a file
+src/component/ObjectRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/component/ObjectRenderer.cpp.s
+.PHONY : src/component/ObjectRenderer.cpp.s
 
 src/core/Application.o: src/core/Application.cpp.o
 .PHONY : src/core/Application.o
@@ -850,6 +946,30 @@ src/system/Logic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Logic.cpp.s
 .PHONY : src/system/Logic.cpp.s
 
+src/system/Renderer.o: src/system/Renderer.cpp.o
+.PHONY : src/system/Renderer.o
+
+# target to build an object file
+src/system/Renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Renderer.cpp.o
+.PHONY : src/system/Renderer.cpp.o
+
+src/system/Renderer.i: src/system/Renderer.cpp.i
+.PHONY : src/system/Renderer.i
+
+# target to preprocess a source file
+src/system/Renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Renderer.cpp.i
+.PHONY : src/system/Renderer.cpp.i
+
+src/system/Renderer.s: src/system/Renderer.cpp.s
+.PHONY : src/system/Renderer.s
+
+# target to generate assembly for a file
+src/system/Renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/VoxEngine.dir/build.make CMakeFiles/VoxEngine.dir/src/system/Renderer.cpp.s
+.PHONY : src/system/Renderer.cpp.s
+
 src/system/Scene.o: src/system/Scene.cpp.o
 .PHONY : src/system/Scene.o
 
@@ -1051,6 +1171,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... VoxEngine"
+	@echo "... build/Sandbox/Main.o"
+	@echo "... build/Sandbox/Main.i"
+	@echo "... build/Sandbox/Main.s"
+	@echo "... build/Sandbox/Scenes/SampleScene.o"
+	@echo "... build/Sandbox/Scenes/SampleScene.i"
+	@echo "... build/Sandbox/Scenes/SampleScene.s"
+	@echo "... build/Sandbox/Scripts/CameraController.o"
+	@echo "... build/Sandbox/Scripts/CameraController.i"
+	@echo "... build/Sandbox/Scripts/CameraController.s"
+	@echo "... build/Sandbox/Scripts/Spawner.o"
+	@echo "... build/Sandbox/Scripts/Spawner.i"
+	@echo "... build/Sandbox/Scripts/Spawner.s"
+	@echo "... build/Sandbox/Scripts/StateController.o"
+	@echo "... build/Sandbox/Scripts/StateController.i"
+	@echo "... build/Sandbox/Scripts/StateController.s"
 	@echo "... imgui/imgui.o"
 	@echo "... imgui/imgui.i"
 	@echo "... imgui/imgui.s"
@@ -1075,12 +1210,6 @@ help:
 	@echo "... imgui/imgui_widgets.o"
 	@echo "... imgui/imgui_widgets.i"
 	@echo "... imgui/imgui_widgets.s"
-	@echo "... src/Main.o"
-	@echo "... src/Main.i"
-	@echo "... src/Main.s"
-	@echo "... src/component/Behaviour.o"
-	@echo "... src/component/Behaviour.i"
-	@echo "... src/component/Behaviour.s"
 	@echo "... src/component/Camera.o"
 	@echo "... src/component/Camera.i"
 	@echo "... src/component/Camera.s"
@@ -1090,6 +1219,9 @@ help:
 	@echo "... src/component/Light.o"
 	@echo "... src/component/Light.i"
 	@echo "... src/component/Light.s"
+	@echo "... src/component/ObjectRenderer.o"
+	@echo "... src/component/ObjectRenderer.i"
+	@echo "... src/component/ObjectRenderer.s"
 	@echo "... src/core/Application.o"
 	@echo "... src/core/Application.i"
 	@echo "... src/core/Application.s"
@@ -1141,6 +1273,9 @@ help:
 	@echo "... src/system/Logic.o"
 	@echo "... src/system/Logic.i"
 	@echo "... src/system/Logic.s"
+	@echo "... src/system/Renderer.o"
+	@echo "... src/system/Renderer.i"
+	@echo "... src/system/Renderer.s"
 	@echo "... src/system/Scene.o"
 	@echo "... src/system/Scene.i"
 	@echo "... src/system/Scene.s"
@@ -1176,7 +1311,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /home/zetta/Documentos/Programas/FPS-OpenGL/cmake-build-debug/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

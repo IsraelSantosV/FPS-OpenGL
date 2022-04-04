@@ -8,7 +8,9 @@
 #include "ISystem.h"
 #include <vector>
 #include <string>
-#include "../component/Behaviour.h"
+#include "../component/Component.h"
+
+class Behaviour;
 
 class Logic : public ISystem {
 public:
@@ -27,6 +29,19 @@ public:
 private:
     static std::vector<Behaviour*> _behaviourList;
     static unsigned long int _tickIndex;
+};
+
+class Behaviour : public Component {
+public:
+    virtual ~Behaviour() {}
+    void init() override;
+    void destroy();
+
+    virtual void Start();
+    virtual void Update();
+    virtual void FixedUpdate();
+    virtual void LateUpdate();
+    virtual void OnDestroy();
 };
 
 

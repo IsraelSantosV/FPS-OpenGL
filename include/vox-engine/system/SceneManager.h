@@ -10,7 +10,6 @@
 #include "ISystem.h"
 #include <iostream>
 #include <map>
-#include "Display.h"
 #include "DebugGUI.h"
 
 class SceneManager : public ISystem {
