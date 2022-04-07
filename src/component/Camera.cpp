@@ -14,7 +14,6 @@ void Camera::init() {
     camera_up = vec3(0, 1, 0);
     field_of_view = 45;
     camera_position_delta = vec3(0, 0, 0);
-    camera_scale = .5f;
     max_pitch_rate = 5;
     max_heading_rate = 5;
     sensibility = 0.05;
@@ -96,22 +95,22 @@ void Camera::move(CameraDirection dir) {
     if (camera_mode == FREE) {
         switch (dir) {
             case UP:
-                camera_position_delta += camera_up * camera_scale;
+                camera_position_delta += camera_up * (float)getEntity()->transform->getScale().length() * 0.01f;
                 break;
             case DOWN:
-                camera_position_delta -= camera_up * camera_scale;
+                camera_position_delta -= camera_up * (float)getEntity()->transform->getScale().length() * 0.01f;
                 break;
             case LEFT:
-                camera_position_delta -= cross(camera_direction, camera_up) * camera_scale;
+                camera_position_delta -= cross(camera_direction, camera_up) * (float)getEntity()->transform->getScale().length() * 0.01f;
                 break;
             case RIGHT:
-                camera_position_delta += cross(camera_direction, camera_up) * camera_scale;
+                camera_position_delta += cross(camera_direction, camera_up) * (float)getEntity()->transform->getScale().length() * 0.01f;
                 break;
             case FORWARD:
-                camera_position_delta += camera_direction * camera_scale;
+                camera_position_delta += camera_direction * (float)getEntity()->transform->getScale().length() * 0.01f;
                 break;
             case BACK:
-                camera_position_delta -= camera_direction * camera_scale;
+                camera_position_delta -= camera_direction * (float)getEntity()->transform->getScale().length() * 0.01f;
                 break;
         }
     }

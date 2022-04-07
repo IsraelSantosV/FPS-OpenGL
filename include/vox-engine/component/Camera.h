@@ -73,7 +73,6 @@ public:
     double near_clip;
     double far_clip;
 
-    float camera_scale;
     float camera_heading;
     float camera_pitch;
 

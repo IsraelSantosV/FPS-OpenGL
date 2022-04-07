@@ -4,6 +4,7 @@
 
 #include "vox-engine/core.h"
 #include "../Scripts/Health.cpp"
+#include "../Scripts/CubeAnimation.cpp"
 
 class MainScene : public Scene {
 public:
@@ -16,9 +17,27 @@ public:
         mainCamera->setFOV(45);
         camera->transform->setPosition(vec3(0,0,-1));
 
+        Camera::useDefaultCameraController = false;
+
         Entity* player = instantiate("Player");
         player->addComponent<Health>();
 
+        Entity* cube = instantiate("Cube", [](Entity*){ glutWireCube(1); });
+        cube->getComponent<Mesh>()->setColor(vec3(1,0,0));
+        cube->transform->setPosition(vec3(0,0, 3));
+        cube->addComponent<CubeAnimation>();
+
+        Entity* insideCube = instantiate("InsideCube", [](Entity*){ glutWireCube(1); });
+        insideCube->transform->setScale(vec3(1,2,1));
+        insideCube->transform->setPosition(vec3(-1,0,0));
+        insideCube->transform->setParent(cube->transform);
+
+        Entity* mostInsideCube = instantiate("MostInsideCube", [](Entity*){ glutWireCube(1); });
+        mostInsideCube->transform->setScale(vec3(1, 1.5, 1));
+        mostInsideCube->getComponent<Mesh>()->setColor(vec3(1, 1, 0));
+        mostInsideCube->transform->setParent(insideCube->transform);
+
+        //Ground texture
         const int groundScale = 50;
         const int groundHeight = 5;
 

@@ -17,12 +17,9 @@ public:
         m_DrawFunction = function;
     }
 
-    void draw(vec3 position, quat rotation, vec3 scale){
+    void draw(){
         glPushMatrix();
             glColor4f(m_Color.x, m_Color.y, m_Color.z, m_Alpha);
-            glScalef(scale.x, scale.y, scale.z);
-            glRotatef(0, rotation.x, rotation.y, rotation.z);
-            glTranslatef(position.x, position.y, position.z);
 
             if(m_DrawFunction != nullptr) {
                 m_DrawFunction(getEntity());

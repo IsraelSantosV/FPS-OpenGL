@@ -166,7 +166,7 @@ public:
     static void setCursorMode(CursorMode mode);
     static CursorMode getCursorMode();
 
-    static void handleDefaultCameraMovement(int key);
+    static void handleDefaultCameraMovement();
     static void handleDefaultCameraMotion(int x, int y);
     static void handleDefaultCameraMouse(int button, int state, int x, int y);
     static void handleKey(int key, int action);

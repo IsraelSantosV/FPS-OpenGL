@@ -75,3 +75,51 @@ void Transform::setParent(Transform *parent) {
 }
 
 void Transform::setChanged() { }
+
+Transform *Transform::getRoot() {
+    Transform* rootTransform = m_Parent;
+    Transform* currentTransform = m_Parent;
+
+    while(currentTransform != nullptr){
+        currentTransform = currentTransform->m_Parent;
+
+        if(currentTransform != nullptr){
+            rootTransform = currentTransform;
+        }
+    }
+
+    return rootTransform;
+}
+
+vec3 Transform::getLocalPosition() {
+    if(getParent() != nullptr){
+        m_LocalPosition = m_Position + getParent()->getLocalPosition();
+    }
+    else{
+        m_LocalPosition = m_Position;
+    }
+
+    return m_LocalPosition;
+}
+
+vec3 Transform::getLocalEulerAngles() {
+    if(getParent() != nullptr){
+        m_LocalEulerAngles = eulerAngles(m_Rotation) + getParent()->getLocalEulerAngles();
+    }
+    else{
+        m_LocalEulerAngles = eulerAngles(m_Rotation);
+    }
+
+    return m_LocalEulerAngles;
+}
+
+vec3 Transform::getLocalScale() {
+    if(getParent() != nullptr){
+        m_LocalScale = m_Scale * getParent()->getLocalScale();
+    }
+    else{
+        m_LocalScale = m_Scale;
+    }
+
+    return m_LocalScale;
+}

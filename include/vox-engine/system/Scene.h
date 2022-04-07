@@ -16,6 +16,7 @@ public:
     void unload();
 
     Entity *instantiate(std::string name);
+    Entity *instantiate(std::string name, DrawFunction drawFunction);
     void destroy(Entity *go);
     void removeFromList(Entity *go);
     Entity *getObjectByName(std::string name);

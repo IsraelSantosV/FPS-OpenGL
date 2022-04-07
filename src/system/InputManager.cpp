@@ -81,26 +81,25 @@ void InputManager::handleKey(int key, int action) {
     }
 }
 
-void InputManager::handleDefaultCameraMovement(int key) {
+void InputManager::handleDefaultCameraMovement() {
     if(Camera::main == nullptr || !Camera::useDefaultCameraController) return;
-    if(!keyPressed(key)) return;
 
-    if(keysAreEquals(key, KEY_W)){
+    if(keyDown(KEY_W)){
         Camera::main->move(FORWARD);
     }
-    if(keysAreEquals(key,KEY_S)){
+    if(keyDown(KEY_S)){
         Camera::main->move(BACK);
     }
-    if(keysAreEquals(key, KEY_A)){
+    if(keyDown(KEY_A)){
         Camera::main->move(LEFT);
     }
-    if(keysAreEquals(key, KEY_D)){
+    if(keyDown(KEY_D)){
         Camera::main->move(RIGHT);
     }
-    if(keysAreEquals(key, KEY_Q)){
+    if(keyDown(KEY_Q)){
         Camera::main->move(DOWN);
     }
-    if(keysAreEquals(key, KEY_E)){
+    if(keyDown(KEY_E)){
         Camera::main->move(UP);
     }
 }
@@ -123,18 +122,18 @@ void InputManager::handleMouse(float x, float y) {
 void InputManager::update() {
     _xPosLast = _xPos;
     _yPosLast = _yPos;
+
+    handleDefaultCameraMovement();
     _keyPress.clear();
     _keyRelease.clear();
 }
 
 void InputManager::keyboardUpCallback(unsigned char key, int x, int y) {
     InputManager::handleKey(key, RELEASED);
-    handleDefaultCameraMovement(key);
 }
 
 void InputManager::keyboardDownCallback(unsigned char key, int x, int y) {
     InputManager::handleKey(key, PRESSED);
-    handleDefaultCameraMovement(key);
 }
 
 void InputManager::passiveMotionCallback(int x, int y) {

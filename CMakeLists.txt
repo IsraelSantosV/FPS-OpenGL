@@ -24,7 +24,6 @@ add_executable(${PROJECT_NAME}
         include/vox-engine/component/Transform.h
         src/system/Entity.cpp
         include/vox-engine/system/Entity.h
-        src/component/Mesh.cpp
         include/vox-engine/component/Mesh.h
         src/component/primitives/CubeMesh.cpp
         include/vox-engine/component/primitives/CubeMesh.h
@@ -43,7 +42,7 @@ add_executable(${PROJECT_NAME}
         include/vox-engine/core.h
         build/Sandbox/Sandbox.cpp
         build/Sandbox/Scenes/MainScene.cpp
-        build/Sandbox/Scripts/Health.cpp)
+        build/Sandbox/Scripts/Health.cpp build/Sandbox/Scripts/CubeAnimation.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${OpenGlLinkers})
 target_include_directories(${PROJECT_NAME} PRIVATE include)

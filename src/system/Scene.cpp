@@ -22,6 +22,15 @@ Entity* Scene::instantiate(std::string name) {
     return entity;
 }
 
+Entity *Scene::instantiate(std::string name, DrawFunction drawFunction) {
+    Entity *entity = new Entity(name);
+    Mesh* newMesh = new Mesh();
+    newMesh->setDrawFunction(drawFunction);
+    entity->setMesh(newMesh);
+    addToList(entity);
+    return entity;
+}
+
 Entity* Scene::getObjectByName(std::string name) {
     std::vector<Entity *> entities = _entityList;
     for (auto & entity : entities) {

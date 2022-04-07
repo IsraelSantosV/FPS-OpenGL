@@ -23,7 +23,7 @@ public:
     template <class T>
     T* addComponent() {
         if (_componentMap.find(typeid(T)) != _componentMap.end()) {
-            Logger::errorln(name, "Entity already contains Component");
+            Logger::warnln(name, "Entity already contains Component");
             return nullptr;
         }
 
@@ -43,7 +43,7 @@ public:
                 }
             }
 
-            Logger::errorln("Component", typeid(T).name(), "could not be found!");
+            Logger::warnln("Component", typeid(T).name(), "could not be found!");
             return nullptr;
         }
 
@@ -66,6 +66,8 @@ public:
 
     void setMesh(Mesh* targetMesh){
         mesh = targetMesh;
+        targetMesh->setup(this);
+        _componentMap.insert(std::pair<std::type_index, Component *>(typeid(Mesh), targetMesh));
     }
 
     void destroyComponents();

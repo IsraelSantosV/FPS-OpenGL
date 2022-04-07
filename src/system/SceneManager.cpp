@@ -98,7 +98,6 @@ void SceneManager::renderSceneCallback() {
         glMatrixMode(GL_MODELVIEW);
     }
 
-    glutWireCube(1);
     drawCurrentSceneRenders();
     glutSwapBuffers();
 }
@@ -114,17 +113,20 @@ void SceneManager::drawCurrentSceneRenders() {
     Scene* currentScene = SceneManager::getCurrentScene();
     for(auto& entity : currentScene->getEntities()){
         if(!entity->getEnable()) continue;
-        Transform *transform = entity->transform;
+        Transform* transform = entity->transform;
 
-        if(entity->mesh == nullptr){
-            glPushMatrix();
-                glScalef(transform->getScale().x, transform->getScale().y, transform->getScale().z);
-                glRotatef(0, transform->getRotation().x, transform->getRotation().y, transform->getRotation().z);
-                glTranslatef(transform->getPosition().x, transform->getPosition().y, transform->getPosition().z);
-            glPopMatrix();
-        }
-        else {
-            entity->mesh->draw(transform->getPosition(), transform->getRotation(), transform->getScale());
-        }
+        vec3 position = transform->getLocalPosition();
+        vec3 rotation = transform->getLocalEulerAngles();
+        vec3 scale = transform->getLocalScale();
+
+        glPushMatrix();
+            glTranslatef(position.x, position.y, position.z);
+            glRotatef(0, rotation.x, rotation.y, rotation.z);
+            glScalef(scale.x, scale.y, scale.z);
+
+            if(entity->mesh != nullptr){
+                entity->mesh->draw();
+            }
+        glPopMatrix();
     }
 }
