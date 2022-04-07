@@ -8,6 +8,14 @@
 class MainScene : public Scene {
 public:
     void Load(){
+        Entity* camera = instantiate("MainCamera");
+        Camera* mainCamera = camera->addComponent<Camera>();
+        mainCamera->setMode(FREE);
+        mainCamera->setLookAt(vec3(0,0,0));
+        mainCamera->setClipping(.1, 1000);
+        mainCamera->setFOV(45);
+        camera->transform->setPosition(vec3(0,0,-1));
+
         Entity* player = instantiate("Player");
         player->addComponent<Health>();
 

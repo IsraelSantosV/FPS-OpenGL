@@ -8,6 +8,7 @@
 #include "vox-engine/system/ISystem.h"
 #include "vox-engine/system/Scene.h"
 #include "vox-engine/resources/OpenGL.h"
+#include "vox-engine/component/Camera.h"
 #include <map>
 
 class SceneManager : public ISystem {

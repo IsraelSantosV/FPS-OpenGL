@@ -16,46 +16,46 @@ void Transform::removeChild(Transform * child) {
     m_Children.erase(std::remove(m_Children.begin(), m_Children.end(), child), m_Children.end());
 }
 
-Quaternion Transform::getRotation() {
+quat Transform::getRotation() {
     return m_Rotation;
 }
 
-Vector3 Transform::getPosition() {
+vec3 Transform::getPosition() {
     return m_Position;
 }
 
-Vector3 Transform::getScale() {
+vec3 Transform::getScale() {
     return m_Scale;
 }
 
-void Transform::setPosition(Vector3 position) {
+void Transform::setPosition(vec3 position) {
     if (position != m_Position) {
         m_Position = position;
         setChanged();
     }
 }
 
-void Transform::setRotation(Vector3 rotation) {
-    setRotation(Quaternion(0, rotation));
+void Transform::setRotation(vec3 rotation) {
+    setRotation(quat(0, rotation));
 }
 
-void Transform::setRotation(Quaternion rotation) {
+void Transform::setRotation(quat rotation) {
     if (rotation != m_Rotation) {
         m_Rotation = rotation;
         setChanged();
     }
 }
 
-void Transform::setScale(Vector3 scale) {
+void Transform::setScale(vec3 scale) {
     if (scale != m_Scale) {
         m_Scale = scale;
         setChanged();
     }
 }
 
-void Transform::rotate(Quaternion quaternion) {
+void Transform::rotate(quat quaternion) {
     m_Rotation = (quaternion * m_Rotation);
-    m_Rotation.normalize();
+    m_Rotation = normalize(m_Rotation);
     setChanged();
 }
 

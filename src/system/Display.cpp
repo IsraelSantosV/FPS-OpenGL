@@ -3,10 +3,10 @@
 //
 
 #include "vox-engine/system/Display.h"
-#include "vox-engine/resources/OpenGL.h"
 
 int Display::m_Width;
 int Display::m_Height;
+std::vector<ResizeCallback*> Display::m_Callbacks;
 
 void Display::init(Config::Profile profile) {
     Logger::infoln("Initializing Display");
@@ -14,7 +14,7 @@ void Display::init(Config::Profile profile) {
     m_Width = profile.width;
     m_Height = profile.height;
 
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(profile.width, profile.height);
     glutCreateWindow(profile.appName.c_str());
 
@@ -23,14 +23,12 @@ void Display::init(Config::Profile profile) {
 }
 
 void Display::reshapeDisplay(int width, int height) {
+    if(width == 0 || height == 0) return;
     setRect(width, height);
-    glViewport(0,0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
 
-    //Change perspective
-    gluPerspective(60, 16.0/9.0, 1, 75);
-    glMatrixMode(GL_MODELVIEW);
+    for(auto& callback : m_Callbacks){
+        callback(width, height);
+    }
 }
 
 void Display::destroy() {

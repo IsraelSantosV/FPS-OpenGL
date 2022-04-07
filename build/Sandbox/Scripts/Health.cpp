@@ -10,19 +10,19 @@ public:
     double timer;
     const float timeToTakeHealth = 4;
 
-    void Start(){
+    void Start() override {
         timer = 0;
         currentHealth = 100;
     }
 
-    void Update(){
+    void Update() override {
         if(currentHealth <= 0) return;
         timer += Time::deltaTime;
 
         if(timer >= timeToTakeHealth) {
             currentHealth -= 1;
             timer = 0;
-            Logger::infoln("CurrentHealth: " + std::to_string(currentHealth));
+            //Logger::infoln("CurrentHealth: " + std::to_string(currentHealth));
         }
     }
 

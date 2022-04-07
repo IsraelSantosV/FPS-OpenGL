@@ -5,17 +5,11 @@ set(OpenGlLinkers -lglut -lGLU -lGL)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME}
+        include/vox-engine/resources/Math.h
         src/system/InputManager.cpp
         src/util/Tools.cpp
         src/util/Time.cpp
         include/vox-engine/util/Logger.h
-        include/vox-engine/math/Constants.h
-        src/math/Vector3.cpp
-        include/vox-engine/math/Vector3.h
-        src/math/Matrix3.cpp
-        include/vox-engine/math/Matrix3.h
-        src/math/Quaternion.cpp
-        include/vox-engine/math/Quaternion.h
         src/core/Application.cpp
         include/vox-engine/core/Application.h
         src/system/Scene.cpp
@@ -45,7 +39,11 @@ add_executable(${PROJECT_NAME}
         src/core/Config.cpp
         include/vox-engine/util/Tools.h
         src/system/SceneManager.cpp
-        include/vox-engine/system/SceneManager.h include/vox-engine/core.h build/Sandbox/Sandbox.cpp build/Sandbox/Scenes/MainScene.cpp build/Sandbox/Scripts/Health.cpp)
+        include/vox-engine/system/SceneManager.h
+        include/vox-engine/core.h
+        build/Sandbox/Sandbox.cpp
+        build/Sandbox/Scenes/MainScene.cpp
+        build/Sandbox/Scripts/Health.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${OpenGlLinkers})
 target_include_directories(${PROJECT_NAME} PRIVATE include)

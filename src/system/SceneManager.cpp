@@ -85,20 +85,46 @@ void SceneManager::destroy() {
 
 void SceneManager::renderSceneCallback() {
     clearDefaultBuffer();
+
+    if(Camera::main != nullptr){
+        mat4 model, view, projection;
+        Camera::main->Update();
+        Camera::main->getMatrices(projection, view, model);
+
+        mat4 mvp = projection * view * model;
+        glLoadMatrixf(value_ptr(mvp));
+    }
+    else {
+        glMatrixMode(GL_MODELVIEW);
+    }
+
+    glutWireCube(1);
     drawCurrentSceneRenders();
     glutSwapBuffers();
 }
 
 void SceneManager::clearDefaultBuffer() {
+    glClearColor(0.1, 0.1, 0.1, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glViewport(0,0, Display::getWidth(), Display::getHeight());
     glLoadIdentity();
 }
 
 void SceneManager::drawCurrentSceneRenders() {
     Scene* currentScene = SceneManager::getCurrentScene();
     for(auto& entity : currentScene->getEntities()){
-        if(!entity->getEnable() || entity->mesh == nullptr) continue;
-        Transform* transform = entity->transform;
-        entity->mesh->draw(transform->getPosition(), transform->getRotation(), transform->getScale());
+        if(!entity->getEnable()) continue;
+        Transform *transform = entity->transform;
+
+        if(entity->mesh == nullptr){
+            glPushMatrix();
+                glScalef(transform->getScale().x, transform->getScale().y, transform->getScale().z);
+                glRotatef(0, transform->getRotation().x, transform->getRotation().y, transform->getRotation().z);
+                glTranslatef(transform->getPosition().x, transform->getPosition().y, transform->getPosition().z);
+            glPopMatrix();
+        }
+        else {
+            entity->mesh->draw(transform->getPosition(), transform->getRotation(), transform->getScale());
+        }
     }
 }

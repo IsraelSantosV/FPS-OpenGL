@@ -5,28 +5,27 @@
 #ifndef VOXENGINE_TRANSFORM_H
 #define VOXENGINE_TRANSFORM_H
 
-#include "vox-engine/math/Quaternion.h"
-#include "vox-engine/math/Vector3.h"
+#include "vox-engine/resources/Math.h"
 #include "vox-engine/system/Logic.h"
 
 class Transform : public Component {
 public:
-    void setPosition(Vector3 position);
-    void setRotation(Vector3 rotation);
-    void setRotation(Quaternion rotation);
-    void setScale(Vector3 scale);
+    void setPosition(vec3 position);
+    void setRotation(vec3 rotation);
+    void setRotation(quat rotation);
+    void setScale(vec3 scale);
     void setParent(Transform *m_Parent);
-    void rotate(Quaternion quaternion);
-    Quaternion getRotation();
-    Vector3 getPosition();
-    Vector3 getScale();
+    void rotate(quat quaternion);
+    quat getRotation();
+    vec3 getPosition();
+    vec3 getScale();
 
     Transform* getParent();
     std::vector<Transform*> getChildren();
 private:
-    Vector3 m_Position = Vector3::ZERO;
-    Quaternion m_Rotation = Quaternion::ZERO;
-    Vector3 m_Scale = Vector3::ONE;
+    vec3 m_Position = vec3(0,0,0);
+    quat m_Rotation = quat(0,0,0,0);
+    vec3 m_Scale = vec3(1,1,1);
     Transform* m_Parent;
     std::vector<Transform*> m_Children;
 

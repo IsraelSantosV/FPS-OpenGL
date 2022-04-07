@@ -7,9 +7,10 @@
 
 #include "vox-engine/system/ISystem.h"
 #include "vox-engine/resources/OpenGL.h"
-#include "vox-engine/math/Vector3.h"
 #include "vox-engine/system/Display.h"
 #include "vox-engine/util/Time.h"
+#include "vox-engine/resources/Math.h"
+#include "vox-engine/component/Camera.h"
 
 class InputManager : public ISystem {
 public:
@@ -155,15 +156,19 @@ public:
     static void keyboardDownCallback(unsigned char key, int x, int y);
     static void keyboardUpCallback(unsigned char key, int x, int y);
     static void passiveMotionCallback(int x, int y);
+    static void mouseClickCallback(int button, int state, int x, int y);
 
     static bool keyPressed(int key);
     static bool keyDown(int key);
     static bool keyReleased(int key);
-    static Vector3 getMouse();
-    static Vector3 getMouseDelta();
+    static vec2 getMouse();
+    static vec2 getMouseDelta();
     static void setCursorMode(CursorMode mode);
     static CursorMode getCursorMode();
 
+    static void handleDefaultCameraMovement(int key);
+    static void handleDefaultCameraMotion(int x, int y);
+    static void handleDefaultCameraMouse(int button, int state, int x, int y);
     static void handleKey(int key, int action);
     static void handleMouse(float x, float y);
 private:
@@ -174,6 +179,9 @@ private:
     static float _yPos;
     static float _xPosLast;
     static float _yPosLast;
+
+    static int getKeyInLowerCase(int key);
+    static bool keysAreEquals(int key, int target);
 };
 
 #endif //VOXENGINE_INPUTMANAGER_H

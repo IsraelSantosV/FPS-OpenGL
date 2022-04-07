@@ -21,14 +21,17 @@ void InputManager::init(Config::Profile profile) {
     _yPosLast = 0;
 
     glutPassiveMotionFunc(InputManager::passiveMotionCallback);
+    glutMotionFunc(InputManager::handleDefaultCameraMotion);
     glutKeyboardFunc(InputManager::keyboardDownCallback);
     glutKeyboardUpFunc(InputManager::keyboardUpCallback);
+    glutMouseFunc(InputManager::mouseClickCallback);
+
     glutIgnoreKeyRepeat(true);
 }
 
 bool InputManager::keyPressed(int key) {
     for (int _keyPres: _keyPress) {
-        if (_keyPres == key) return true;
+        if (keysAreEquals(_keyPres, key)) return true;
     }
 
     return false;
@@ -36,7 +39,7 @@ bool InputManager::keyPressed(int key) {
 
 bool InputManager::keyDown(int key) {
     for (int i : _keyDown) {
-        if (i == key) return true;
+        if (keysAreEquals(i, key)) return true;
     }
 
     return false;
@@ -44,19 +47,19 @@ bool InputManager::keyDown(int key) {
 
 bool InputManager::keyReleased(int key) {
     for (int i : _keyRelease) {
-        if (i == key) return true;
+        if (keysAreEquals(i, key)) return true;
     }
 
     return false;
 }
 
-Vector3 InputManager::getMouse() {
+vec2 InputManager::getMouse() {
     float x = (_xPos - Display::getWidth() / 2.0f) / Display::getWidth() * 2.0f;
     float y = (_yPos - Display::getHeight() / 2.0f) / Display::getHeight() * -2.0f;
-    return {x, y, 0};
+    return {x, y};
 }
 
-Vector3 InputManager::getMouseDelta() {
+vec2 InputManager::getMouseDelta() {
     float xl = (_xPosLast - Display::getWidth() / 2.0f) / Display::getWidth() * 2.0f;
     float yl = (_yPosLast - Display::getHeight() / 2.0f) / Display::getHeight() * -2.0f;
     float x = (_xPos - Display::getWidth() / 2.0f) / Display::getWidth() * 2.0f;
@@ -64,7 +67,7 @@ Vector3 InputManager::getMouseDelta() {
     float xRes = (x - xl) / (Time::deltaTime == 0 ? 0.001f : Time::deltaTime);
     float yRes = (y - yl) / (Time::deltaTime == 0 ? 0.001f : Time::deltaTime);
 
-    return {xRes, yRes, 0};
+    return {xRes, yRes};
 }
 
 void InputManager::handleKey(int key, int action) {
@@ -76,6 +79,40 @@ void InputManager::handleKey(int key, int action) {
         _keyDown.erase(std::remove(_keyDown.begin(), _keyDown.end(), key), _keyDown.end());
         _keyRelease.push_back(key);
     }
+}
+
+void InputManager::handleDefaultCameraMovement(int key) {
+    if(Camera::main == nullptr || !Camera::useDefaultCameraController) return;
+    if(!keyPressed(key)) return;
+
+    if(keysAreEquals(key, KEY_W)){
+        Camera::main->move(FORWARD);
+    }
+    if(keysAreEquals(key,KEY_S)){
+        Camera::main->move(BACK);
+    }
+    if(keysAreEquals(key, KEY_A)){
+        Camera::main->move(LEFT);
+    }
+    if(keysAreEquals(key, KEY_D)){
+        Camera::main->move(RIGHT);
+    }
+    if(keysAreEquals(key, KEY_Q)){
+        Camera::main->move(DOWN);
+    }
+    if(keysAreEquals(key, KEY_E)){
+        Camera::main->move(UP);
+    }
+}
+
+void InputManager::handleDefaultCameraMouse(int button, int state, int x, int y) {
+    if(Camera::main == nullptr || !Camera::useDefaultCameraController) return;
+    Camera::main->setMouseInput(button, state, x, y);
+}
+
+void InputManager::handleDefaultCameraMotion(int x, int y) {
+    if(Camera::main == nullptr || !Camera::useDefaultCameraController) return;
+    Camera::main->move2D(x, y);
 }
 
 void InputManager::handleMouse(float x, float y) {
@@ -92,12 +129,26 @@ void InputManager::update() {
 
 void InputManager::keyboardUpCallback(unsigned char key, int x, int y) {
     InputManager::handleKey(key, RELEASED);
+    handleDefaultCameraMovement(key);
 }
 
 void InputManager::keyboardDownCallback(unsigned char key, int x, int y) {
     InputManager::handleKey(key, PRESSED);
+    handleDefaultCameraMovement(key);
 }
 
 void InputManager::passiveMotionCallback(int x, int y) {
     InputManager::handleMouse((float)x, (float)y);
+}
+
+void InputManager::mouseClickCallback(int button, int state, int x, int y) {
+    InputManager::handleDefaultCameraMouse(button, state, x, y);
+}
+
+int InputManager::getKeyInLowerCase(int key) {
+    return tolower(key);
+}
+
+bool InputManager::keysAreEquals(int key, int target) {
+    return key == target || getKeyInLowerCase(key) == target || key == getKeyInLowerCase(target);
 }

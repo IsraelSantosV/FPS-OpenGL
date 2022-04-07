@@ -19,6 +19,7 @@
 #include "vox-engine/core/ApplicationVersion.h"
 #include "vox-engine/util/Logger.h"
 #include "vox-engine/resources/OpenGL.h"
+#include "vox-engine/component/Camera.h"
 
 class Application {
 public:

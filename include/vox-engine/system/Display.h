@@ -6,6 +6,8 @@
 #define VOXENGINE_DISPLAY_H
 
 #include "ISystem.h"
+#include "vox-engine/resources/OpenGL.h"
+typedef void ResizeCallback(int width, int height);
 
 class Display : public ISystem {
 public:
@@ -19,10 +21,15 @@ public:
         m_Height = height;
     }
 
+    static void registerResizeCallback(ResizeCallback callback){
+        m_Callbacks.push_back(callback);
+    }
+
     void init(Config::Profile profile) override;
     void start() override {}
     void destroy() override;
 private:
+    static std::vector<ResizeCallback*> m_Callbacks;
     static void reshapeDisplay(int width, int height);
     int m_CurrentWindow;
     static int m_Width;

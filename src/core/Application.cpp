@@ -43,6 +43,12 @@ void Application::init(std::map<std::string, Scene*>& sceneMap, int argc, char* 
         _system->init(Config::profile);
     }
 
+    Display::registerResizeCallback([](int width, int height){
+        if(Camera::main != nullptr){
+            Camera::main->setViewport(0,0, width, height);
+        }
+    });
+
     Logger::logln("\nSYSTEMS READY");
     Logger::hr();
     Logger::br();
