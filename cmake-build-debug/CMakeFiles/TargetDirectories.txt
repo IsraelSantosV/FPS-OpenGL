@@ -1,3 +1,0 @@
-/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/Israel/Documents/Projetos/GitHub/OpenGL/Vox-Engine/cmake-build-debug/CMakeFiles/VoxEngine.dir
