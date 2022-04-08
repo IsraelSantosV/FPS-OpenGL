@@ -11,6 +11,7 @@
 #include "vox-engine/util/Time.h"
 #include "vox-engine/resources/Math.h"
 #include "vox-engine/component/Camera.h"
+#include "vox-engine/resources/GUI.h"
 
 class InputManager : public ISystem {
 public:

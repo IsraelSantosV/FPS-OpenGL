@@ -20,6 +20,7 @@
 #include "vox-engine/util/Logger.h"
 #include "vox-engine/resources/OpenGL.h"
 #include "vox-engine/component/Camera.h"
+#include "vox-engine/system/GUIManager.h"
 
 class Application {
 public:
@@ -38,6 +39,7 @@ private:
     InputManager* m_InputManager;
     SceneManager* m_SceneManager;
     Logic* m_Logic;
+    GUIManager* m_GUIManager;
 
     Config* m_Config;
     Logger* m_Logger;

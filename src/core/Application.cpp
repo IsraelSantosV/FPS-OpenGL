@@ -31,14 +31,18 @@ void Application::init(std::map<std::string, Scene*>& sceneMap, int argc, char* 
     m_Logic = new Logic();
     m_Time = new Time();
     m_SceneManager = new SceneManager();
+    m_GUIManager = new GUIManager();
     SceneManager::setSceneMap(sceneMap);
 
     m_Systems.push_back(m_Display);
     m_Systems.push_back(m_SceneManager);
     m_Systems.push_back(m_InputManager);
     m_Systems.push_back(m_Logic);
+    m_Systems.push_back(m_GUIManager);
 
+    //Initialize glut and imGui
     glutInit(&argc, argv);
+
     for(auto& _system : m_Systems){
         _system->init(Config::profile);
     }

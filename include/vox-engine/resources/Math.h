@@ -5,6 +5,7 @@
 #ifndef VOXENGINE_MATH_H
 #define VOXENGINE_MATH_H
 
+#define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/quaternion.hpp>

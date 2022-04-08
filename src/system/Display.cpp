@@ -24,6 +24,7 @@ void Display::init(Config::Profile profile) {
 
 void Display::reshapeDisplay(int width, int height) {
     if(width == 0 || height == 0) return;
+    ImGui_ImplGLUT_ReshapeFunc(width, height);
     setRect(width, height);
 
     for(auto& callback : m_Callbacks){

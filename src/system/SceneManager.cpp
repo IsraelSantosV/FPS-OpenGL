@@ -85,6 +85,7 @@ void SceneManager::destroy() {
 
 void SceneManager::renderSceneCallback() {
     clearDefaultBuffer();
+    GUIManager::displayGUICallback();
 
     if(Camera::main != nullptr){
         mat4 model, view, projection;

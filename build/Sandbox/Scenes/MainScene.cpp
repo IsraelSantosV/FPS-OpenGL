@@ -17,7 +17,7 @@ public:
         mainCamera->setFOV(45);
         camera->transform->setPosition(vec3(0,0,-1));
 
-        Camera::useDefaultCameraController = false;
+        Camera::useDefaultCameraController = true;
 
         Entity* player = instantiate("Player");
         player->addComponent<Health>();
