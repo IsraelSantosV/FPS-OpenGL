@@ -43,7 +43,7 @@ public:
                 }
             }
 
-            Logger::warnln("Component", typeid(T).name(), "could not be found!");
+            //Logger::warnln("Component", typeid(T).name(), "could not be found!");
             return nullptr;
         }
 
@@ -68,6 +68,15 @@ public:
         mesh = targetMesh;
         targetMesh->setup(this);
         _componentMap.insert(std::pair<std::type_index, Component *>(typeid(Mesh), targetMesh));
+    }
+
+    std::vector<Component*> getAllComponents(){
+        std::vector<Component*> components;
+        for(auto& pair : _componentMap){
+            components.push_back(pair.second);
+        }
+
+        return components;
     }
 
     void destroyComponents();

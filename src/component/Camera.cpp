@@ -208,3 +208,7 @@ void Camera::getMatrices(mat4 &P, mat4 &V, mat4 &M) {
     V = view;
     M = model;
 }
+
+void Camera::setSensibility(float sensibility) {
+    this->sensibility = sensibility;
+}

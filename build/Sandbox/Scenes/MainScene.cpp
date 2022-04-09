@@ -36,6 +36,7 @@ public:
         mostInsideCube->transform->setScale(vec3(1, 1.5, 1));
         mostInsideCube->getComponent<Mesh>()->setColor(vec3(1, 1, 0));
         mostInsideCube->transform->setParent(insideCube->transform);
+        mostInsideCube->setEnable(false);
 
         //Ground texture
         const int groundScale = 50;

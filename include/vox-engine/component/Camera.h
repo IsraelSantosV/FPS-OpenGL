@@ -49,6 +49,7 @@ public:
     void setViewport(int loc_x, int loc_y, int width, int height);
     //Change the clipping distance for the camera
     void setClipping(double near_clip_distance, double far_clip_distance);
+    void setSensibility(float sensibility);
 
     void setDistance(double cam_dist);
     void setMouseInput(int button, int state, int x, int y);

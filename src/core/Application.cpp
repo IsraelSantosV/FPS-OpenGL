@@ -49,7 +49,7 @@ void Application::init(std::map<std::string, Scene*>& sceneMap, int argc, char* 
 
     Display::registerResizeCallback([](int width, int height){
         if(Camera::main != nullptr){
-            Camera::main->setViewport(0,0, width, height);
+            Camera::main->setViewport(width/4,0, width, height);
         }
     });
 

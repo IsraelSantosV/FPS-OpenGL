@@ -5,7 +5,7 @@
 #include "vox-engine/core.h"
 #include "Scenes/MainScene.cpp"
 
-/*int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
     std::map<std::string, Scene*> sceneMaps;
     sceneMaps["MainScene"] = new MainScene();
 
@@ -14,4 +14,4 @@
     engine.start();
 
     return EXIT_SUCCESS;
-}*/
+}

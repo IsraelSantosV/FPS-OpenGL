@@ -54,7 +54,7 @@ static void reshape(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
 }
 
-int main(int argc, char** argv) {
+/*int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500);
@@ -66,4 +66,4 @@ int main(int argc, char** argv) {
     glutReshapeFunc(reshape);
     glutMainLoop();
     return EXIT_SUCCESS;
-}
+}*/
