@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 project(VoxEngine)
 
-set(OpenGlLinkers -lglut -lGLU -lGL)
+set(OpenGlLinkers -lglut -lGLU -lGL -lfreeimage)
 set(CMAKE_CXX_STANDARD 20)
 
 file(GLOB SRC CONFIGURE_DEPENDS "include/imgui/*.h" "include/imgui/*.cpp")
@@ -23,6 +23,7 @@ add_executable(${PROJECT_NAME}
         include/imgui/imstb_rectpack.h
         include/imgui/imstb_textedit.h
         include/imgui/imstb_truetype.h
+        include/stb/stb_image.h
         include/vox-engine/resources/Math.h
         src/system/InputManager.cpp
         src/util/Tools.cpp
@@ -60,7 +61,7 @@ add_executable(${PROJECT_NAME}
         build/Sandbox/Scenes/MainScene.cpp
         build/Sandbox/Scripts/Health.cpp
         build/Sandbox/Scripts/CubeAnimation.cpp
-        include/imgui/ImGuiTest.cpp include/vox-engine/resources/GUI.h src/system/GUIManager.cpp include/vox-engine/system/GUIManager.h build/Sandbox/MultiplesViewportsTest.cpp)
+        include/imgui/ImGuiTest.cpp include/vox-engine/resources/GUI.h src/system/GUIManager.cpp include/vox-engine/system/GUIManager.h build/Sandbox/MultiplesViewportsTest.cpp include/stb/stb_image.cpp include/vox-engine/resources/Texture.h src/resources/Texture.cpp build/Sandbox/ExampleTexture.cpp include/vox-engine/component/Primivites.h src/component/Light.cpp include/vox-engine/component/Light.h src/system/LightManager.cpp include/vox-engine/system/LightManager.h)
 
 target_link_libraries(${PROJECT_NAME} ${OpenGlLinkers} glm)
 target_include_directories(${PROJECT_NAME} PRIVATE include)

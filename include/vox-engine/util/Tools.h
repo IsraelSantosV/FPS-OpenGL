@@ -9,10 +9,13 @@
 #include <cstring>
 #include <iostream>
 #include <vector>
+#include <FreeImage.h>
+#include "vox-engine/util/Logger.h"
 
 class Tools {
 public:
     static void split(const std::string &line, const std::string &delimiter, std::vector <std::string> &output);
+    static void* loadTexture(const char* path);
 
     template<class T>
     static inline int strcpy_s(T* d, unsigned long dmax, const T* s){

@@ -22,21 +22,23 @@ public:
         Entity* player = instantiate("Player");
         player->addComponent<Health>();
 
-        Entity* cube = instantiate("Cube", [](Entity*){ glutWireCube(1); });
+        Entity* cube = instantiate("Cube", Primitives::primitiveCube());
         cube->getComponent<Mesh>()->setColor(vec3(1,0,0));
         cube->transform->setPosition(vec3(0,0, 3));
         cube->addComponent<CubeAnimation>();
 
-        Entity* insideCube = instantiate("InsideCube", [](Entity*){ glutWireCube(1); });
-        insideCube->transform->setScale(vec3(1,2,1));
-        insideCube->transform->setPosition(vec3(-1,0,0));
+        Entity* insideCube = instantiate("InsideCylinder", Primitives::primitiveCylinder());
+
+        //insideCube->mesh->setColor(vec3(1,1,1));
+        insideCube->transform->setScale(vec3(0.8,2,1));
+        insideCube->transform->setPosition(vec3(-2,0,0));
         insideCube->transform->setParent(cube->transform);
 
-        Entity* mostInsideCube = instantiate("MostInsideCube", [](Entity*){ glutWireCube(1); });
-        mostInsideCube->transform->setScale(vec3(1, 1.5, 1));
-        mostInsideCube->getComponent<Mesh>()->setColor(vec3(1, 1, 0));
-        mostInsideCube->transform->setParent(insideCube->transform);
-        mostInsideCube->setEnable(false);
+        Entity* mostInsideCube = instantiate("MostInsideSphere", Primitives::primitiveSphere());
+        mostInsideCube->transform->setPosition(vec3(1, 1.5, 1));
+        //mostInsideCube->getComponent<Mesh>()->setColor(vec3(1, 1, 0));
+        //mostInsideCube->transform->setParent(insideCube->transform);
+        //mostInsideCube->setEnable(false);
 
         //Ground texture
         const int groundScale = 50;
@@ -50,19 +52,21 @@ public:
             GLuint texture;
             glGenTextures(1,&texture);
 
-            unsigned char texture_data[2][2][4] =
-                    {
-                            0,0,0,255,  255,255,255,255,
-                            255,255,255,255,    0,0,0,255
-                    };
+//            unsigned char texture_data[2][2][4] =
+//                    {
+//                            0,0,0,255,  255,255,255,255,
+//                            255,255,255,255,    0,0,0,255
+//                    };
+
+            void* texture_data = Tools::loadTexture("resources/textures/Grass_7.png");
 
             glBindTexture(GL_TEXTURE_2D,texture);
             glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,2,2,0,GL_RGBA,GL_UNSIGNED_BYTE,texture_data);
 
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR);
 
             glBegin(GL_QUADS);
             glTexCoord2f(0.0,0.0);  glVertex3f(-groundScale,-groundHeight,-groundScale);

@@ -6,5 +6,6 @@
 #define VOXENGINE_CORE_H
 
 #include "vox-engine/core/Application.h"
+#include "vox-engine/component/Primivites.h"
 
 #endif //VOXENGINE_CORE_H
