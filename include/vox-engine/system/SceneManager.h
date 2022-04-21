@@ -10,6 +10,7 @@
 #include "vox-engine/resources/OpenGL.h"
 #include "vox-engine/component/Camera.h"
 #include "vox-engine/system/GUIManager.h"
+#include "vox-engine/system/LightManager.h"
 #include <map>
 
 class SceneManager : public ISystem {

@@ -21,6 +21,7 @@
 #include "vox-engine/resources/OpenGL.h"
 #include "vox-engine/component/Camera.h"
 #include "vox-engine/system/GUIManager.h"
+#include "vox-engine/system/LightManager.h"
 
 class Application {
 public:
@@ -38,6 +39,7 @@ private:
     Display* m_Display;
     InputManager* m_InputManager;
     SceneManager* m_SceneManager;
+    LightManager* m_LightManager;
     Logic* m_Logic;
     GUIManager* m_GUIManager;
 

@@ -5,6 +5,7 @@
 #include "vox-engine/core.h"
 #include "../Scripts/Health.cpp"
 #include "../Scripts/CubeAnimation.cpp"
+#include "../Scripts/LightSetup.cpp"
 
 class MainScene : public Scene {
 public:
@@ -21,6 +22,7 @@ public:
 
         Entity* player = instantiate("Player");
         player->addComponent<Health>();
+        player->addComponent<LightSetup>();
 
         Entity* cube = instantiate("Cube", Primitives::primitiveCube());
         cube->getComponent<Mesh>()->setColor(vec3(1,0,0));

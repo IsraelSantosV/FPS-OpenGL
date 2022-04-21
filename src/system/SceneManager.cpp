@@ -91,6 +91,7 @@ void SceneManager::destroy() {
 
 void SceneManager::renderSceneCallback() {
     clearDefaultBuffer();
+    LightManager::setupLights();
     GUIManager::displayGUICallback(SceneManager::getCurrentScene()->getEntities());
 
     if(Camera::main != nullptr){

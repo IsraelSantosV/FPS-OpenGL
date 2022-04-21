@@ -32,6 +32,7 @@ void Application::init(std::map<std::string, Scene*>& sceneMap, int argc, char* 
     m_Time = new Time();
     m_SceneManager = new SceneManager();
     m_GUIManager = new GUIManager();
+    m_LightManager = new LightManager();
     SceneManager::setSceneMap(sceneMap);
 
     m_Systems.push_back(m_Display);
@@ -39,6 +40,7 @@ void Application::init(std::map<std::string, Scene*>& sceneMap, int argc, char* 
     m_Systems.push_back(m_InputManager);
     m_Systems.push_back(m_Logic);
     m_Systems.push_back(m_GUIManager);
+    m_Systems.push_back(m_LightManager);
 
     //Initialize glut and imGui
     glutInit(&argc, argv);
@@ -157,6 +159,7 @@ void Application::destroy() {
     delete m_Display;
     delete m_InputManager;
     delete m_SceneManager;
+    delete m_LightManager;
     delete m_Logic;
     delete m_Config;
     delete m_Logger;

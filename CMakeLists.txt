@@ -61,7 +61,7 @@ add_executable(${PROJECT_NAME}
         build/Sandbox/Scenes/MainScene.cpp
         build/Sandbox/Scripts/Health.cpp
         build/Sandbox/Scripts/CubeAnimation.cpp
-        include/imgui/ImGuiTest.cpp include/vox-engine/resources/GUI.h src/system/GUIManager.cpp include/vox-engine/system/GUIManager.h build/Sandbox/MultiplesViewportsTest.cpp include/stb/stb_image.cpp include/vox-engine/resources/Texture.h src/resources/Texture.cpp build/Sandbox/ExampleTexture.cpp include/vox-engine/component/Primivites.h src/component/Light.cpp include/vox-engine/component/Light.h src/system/LightManager.cpp include/vox-engine/system/LightManager.h)
+        include/imgui/ImGuiTest.cpp include/vox-engine/resources/GUI.h src/system/GUIManager.cpp include/vox-engine/system/GUIManager.h build/Sandbox/MultiplesViewportsTest.cpp include/stb/stb_image.cpp include/vox-engine/resources/Texture.h src/resources/Texture.cpp build/Sandbox/ExampleTexture.cpp include/vox-engine/component/Primivites.h src/component/Light.cpp include/vox-engine/component/Light.h src/system/LightManager.cpp include/vox-engine/system/LightManager.h build/Sandbox/Scripts/LightSetup.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${OpenGlLinkers} glm)
 target_include_directories(${PROJECT_NAME} PRIVATE include)
