@@ -1,10 +1,29 @@
 cmake_minimum_required(VERSION 3.21)
 project(VoxEngine)
 
-set(OpenGlLinkers -lglut -lGLU -lGL)
+set(OpenGlLinkers -lglut -lGLU -lGL -lfreeimage)
 set(CMAKE_CXX_STANDARD 20)
 
+file(GLOB SRC CONFIGURE_DEPENDS "include/imgui/*.h" "include/imgui/*.cpp")
+find_package(glm REQUIRED)
+
 add_executable(${PROJECT_NAME}
+        include/imgui/imconfig.h
+        include/imgui/imgui.cpp
+        include/imgui/imgui.h
+        include/imgui/imgui_demo.cpp
+        include/imgui/imgui_draw.cpp
+        include/imgui/imgui_impl_glut.cpp
+        include/imgui/imgui_impl_glut.h
+        include/imgui/imgui_impl_opengl2.cpp
+        include/imgui/imgui_impl_opengl2.h
+        include/imgui/imgui_internal.h
+        include/imgui/imgui_tables.cpp
+        include/imgui/imgui_widgets.cpp
+        include/imgui/imstb_rectpack.h
+        include/imgui/imstb_textedit.h
+        include/imgui/imstb_truetype.h
+        include/stb/stb_image.h
         include/vox-engine/resources/Math.h
         src/system/InputManager.cpp
         src/util/Tools.cpp
@@ -25,8 +44,6 @@ add_executable(${PROJECT_NAME}
         src/system/Entity.cpp
         include/vox-engine/system/Entity.h
         include/vox-engine/component/Mesh.h
-        src/component/primitives/CubeMesh.cpp
-        include/vox-engine/component/primitives/CubeMesh.h
         include/vox-engine/core/Config.h
         include/vox-engine/core/ApplicationVersion.h
         include/vox-engine/system/ISystem.h
@@ -42,7 +59,9 @@ add_executable(${PROJECT_NAME}
         include/vox-engine/core.h
         build/Sandbox/Sandbox.cpp
         build/Sandbox/Scenes/MainScene.cpp
-        build/Sandbox/Scripts/Health.cpp build/Sandbox/Scripts/CubeAnimation.cpp)
+        build/Sandbox/Scripts/Health.cpp
+        build/Sandbox/Scripts/CubeAnimation.cpp
+        include/imgui/ImGuiTest.cpp include/vox-engine/resources/GUI.h src/system/GUIManager.cpp include/vox-engine/system/GUIManager.h build/Sandbox/MultiplesViewportsTest.cpp include/stb/stb_image.cpp include/vox-engine/resources/Texture.h src/resources/Texture.cpp build/Sandbox/ExampleTexture.cpp include/vox-engine/component/Primivites.h src/component/Light.cpp include/vox-engine/component/Light.h src/system/LightManager.cpp include/vox-engine/system/LightManager.h build/Sandbox/Scripts/LightSetup.cpp)
 
-target_link_libraries(${PROJECT_NAME} ${OpenGlLinkers})
+target_link_libraries(${PROJECT_NAME} ${OpenGlLinkers} glm)
 target_include_directories(${PROJECT_NAME} PRIVATE include)

@@ -17,6 +17,34 @@ void Tools::split(const std::string &line, const std::string &delimiter, std::ve
     output.push_back(s);
 }
 
+void* Tools::loadTexture(const char* path) {
+    FREE_IMAGE_FORMAT format = FreeImage_GetFIFFromFilename(path);
+    if (format == FIF_UNKNOWN) {
+        Logger::errorln("Unknown file type for texture image file: \n", path);
+        return nullptr;
+    }
+
+    FIBITMAP* bitmap = FreeImage_Load(format, path, 0);  // Read image from file.
+    if (!bitmap) {
+        Logger::errorln("Failed to load image: \n", path);
+        return nullptr;
+    }
+
+    FIBITMAP* bitmap2 = FreeImage_ConvertTo24Bits(bitmap);  // Convert to RGB or BGR format
+    FreeImage_Unload(bitmap);
+    void* imgData = FreeImage_GetBits(bitmap2);     // Grab the data we need from the bitmap.
+    int width = FreeImage_GetWidth(bitmap2);
+    int height = FreeImage_GetHeight(bitmap2);
+
+    if (imgData) {
+        //Logger::infoln("Texture image loaded from file: \n", path, "\nImage size:", width, "x", height);
+        return imgData;
+    }
+    else {
+        Logger::errorln("Failed to get texture data from: \n", path);
+    }
+}
+
 /*
 //When add layer, update layer count
 const int LayersAmount = 5;

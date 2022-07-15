@@ -7,6 +7,7 @@
 
 #include "ISystem.h"
 #include "vox-engine/resources/OpenGL.h"
+#include "vox-engine/resources/GUI.h"
 typedef void ResizeCallback(int width, int height);
 
 class Display : public ISystem {

@@ -19,6 +19,12 @@ void SceneManager::start() {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
 
+    float whiteColor[4] = { 1, 1, 1, 1};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, whiteColor);
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     glutDisplayFunc(SceneManager::renderSceneCallback);
     loadQueuedScene();
 }
@@ -85,6 +91,8 @@ void SceneManager::destroy() {
 
 void SceneManager::renderSceneCallback() {
     clearDefaultBuffer();
+    LightManager::setupLights();
+    GUIManager::displayGUICallback(SceneManager::getCurrentScene()->getEntities());
 
     if(Camera::main != nullptr){
         mat4 model, view, projection;
@@ -118,6 +126,10 @@ void SceneManager::drawCurrentSceneRenders() {
         vec3 position = transform->getLocalPosition();
         vec3 rotation = transform->getLocalEulerAngles();
         vec3 scale = transform->getLocalScale();
+
+        if(entity->mesh != nullptr){
+            entity->mesh->drawTexture();
+        }
 
         glPushMatrix();
             glTranslatef(position.x, position.y, position.z);

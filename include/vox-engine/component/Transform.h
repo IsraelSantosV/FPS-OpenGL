@@ -10,6 +10,10 @@
 
 class Transform : public Component {
 public:
+    vec3 m_Position = vec3(0,0,0);
+    quat m_Rotation = quat(0,0,0,0);
+    vec3 m_Scale = vec3(1,1,1);
+
     void setPosition(vec3 position);
     void setRotation(vec3 rotation);
     void setRotation(quat rotation);
@@ -30,10 +34,6 @@ public:
     Transform* getParent();
     std::vector<Transform*> getChildren();
 private:
-    vec3 m_Position = vec3(0,0,0);
-    quat m_Rotation = quat(0,0,0,0);
-    vec3 m_Scale = vec3(1,1,1);
-
     vec3 m_LocalPosition = vec3(0,0,0);
     vec3 m_LocalEulerAngles = vec3(0,0,0);
     vec3 m_LocalScale = vec3(0,0,0);

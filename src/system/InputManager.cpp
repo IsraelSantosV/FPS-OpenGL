@@ -26,6 +26,13 @@ void InputManager::init(Config::Profile profile) {
     glutKeyboardUpFunc(InputManager::keyboardUpCallback);
     glutMouseFunc(InputManager::mouseClickCallback);
 
+    glutSpecialFunc(ImGui_ImplGLUT_SpecialFunc);
+    glutSpecialUpFunc(ImGui_ImplGLUT_SpecialUpFunc);
+
+#ifdef __FREEGLUT_EXT_H__
+    glutMouseWheelFunc(ImGui_ImplGLUT_MouseWheelFunc);
+#endif
+
     glutIgnoreKeyRepeat(true);
 }
 
@@ -110,6 +117,7 @@ void InputManager::handleDefaultCameraMouse(int button, int state, int x, int y)
 }
 
 void InputManager::handleDefaultCameraMotion(int x, int y) {
+    ImGui_ImplGLUT_MotionFunc(x, y);
     if(Camera::main == nullptr || !Camera::useDefaultCameraController) return;
     Camera::main->move2D(x, y);
 }
@@ -129,18 +137,22 @@ void InputManager::update() {
 }
 
 void InputManager::keyboardUpCallback(unsigned char key, int x, int y) {
+    ImGui_ImplGLUT_KeyboardUpFunc(key, x, y);
     InputManager::handleKey(key, RELEASED);
 }
 
 void InputManager::keyboardDownCallback(unsigned char key, int x, int y) {
+    ImGui_ImplGLUT_KeyboardFunc(key, x, y);
     InputManager::handleKey(key, PRESSED);
 }
 
 void InputManager::passiveMotionCallback(int x, int y) {
+    ImGui_ImplGLUT_MotionFunc(x, y);
     InputManager::handleMouse((float)x, (float)y);
 }
 
 void InputManager::mouseClickCallback(int button, int state, int x, int y) {
+    ImGui_ImplGLUT_MouseFunc(button, state, x, y);
     InputManager::handleDefaultCameraMouse(button, state, x, y);
 }
 
